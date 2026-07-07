@@ -1,0 +1,23 @@
+# 依赖
+tools/node_modules/
+node_modules/
+
+# 构建产物（保留 dist/index.json 提交，忽略其余）
+tools/dist/
+*.tsbuildinfo
+
+# 编辑器与系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 环境与密钥
+.env
+.env.local
+*.local
+
+# 日志
+*.log
+npm-debug.log*
+pnpm-debug.log*

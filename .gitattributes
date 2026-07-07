@@ -1,0 +1,14 @@
+# 强制文本文件统一 LF 行尾，避免 Windows CRLF 污染
+* text=auto eol=lf
+
+# Markdown 数据文件显式标记
+*.md text eol=lf working-tree-encoding=UTF-8
+
+# JSON schema
+*.json text eol=lf
+
+# 二进制资源
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
