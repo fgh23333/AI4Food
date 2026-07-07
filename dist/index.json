@@ -1,59 +1,78 @@
 [
   {
-    "id": "cn-shanghai-fumingluxiaochi",
-    "name": "富民路小吃街",
+    "id": "cn-shanghai-alilando",
+    "name": "Ali Lando 阿里兰朵",
     "city": "上海",
     "country": "cn",
-    "cuisine": "面食小吃",
-    "price_level": 1,
-    "status": "open",
-    "rating": 4,
-    "tags": [
-      "小吃",
-      "街边",
-      "性价比",
-      "本地"
-    ],
-    "path": "data/restaurants/cn/shanghai/fumingluxiaochi.md",
-    "updated_at": "2026-06-15"
-  },
-  {
-    "id": "cn-shanghai-haidilao-dapuqiao",
-    "name": "海底捞火锅（打浦桥店）",
-    "city": "上海",
-    "country": "cn",
-    "cuisine": "火锅",
+    "cuisine": "新疆菜",
     "price_level": 3,
     "status": "open",
     "rating": 4,
     "tags": [
-      "火锅",
-      "川味",
-      "服务",
-      "夜宵",
-      "亲子"
+      "新疆菜",
+      "烤肉",
+      "大盘鸡",
+      "手抓饭",
+      "朋友聚餐"
     ],
-    "path": "data/restaurants/cn/shanghai/haidilao-dapuqiao.md",
-    "updated_at": "2026-06-15"
+    "path": "data/restaurants/cn/shanghai/alilando.md",
+    "updated_at": "2026-07-07"
   },
   {
-    "id": "cn-shanghai-huangchaohuangjiuhang",
-    "name": "皇宫酒家",
+    "id": "cn-shanghai-chilis-hongqiao",
+    "name": "Chili's 奇利斯",
     "city": "上海",
     "country": "cn",
-    "cuisine": "粤菜",
-    "price_level": 4,
+    "cuisine": "西餐",
+    "price_level": 3,
     "status": "open",
     "rating": 4,
     "tags": [
-      "粤菜",
-      "早茶",
-      "商务",
-      "海景",
-      "有包间"
+      "美式",
+      "西餐",
+      "亲子",
+      "朋友聚餐",
+      "连锁"
     ],
-    "path": "data/restaurants/cn/shanghai/huangchao-huangjiuhang.md",
-    "updated_at": "2026-06-15"
+    "path": "data/restaurants/cn/shanghai/chilis-hongqiao.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-chunweibanyufu",
+    "name": "纯味斑鱼府",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "火锅",
+      "斑鱼",
+      "石锅鱼",
+      "鲜辣",
+      "朋友聚餐"
+    ],
+    "path": "data/restaurants/cn/shanghai/chunweibanyufu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-damarco-jinxian",
+    "name": "大马可",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "意大利菜",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "意餐",
+      "披萨",
+      "老牌",
+      "朋友聚餐"
+    ],
+    "path": "data/restaurants/cn/shanghai/damarco-jinxian.md",
+    "updated_at": "2026-07-07"
   },
   {
     "id": "cn-shanghai-laoshanghai-nanjingroad",
@@ -71,97 +90,6 @@
       "有包间"
     ],
     "path": "data/restaurants/cn/shanghai/laoshanghai-nanjingroad.md",
-    "updated_at": "2026-06-15"
-  },
-  {
-    "id": "cn-shanghai-laoxilata-xintiandi",
-    "name": "老西餐厅（新天地店）",
-    "city": "上海",
-    "country": "cn",
-    "cuisine": "西餐",
-    "price_level": 4,
-    "status": "open",
-    "rating": 4.5,
-    "tags": [
-      "西餐",
-      "约会",
-      "环境好",
-      "商务"
-    ],
-    "path": "data/restaurants/cn/shanghai/laoxilata-xintiandi.md",
-    "updated_at": "2026-06-15"
-  },
-  {
-    "id": "cn-shanghai-meilongzhen-jingan",
-    "name": "梅龙镇酒家",
-    "city": "上海",
-    "country": "cn",
-    "cuisine": "本帮菜",
-    "price_level": 3,
-    "status": "open",
-    "rating": 4.5,
-    "tags": [
-      "老字号",
-      "商务",
-      "有包间",
-      "招待"
-    ],
-    "path": "data/restaurants/cn/shanghai/meilongzhen-jingan.md",
-    "updated_at": "2026-06-15"
-  },
-  {
-    "id": "cn-shanghai-peachfloral-pudong",
-    "name": "桃花源烘焙",
-    "city": "上海",
-    "country": "cn",
-    "cuisine": "甜品烘焙",
-    "price_level": 2,
-    "status": "open",
-    "rating": 4,
-    "tags": [
-      "甜品",
-      "烘焙",
-      "下午茶",
-      "网红"
-    ],
-    "path": "data/restaurants/cn/shanghai/peachfloral-pudong.md",
-    "updated_at": "2026-06-15"
-  },
-  {
-    "id": "cn-shanghai-xuxianshouchuanxuhui",
-    "name": "鮨·鲜寿司",
-    "city": "上海",
-    "country": "cn",
-    "cuisine": "日料",
-    "price_level": 4,
-    "status": "open",
-    "rating": 4.5,
-    "tags": [
-      "日料",
-      "寿司",
-      "omakase",
-      "预订",
-      "小店"
-    ],
-    "path": "data/restaurants/cn/shanghai/xuxianshouchuanxuhui.md",
-    "updated_at": "2026-06-15"
-  },
-  {
-    "id": "cn-shanghai-yuxinchuajiangan",
-    "name": "渝信川菜",
-    "city": "上海",
-    "country": "cn",
-    "cuisine": "川菜",
-    "price_level": 2,
-    "status": "open",
-    "rating": 4,
-    "tags": [
-      "川菜",
-      "辣",
-      "性价比",
-      "朋友聚餐"
-    ],
-    "path": "data/restaurants/cn/shanghai/yuxinchuajiangan.md",
     "updated_at": "2026-06-15"
   }
 ]
