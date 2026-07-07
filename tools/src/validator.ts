@@ -32,19 +32,25 @@ function getValidator(): CompiledValidator {
 
   const ajv = new Ajv({ allErrors: true, strict: false })
   addFormats(ajv)
-  const validate = ajv.compile(schema) as (data: unknown) => boolean
+  const validate = ajv.compile(schema) as ValidateFn
   const wrapped = ((data: unknown): boolean => {
     const ok = validate(data)
-    lastErrors = validate.errors
+    lastErrors = validate.errors ?? null
     return ok
   }) as CompiledValidator
   compiledValidator = wrapped
   return wrapped
 }
 
+interface ValidateFn {
+  (data: unknown): boolean
+  errors?: ErrorObject[] | null
+}
+
 function setEnumValues(schema: Record<string, unknown>, field: string, values: unknown[]): void {
   const props = schema.properties as Record<string, Record<string, unknown>>
-  props[field].enum = values
+  const fieldSchema = props[field]
+  if (fieldSchema) fieldSchema.enum = values
 }
 
 function ajvPath(issue: ErrorObject): string {

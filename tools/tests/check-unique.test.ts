@@ -42,7 +42,9 @@ describe('checkUnique', () => {
     const recs = [mk('cn-beijing-a', '/repo/data/restaurants/jp/tokyo/a.md')]
     const issues = checkUnique(recs)
     expect(issues.length).toBe(1)
-    expect(issues[0].type).toBe('error')
-    expect(issues[0].message).toContain('country')
+    const first = issues[0]
+    expect(first).toBeDefined()
+    expect(first!.type).toBe('error')
+    expect(first!.message).toContain('country')
   })
 })
