@@ -1,0 +1,45 @@
+name: validate
+
+on:
+  pull_request:
+    paths:
+      - 'data/**'
+      - 'schema/**'
+      - 'tools/**'
+      - '.github/workflows/validate.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          cache-dependency-path: tools/pnpm-lock.yaml
+
+      - name: Install
+        working-directory: tools
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        working-directory: tools
+        run: pnpm typecheck
+
+      - name: Test
+        working-directory: tools
+        run: pnpm test
+
+      - name: Validate data
+        working-directory: tools
+        run: pnpm run validate
+
+      - name: Check unique ids
+        working-directory: tools
+        run: pnpm run check-unique

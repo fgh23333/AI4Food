@@ -1,0 +1,48 @@
+name: build-index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'schema/**'
+      - 'tools/**'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          cache-dependency-path: tools/pnpm-lock.yaml
+
+      - name: Install
+        working-directory: tools
+        run: pnpm install --frozen-lockfile
+
+      - name: Build index
+        working-directory: tools
+        run: pnpm run index
+
+      - name: Commit index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain dist/index.json)" ]]; then
+            git add dist/index.json
+            git commit -m "chore: 自动更新索引 [skip ci]"
+            git push
+          else
+            echo "索引无变化"
+          fi
