@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai4food/restaurant.schema.json",
+  "title": "Restaurant",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "city", "country", "cuisine", "price_level", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z]{2}-[a-z0-9-]+$",
+      "description": "全局唯一，格式 {country}-{city-slug}-{store-slug}"
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "name_en": { "type": "string" },
+    "city": { "type": "string", "minLength": 1 },
+    "country": {
+      "type": "string",
+      "pattern": "^[a-z]{2}$",
+      "description": "ISO 3166-1 alpha-2 小写"
+    },
+    "cuisine": { "type": "string", "enum": [] },
+    "price_level": { "type": "integer", "enum": [] },
+    "address": { "type": "string" },
+    "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
+    "longitude": { "type": "number", "minimum": -180, "maximum": 180 },
+    "phone": { "type": "string" },
+    "website": { "type": "string", "format": "uri" },
+    "opening_hours": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "键为 mon/tue/..., 值如 11:00-22:00"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "rating": { "type": "number", "minimum": 0, "maximum": 5, "multipleOf": 0.5 },
+    "visited_date": { "type": "string", "format": "date" },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "notes": { "type": "string" },
+    "photos": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "status": { "type": "string", "enum": [] },
+    "verified": { "type": "boolean" },
+    "source": { "type": "string" },
+    "updated_at": { "type": "string", "format": "date" }
+  }
+}
