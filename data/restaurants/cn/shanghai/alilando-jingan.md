@@ -7,10 +7,10 @@ country: cn
 cuisine: 西餐
 price_level: 3
 status: open
-address: 上海市静安区常德路688号PAC购物中心街区1楼
+address: 上海市静安区昌平路700号近常德路（常德路688号PAC购物中心街区1楼）
 latitude: 31.2289
 longitude: 121.4531
-phone: "021-12345678"
+phone: "021-62186600"
 website: https://example.com
 opening_hours:
   mon: "11:00-22:00"
@@ -26,14 +26,18 @@ visited_date: 2026-07-07
 recommendations:
   - name: 魔鬼辣意面
     note: 全网热门，辣度够劲
-  - name: 地中海拼盘
-    note: 分量足，适合分享
-notes: 全国首店地中海餐厅，奶白蓝调治愈空间，户外阳光位氛围好。静安寺附近新晋网红，适合情侣约会和朋友小酌。电话待核验。
-verified: false
-source: Trip.com/抖音/企查查
+  - name: 慢炖牛肉配宽面
+    note: 肉香醇厚，番茄微酸，撒芝士碎
+  - name: 黑松露菌菇披萨
+    note: 饼底外酥里软，边缘焦香
+  - name: 伯爵城海鲜烩饭
+    note: 特色，食客好评
+notes: 全国首店地中海餐厅，奶白蓝调治愈空间，明档现做，户外阳光位氛围好。静安PAC购物中心，新晋网红，适合情侣约会和朋友小酌。
+verified: true
+source: 劳动观察/Trip.com/大众点评
 updated_at: 2026-07-07
 ---
 
 # Ali Lando 阿丽兰朵·地中海餐厅（全国首店）
 
-静安常德路PAC购物中心的地中海餐厅，全国首店。奶白蓝调空间出片，户外阳光位氛围好。魔鬼辣意面是热门菜。电话待核验，前往前建议确认。坐标为大致位置。
+静安PAC购物中心（昌平路700号近常德路）的地中海餐厅，全国首店。奶白蓝调空间出片，明档现做，户外阳光位氛围好。魔鬼辣意面、慢炖牛肉宽面、黑松露菌菇披萨是热门菜。坐标为大致位置。

@@ -20,7 +20,7 @@ opening_hours:
   fri: "11:00-22:00"
   sat: "11:00-22:00"
   sun: "11:00-22:00"
-tags: [火锅, 鱼火锅, 斑鱼, 鲜辣, 朋友聚餐]
+tags: [火锅, 鱼火锅, 斑鱼, 连锁, 鲜辣, 朋友聚餐]
 rating: 4.0
 visited_date: 2026-07-07
 recommendations:

@@ -20,7 +20,7 @@ opening_hours:
   fri: "11:00-24:00"
   sat: "11:00-24:00"
   sun: "11:00-24:00"
-tags: [美式, 西餐, 汉堡, 亲子, 朋友聚餐, 连锁, 江景]
+tags: [美式, 西餐, 连锁, 汉堡, 亲子, 朋友聚餐, 江景]
 rating: 4.5
 visited_date: 2026-07-07
 recommendations:

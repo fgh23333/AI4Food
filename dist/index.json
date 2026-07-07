@@ -31,13 +31,210 @@
     "tags": [
       "美式",
       "西餐",
+      "连锁",
       "汉堡",
       "亲子",
       "朋友聚餐",
-      "连锁",
       "江景"
     ],
     "path": "data/restaurants/cn/shanghai/chilis-binjiang.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-chilis-daxuelu",
+    "name": "Chili's 奇利斯",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "美式",
+      "西餐",
+      "连锁",
+      "汉堡",
+      "朋友聚餐",
+      "大学路"
+    ],
+    "path": "data/restaurants/cn/shanghai/chilis-daxuelu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-chilis-gatema",
+    "name": "Chili's 奇利斯",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "美式",
+      "西餐",
+      "连锁",
+      "汉堡",
+      "亲子",
+      "购物中心",
+      "西岸"
+    ],
+    "path": "data/restaurants/cn/shanghai/chilis-gatema.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-chilis-hongshoufang",
+    "name": "Chili's 奇利斯",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "美式",
+      "西餐",
+      "连锁",
+      "汉堡",
+      "朋友聚餐"
+    ],
+    "path": "data/restaurants/cn/shanghai/chilis-hongshoufang.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-chilis-jiuguang",
+    "name": "Chili's 奇利斯",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "美式",
+      "西餐",
+      "连锁",
+      "汉堡",
+      "亲子",
+      "购物中心"
+    ],
+    "path": "data/restaurants/cn/shanghai/chilis-jiuguang.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-chilis-tongrenlu",
+    "name": "Chili's 奇利斯",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "美式",
+      "西餐",
+      "连锁",
+      "汉堡",
+      "朋友聚餐"
+    ],
+    "path": "data/restaurants/cn/shanghai/chilis-tongrenlu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-chilis-zhongsheng",
+    "name": "Chili's 奇利斯",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "美式",
+      "西餐",
+      "连锁",
+      "汉堡",
+      "亲子",
+      "购物中心",
+      "莘庄"
+    ],
+    "path": "data/restaurants/cn/shanghai/chilis-zhongsheng.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-chunweibanyufu-baoshan",
+    "name": "纯味斑鱼府",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "火锅",
+      "鱼火锅",
+      "斑鱼",
+      "连锁",
+      "朋友聚餐"
+    ],
+    "path": "data/restaurants/cn/shanghai/chunweibanyufu-baoshan.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-chunweibanyufu-huaizhonglu",
+    "name": "纯味斑鱼府",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "火锅",
+      "鱼火锅",
+      "斑鱼",
+      "连锁",
+      "淮海路"
+    ],
+    "path": "data/restaurants/cn/shanghai/chunweibanyufu-huaizhonglu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-chunweibanyufu-huanyuchengmax",
+    "name": "纯味斑鱼府",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "火锅",
+      "鱼火锅",
+      "斑鱼",
+      "连锁",
+      "购物中心"
+    ],
+    "path": "data/restaurants/cn/shanghai/chunweibanyufu-huanyuchengmax.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-chunweibanyufu-huanyuhui",
+    "name": "纯味斑鱼府",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "火锅",
+      "鱼火锅",
+      "斑鱼",
+      "连锁",
+      "购物中心",
+      "新天地"
+    ],
+    "path": "data/restaurants/cn/shanghai/chunweibanyufu-huanyuhui.md",
     "updated_at": "2026-07-07"
   },
   {
@@ -53,10 +250,70 @@
       "火锅",
       "鱼火锅",
       "斑鱼",
+      "连锁",
       "鲜辣",
       "朋友聚餐"
     ],
     "path": "data/restaurants/cn/shanghai/chunweibanyufu-jingan.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-chunweibanyufu-pudong",
+    "name": "纯味斑鱼府",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "火锅",
+      "鱼火锅",
+      "斑鱼",
+      "连锁",
+      "浦东"
+    ],
+    "path": "data/restaurants/cn/shanghai/chunweibanyufu-pudong.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-chunweibanyufu-yanggaozhonglu",
+    "name": "纯味斑鱼府",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "火锅",
+      "鱼火锅",
+      "斑鱼",
+      "连锁",
+      "朋友聚餐"
+    ],
+    "path": "data/restaurants/cn/shanghai/chunweibanyufu-yanggaozhonglu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-chunweibanyufu-zongdian",
+    "name": "纯味斑鱼府",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "火锅",
+      "鱼火锅",
+      "斑鱼",
+      "连锁",
+      "总店",
+      "必吃榜",
+      "浦东"
+    ],
+    "path": "data/restaurants/cn/shanghai/chunweibanyufu-zongdian.md",
     "updated_at": "2026-07-07"
   },
   {
@@ -71,11 +328,32 @@
     "tags": [
       "意餐",
       "老牌",
+      "连锁",
+      "旗舰店",
       "披萨",
       "朋友聚餐",
       "情侣约会"
     ],
     "path": "data/restaurants/cn/shanghai/damarco-jinghua.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-damarco-yushanlu",
+    "name": "大马可",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "意大利菜",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "意餐",
+      "连锁",
+      "加盟店",
+      "披萨",
+      "朋友聚餐"
+    ],
+    "path": "data/restaurants/cn/shanghai/damarco-yushanlu.md",
     "updated_at": "2026-07-07"
   }
 ]
