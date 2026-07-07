@@ -1,44 +1,47 @@
 [
   {
-    "id": "cn-shanghai-alilando",
-    "name": "Ali Lando 阿里兰朵",
+    "id": "cn-shanghai-alilando-jingan",
+    "name": "Ali Lando 阿丽兰朵",
     "city": "上海",
     "country": "cn",
-    "cuisine": "新疆菜",
+    "cuisine": "西餐",
     "price_level": 3,
     "status": "open",
-    "rating": 4,
+    "rating": 4.5,
     "tags": [
-      "新疆菜",
-      "烤肉",
-      "大盘鸡",
-      "手抓饭",
-      "朋友聚餐"
+      "地中海",
+      "西餐",
+      "网红",
+      "环境好",
+      "情侣约会",
+      "新店"
     ],
-    "path": "data/restaurants/cn/shanghai/alilando.md",
+    "path": "data/restaurants/cn/shanghai/alilando-jingan.md",
     "updated_at": "2026-07-07"
   },
   {
-    "id": "cn-shanghai-chilis-hongqiao",
+    "id": "cn-shanghai-chilis-binjiang",
     "name": "Chili's 奇利斯",
     "city": "上海",
     "country": "cn",
     "cuisine": "西餐",
     "price_level": 3,
     "status": "open",
-    "rating": 4,
+    "rating": 4.5,
     "tags": [
       "美式",
       "西餐",
+      "汉堡",
       "亲子",
       "朋友聚餐",
-      "连锁"
+      "连锁",
+      "江景"
     ],
-    "path": "data/restaurants/cn/shanghai/chilis-hongqiao.md",
+    "path": "data/restaurants/cn/shanghai/chilis-binjiang.md",
     "updated_at": "2026-07-07"
   },
   {
-    "id": "cn-shanghai-chunweibanyufu",
+    "id": "cn-shanghai-chunweibanyufu-jingan",
     "name": "纯味斑鱼府",
     "city": "上海",
     "country": "cn",
@@ -48,48 +51,31 @@
     "rating": 4,
     "tags": [
       "火锅",
+      "鱼火锅",
       "斑鱼",
-      "石锅鱼",
       "鲜辣",
       "朋友聚餐"
     ],
-    "path": "data/restaurants/cn/shanghai/chunweibanyufu.md",
+    "path": "data/restaurants/cn/shanghai/chunweibanyufu-jingan.md",
     "updated_at": "2026-07-07"
   },
   {
-    "id": "cn-shanghai-damarco-jinxian",
+    "id": "cn-shanghai-damarco-jinghua",
     "name": "大马可",
     "city": "上海",
     "country": "cn",
     "cuisine": "意大利菜",
     "price_level": 3,
     "status": "open",
-    "rating": 4.5,
+    "rating": 4,
     "tags": [
       "意餐",
-      "披萨",
       "老牌",
-      "朋友聚餐"
+      "披萨",
+      "朋友聚餐",
+      "情侣约会"
     ],
-    "path": "data/restaurants/cn/shanghai/damarco-jinxian.md",
+    "path": "data/restaurants/cn/shanghai/damarco-jinghua.md",
     "updated_at": "2026-07-07"
-  },
-  {
-    "id": "cn-shanghai-laoshanghai-nanjingroad",
-    "name": "老上海饭店",
-    "city": "上海",
-    "country": "cn",
-    "cuisine": "本帮菜",
-    "price_level": 3,
-    "status": "open",
-    "rating": 4.5,
-    "tags": [
-      "商务",
-      "亲子",
-      "网红",
-      "有包间"
-    ],
-    "path": "data/restaurants/cn/shanghai/laoshanghai-nanjingroad.md",
-    "updated_at": "2026-06-15"
   }
 ]
