@@ -14,8 +14,8 @@ data/restaurants/{country}/{city拼音}/{店名slug}-{分店}.md
 ```
 
 - `country`：ISO 3166-1 alpha-2 小写，如 `cn`、`jp`、`us`。
-- `city拼音`：城市拼音或英文名，如 `beijing`、`shanghai`。
-- 文件名：`<店名拼音>-<分店>.md`，如 `juqi-sanlitun.md`。
+- `city拼音`：城市拼音或英文名，如 `shanghai`、`hangzhou`。
+- 文件名：`<店名拼音>-<分店>.md`，如 `laoshanghai-nanjingroad.md`。
 
 **强约束**：路径中的 `country` 目录必须等于 frontmatter `id` 的首段（如路径 `cn/...` 对应 id `cn-...`）。
 
@@ -78,7 +78,7 @@ data/restaurants/{country}/{city拼音}/{店名slug}-{分店}.md
 城市**不在 schema 强制枚举**——城市太多会阻塞新地区贡献。改用：
 
 - `city` 用自由字符串（中文名）。
-- 文件路径强约束：路径里的城市拼音目录名对应 frontmatter `city`（如 `beijing/` ↔ `city: 北京`）。
+- 文件路径强约束：路径里的城市拼音目录名对应 frontmatter `city`（如 `shanghai/` ↔ `city: 上海`）。
 
 ## 枚举扩充流程
 

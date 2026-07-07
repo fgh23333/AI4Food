@@ -48,10 +48,10 @@ pnpm validate     # 本地校验
 
 ### 方式二：手写
 
-1. 复制 `data/restaurants/cn/beijing/_template.md` 到对应城市目录
+1. 复制 `data/restaurants/cn/shanghai/_template.md` 到对应城市目录
 2. 修改 frontmatter（必填字段不能少）
 3. 运行 `pnpm validate` 本地校验
-4. 文件命名 `<店名拼音>-<分店>.md`，如 `juqi-sanlitun.md`
+4. 文件命名 `<店名拼音>-<分店>.md`，如 `laoshanghai-nanjingroad.md`
 5. 提交 PR，标题 `data: 新增<城市><店名>`
 
 📖 完整流程见 [贡献指南](docs/CONTRIBUTING.md)，字段说明见 [数据规范](docs/DATA_SPEC.md)。
@@ -66,27 +66,27 @@ pnpm validate     # 本地校验
 | **推荐** | `address`, `latitude`+`longitude`, `tags`, `updated_at` | 缺失仅警告 |
 | **可选** | `rating`, `recommendations`, `notes`, `photos`, `phone`, `opening_hours` | 自由填写 |
 
-示例（局气三里屯店）：
+示例（老上海饭店南京路店）：
 
 ```yaml
 ---
-id: cn-beijing-juqi-sanlitun
-name: 局气
-city: 北京
+id: cn-shanghai-laoshanghai-nanjingroad
+name: 老上海饭店
+city: 上海
 country: cn
-cuisine: 京菜
+cuisine: 本帮菜
 price_level: 3
 status: open
-address: 北京市朝阳区三里屯太古里南区
-latitude: 39.9342
-longitude: 116.4551
+address: 上海市黄浦区南京东路步行街
+latitude: 31.2362
+longitude: 121.4785
 rating: 4.5
 updated_at: 2026-06-15
 ---
 
-# 局气（三里屯店）
+# 老上海饭店（南京路店）
 
-京味儿创意菜，环境有老北京元素……
+本帮菜代表，浓油赤酱……
 ```
 
 ---

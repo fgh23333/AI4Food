@@ -42,7 +42,7 @@ docs/                                          # 贡献/数据/开发/路线图�
 
 ### 场景 A：餐厅数据贡献（新增/修改/删除 `data/` 下的 md）
 
-1. **改前必读** `docs/DATA_SPEC.md` 与 `data/restaurants/cn/beijing/_template.md`。
+1. **改前必读** `docs/DATA_SPEC.md` 与 `data/restaurants/cn/shanghai/_template.md`。
 2. frontmatter 必填字段不可缺：`id`, `name`, `city`, `country`, `cuisine`, `price_level`, `status`。
 3. `id` 格式 `{country}-{city拼音}-{slug}`，全局唯一，首段必须等于路径 country 目录。
 4. 枚举字段（`cuisine`/`price_level`/`status`）只能取 `schema/enums.json` 的值；要加新枚举值，单独提 PR 改 `enums.json`。
@@ -51,7 +51,7 @@ docs/                                          # 贡献/数据/开发/路线图�
    cd tools && pnpm validate && pnpm check-unique
    ```
    有 error 必须修；warning（缺推荐字段）可接受但尽量补全。
-6. 文件名规则：`<店名拼音>-<分店>.md`，如 `juqi-sanlitun.md`。
+6. 文件名规则：`<店名拼音>-<分店>.md`，如 `laoshanghai-nanjingroad.md`。
 7. commit 类型必须用 `data:`。
 8. `status` 为 `closed`/`demolished` 的餐厅**不要删除**，保留并改状态。
 
