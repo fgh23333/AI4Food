@@ -1,10 +1,10 @@
 [
   {
-    "id": "cn-beijing-juqi-sanlitun",
-    "name": "局气",
-    "city": "北京",
+    "id": "cn-shanghai-laoshanghai-nanjingroad",
+    "name": "老上海饭店",
+    "city": "上海",
     "country": "cn",
-    "cuisine": "京菜",
+    "cuisine": "本帮菜",
     "price_level": 3,
     "status": "open",
     "rating": 4.5,
@@ -14,7 +14,7 @@
       "网红",
       "有包间"
     ],
-    "path": "data/restaurants/cn/beijing/juqi-sanlitun.md",
+    "path": "data/restaurants/cn/shanghai/laoshanghai-nanjingroad.md",
     "updated_at": "2026-06-15"
   }
 ]
