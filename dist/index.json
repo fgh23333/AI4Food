@@ -127,14 +127,15 @@
     "country": "cn",
     "cuisine": "西餐",
     "price_level": 3,
-    "status": "open",
+    "status": "closed",
     "rating": 4,
     "tags": [
       "美式",
       "西餐",
       "连锁",
       "汉堡",
-      "朋友聚餐"
+      "朋友聚餐",
+      "已关店"
     ],
     "path": "data/restaurants/cn/shanghai/chilis-tongrenlu.md",
     "updated_at": "2026-07-07"
@@ -354,6 +355,669 @@
       "朋友聚餐"
     ],
     "path": "data/restaurants/cn/shanghai/damarco-yushanlu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-jiuji-babaishan",
+    "name": "酒集·八百善炭烤居酒屋",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "日料",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "日料",
+      "烧鸟",
+      "居酒屋",
+      "炭烤",
+      "寿喜锅",
+      "南京西路",
+      "静安寺",
+      "金鹰国际"
+    ],
+    "path": "data/restaurants/cn/shanghai/jiuji-babaishan.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-jiuyi-dagu",
+    "name": "酒一烧鸟·酒场",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "日料",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "日料",
+      "烧鸟",
+      "居酒屋",
+      "深夜食堂",
+      "备长炭",
+      "串烧",
+      "南京西路",
+      "静安寺"
+    ],
+    "path": "data/restaurants/cn/shanghai/jiuyi-dagu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-lawrys-wuyilu",
+    "name": "Lawry's The Prime Rib 劳瑞斯慢烤牛排馆",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 5,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "西餐",
+      "牛排",
+      "美式",
+      "连锁",
+      "美国品牌",
+      "桌边服务",
+      "高端",
+      "约会",
+      "翡悦里",
+      "首店"
+    ],
+    "path": "data/restaurants/cn/shanghai/lawrys-wuyilu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-nanxiang-xingshanlu",
+    "name": "上味馆南翔小笼",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "面食小吃",
+    "price_level": 1,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "面食小吃",
+      "小笼包",
+      "本帮",
+      "连锁",
+      "南翔小笼",
+      "曹杨",
+      "平价"
+    ],
+    "path": "data/restaurants/cn/shanghai/nanxiang-xingshanlu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-nongxiaode-yandanglu",
+    "name": "侬晓得排骨年糕",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "面食小吃",
+    "price_level": 1,
+    "status": "open",
+    "rating": 3.5,
+    "tags": [
+      "面食小吃",
+      "本帮",
+      "排骨年糕",
+      "老字号",
+      "鲜得来",
+      "淮海路",
+      "平价"
+    ],
+    "path": "data/restaurants/cn/shanghai/nongxiaode-yandanglu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-pscafe-ganghui",
+    "name": "PS.Cafe",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 4,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "西餐",
+      "咖啡",
+      "连锁",
+      "新加坡品牌",
+      "情侣约会",
+      "闺蜜聚餐",
+      "徐家汇"
+    ],
+    "path": "data/restaurants/cn/shanghai/pscafe-ganghui.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-pscafe-jiali",
+    "name": "PS.Cafe",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 4,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "西餐",
+      "咖啡",
+      "连锁",
+      "新加坡品牌",
+      "情侣约会",
+      "闺蜜聚餐",
+      "静安寺"
+    ],
+    "path": "data/restaurants/cn/shanghai/pscafe-jiali.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-pscafe-laifu",
+    "name": "PS.Cafe",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 4,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "西餐",
+      "咖啡",
+      "连锁",
+      "新加坡品牌",
+      "情侣约会",
+      "闺蜜聚餐",
+      "中山公园"
+    ],
+    "path": "data/restaurants/cn/shanghai/pscafe-laifu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-pscafe-xintiandi",
+    "name": "PS.Cafe",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 4,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "西餐",
+      "咖啡",
+      "连锁",
+      "新加坡品牌",
+      "情侣约会",
+      "闺蜜聚餐",
+      "新天地",
+      "首店"
+    ],
+    "path": "data/restaurants/cn/shanghai/pscafe-xintiandi.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-rouroudami-dapuqiao",
+    "name": "肉肉大米",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "日料",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "日料",
+      "日式汉堡排",
+      "连锁",
+      "性价比",
+      "一人食",
+      "打浦桥"
+    ],
+    "path": "data/restaurants/cn/shanghai/rouroudami-dapuqiao.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-rouroudami-dayuecheng",
+    "name": "肉肉大米",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "日料",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "日料",
+      "日式汉堡排",
+      "连锁",
+      "性价比",
+      "一人食"
+    ],
+    "path": "data/restaurants/cn/shanghai/rouroudami-dayuecheng.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-rouroudami-jinhongqiao",
+    "name": "肉肉大米",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "日料",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "日料",
+      "日式汉堡排",
+      "连锁",
+      "性价比",
+      "一人食"
+    ],
+    "path": "data/restaurants/cn/shanghai/rouroudami-jinhongqiao.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-rouroudami-jiuguang",
+    "name": "肉肉大米",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "日料",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "日料",
+      "日式汉堡排",
+      "连锁",
+      "性价比",
+      "一人食",
+      "静安寺"
+    ],
+    "path": "data/restaurants/cn/shanghai/rouroudami-jiuguang.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-rouroudami-longzhimeng",
+    "name": "肉肉大米",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "日料",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "日料",
+      "日式汉堡排",
+      "连锁",
+      "性价比",
+      "一人食",
+      "中山公园"
+    ],
+    "path": "data/restaurants/cn/shanghai/rouroudami-longzhimeng.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-rouroudami-meiluocheng",
+    "name": "肉肉大米",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "日料",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "日料",
+      "日式汉堡排",
+      "连锁",
+      "性价比",
+      "一人食",
+      "旗舰店"
+    ],
+    "path": "data/restaurants/cn/shanghai/rouroudami-meiluocheng.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-rouroudami-renlai",
+    "name": "肉肉大米",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "日料",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "日料",
+      "日式汉堡排",
+      "连锁",
+      "性价比",
+      "一人食",
+      "人民广场"
+    ],
+    "path": "data/restaurants/cn/shanghai/rouroudami-renlai.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-shicun-changjiangnanlu",
+    "name": "市村广东土鸡火锅",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 2,
+    "status": "open",
+    "rating": 5,
+    "tags": [
+      "火锅",
+      "火锅鸡",
+      "粤菜",
+      "连锁",
+      "土鸡",
+      "淞南"
+    ],
+    "path": "data/restaurants/cn/shanghai/shicun-changjiangnanlu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-shicun-jipu",
+    "name": "市村广东土鸡火锅",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 2,
+    "status": "open",
+    "rating": 5,
+    "tags": [
+      "火锅",
+      "火锅鸡",
+      "粤菜",
+      "连锁",
+      "土鸡",
+      "五角场"
+    ],
+    "path": "data/restaurants/cn/shanghai/shicun-jipu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-shicun-xiyunlou",
+    "name": "市村广东土鸡火锅",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 2,
+    "status": "open",
+    "rating": 5,
+    "tags": [
+      "火锅",
+      "火锅鸡",
+      "粤菜",
+      "连锁",
+      "土鸡",
+      "嘉定新城"
+    ],
+    "path": "data/restaurants/cn/shanghai/shicun-xiyunlou.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-shicun-zhongyuan",
+    "name": "市村广东土鸡火锅",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 2,
+    "status": "open",
+    "rating": 5,
+    "tags": [
+      "火锅",
+      "火锅鸡",
+      "粤菜",
+      "连锁",
+      "土鸡",
+      "中原"
+    ],
+    "path": "data/restaurants/cn/shanghai/shicun-zhongyuan.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-smaka-fuxingsoho",
+    "name": "SMAKA",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "北欧",
+      "瑞典",
+      "西餐",
+      "烘焙",
+      "连锁",
+      "小酒馆",
+      "新天地"
+    ],
+    "path": "data/restaurants/cn/shanghai/smaka-fuxingsoho.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-smaka-huiju",
+    "name": "SMAKA",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "北欧",
+      "瑞典",
+      "西餐",
+      "烘焙",
+      "连锁",
+      "购物中心"
+    ],
+    "path": "data/restaurants/cn/shanghai/smaka-huiju.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-smaka-yuyuanlu",
+    "name": "SMAKA",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "北欧",
+      "瑞典",
+      "西餐",
+      "烘焙",
+      "连锁",
+      "咖啡",
+      "早餐"
+    ],
+    "path": "data/restaurants/cn/shanghai/smaka-yuyuanlu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-tasty-baiyulan",
+    "name": "TASTY 西堤牛排",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "西餐",
+      "牛排",
+      "连锁",
+      "情侣约会",
+      "朋友聚餐",
+      "套餐",
+      "北外滩"
+    ],
+    "path": "data/restaurants/cn/shanghai/tasty-baiyulan.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-tasty-huaizhonglu",
+    "name": "TASTY 西堤牛排",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "西餐",
+      "牛排",
+      "连锁",
+      "情侣约会",
+      "朋友聚餐",
+      "套餐",
+      "淮海路"
+    ],
+    "path": "data/restaurants/cn/shanghai/tasty-huaizhonglu.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-tasty-meiluocheng",
+    "name": "TASTY 西堤牛排",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "西餐",
+      "牛排",
+      "连锁",
+      "情侣约会",
+      "朋友聚餐",
+      "套餐"
+    ],
+    "path": "data/restaurants/cn/shanghai/tasty-meiluocheng.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-xianzhu-bailianyouyicheng",
+    "name": "鲜主·牛肉海鲜·排档火锅",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "火锅",
+      "海鲜",
+      "潮汕牛肉",
+      "连锁",
+      "自选",
+      "高性价比",
+      "五角场"
+    ],
+    "path": "data/restaurants/cn/shanghai/xianzhu-bailianyouyicheng.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-xianzhu-guohua",
+    "name": "鲜主·牛肉海鲜·排档火锅",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "火锅",
+      "海鲜",
+      "潮汕牛肉",
+      "连锁",
+      "自选",
+      "高性价比",
+      "五角场"
+    ],
+    "path": "data/restaurants/cn/shanghai/xianzhu-guohua.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-xianzhu-jingan",
+    "name": "鲜主·牛肉海鲜·排档火锅",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "火锅",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "火锅",
+      "海鲜",
+      "潮汕牛肉",
+      "连锁",
+      "自选",
+      "高性价比",
+      "静安寺"
+    ],
+    "path": "data/restaurants/cn/shanghai/xianzhu-jingan.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-jiuguang",
+    "name": "星洲小馆·新加坡菜",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "大宁",
+      "久光中心"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-jiuguang.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-wanke",
+    "name": "星洲小馆·新加坡菜",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "上海南站",
+      "徐汇万科"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-wanke.md",
+    "updated_at": "2026-07-07"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-wudinglu",
+    "name": "星洲小馆·新加坡菜",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "同乐坊",
+      "江宁路"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-wudinglu.md",
     "updated_at": "2026-07-07"
   }
 ]
