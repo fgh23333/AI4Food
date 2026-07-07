@@ -1,7 +1,7 @@
 ---
-id: cn-beijing-bad-shop
+id: cn-shanghai-bad-shop
 name: 坏样本
-city: 北京
+city: 上海
 country: cn
 cuisine: 不存在的菜系
 price_level: 9

@@ -7,9 +7,9 @@ function mk(id: string, path: string): RestaurantRecord {
     frontmatter: {
       id,
       name: 'x',
-      city: 'beijing',
+      city: 'shanghai',
       country: 'cn',
-      cuisine: '京菜',
+      cuisine: '本帮菜',
       price_level: 3,
       status: 'open',
     },
@@ -21,16 +21,16 @@ function mk(id: string, path: string): RestaurantRecord {
 describe('checkUnique', () => {
   it('全部唯一且 country 一致时无 error', () => {
     const recs = [
-      mk('cn-beijing-a', '/repo/data/restaurants/cn/beijing/a.md'),
-      mk('cn-beijing-b', '/repo/data/restaurants/cn/beijing/b.md'),
+      mk('cn-shanghai-a', '/repo/data/restaurants/cn/shanghai/a.md'),
+      mk('cn-shanghai-b', '/repo/data/restaurants/cn/shanghai/b.md'),
     ]
     expect(checkUnique(recs)).toEqual([])
   })
 
   it('id 重复时报 error', () => {
     const recs = [
-      mk('cn-beijing-a', '/repo/data/restaurants/cn/beijing/a.md'),
-      mk('cn-beijing-a', '/repo/data/restaurants/cn/beijing/b.md'),
+      mk('cn-shanghai-a', '/repo/data/restaurants/cn/shanghai/a.md'),
+      mk('cn-shanghai-a', '/repo/data/restaurants/cn/shanghai/b.md'),
     ]
     const issues = checkUnique(recs)
     expect(issues.length).toBeGreaterThanOrEqual(1)
@@ -39,7 +39,7 @@ describe('checkUnique', () => {
   })
 
   it('id 首段与路径 country 目录不一致时报 error', () => {
-    const recs = [mk('cn-beijing-a', '/repo/data/restaurants/jp/tokyo/a.md')]
+    const recs = [mk('cn-shanghai-a', '/repo/data/restaurants/jp/tokyo/a.md')]
     const issues = checkUnique(recs)
     expect(issues.length).toBe(1)
     const first = issues[0]

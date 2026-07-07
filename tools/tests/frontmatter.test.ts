@@ -7,7 +7,7 @@ const fixture = resolve(import.meta.dirname, 'fixtures', 'valid-sample.md')
 describe('parseFrontmatter', () => {
   it('解析合法 md 的 frontmatter 与 body', () => {
     const rec = parseFrontmatter(fixture)
-    expect(rec.frontmatter.id).toBe('cn-beijing-test-shop')
+    expect(rec.frontmatter.id).toBe('cn-shanghai-test-shop')
     expect(rec.frontmatter.name).toBe('测试餐厅')
     expect(rec.frontmatter.price_level).toBe(3)
     expect(rec.body).toContain('# 测试餐厅')
@@ -16,7 +16,7 @@ describe('parseFrontmatter', () => {
 
   it('phone 字段保留为字符串', () => {
     const rec = parseFrontmatter(fixture)
-    expect(rec.frontmatter.phone).toBe('010-12345678')
+    expect(rec.frontmatter.phone).toBe('021-12345678')
     expect(typeof rec.frontmatter.phone).toBe('string')
   })
 })

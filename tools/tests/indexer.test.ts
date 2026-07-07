@@ -11,7 +11,7 @@ describe('buildIndex', () => {
   it('扫描 fixtures 生成索引条目', () => {
     const index = buildIndex(fixturesDir, repoRoot)
     expect(index.length).toBeGreaterThan(0)
-    const entry = index.find((e) => e.id === 'cn-beijing-test-shop')
+    const entry = index.find((e) => e.id === 'cn-shanghai-test-shop')
     expect(entry).toBeDefined()
     expect(entry!.name).toBe('测试餐厅')
     expect(entry!.path).toMatch(/fixtures[\/\\]valid-sample\.md$/)
@@ -19,7 +19,7 @@ describe('buildIndex', () => {
 
   it('path 为相对仓库根的 POSIX 路径（无 Windows 盘符）', () => {
     const index = buildIndex(fixturesDir, repoRoot)
-    const entry = index.find((e) => e.id === 'cn-beijing-test-shop')!
+    const entry = index.find((e) => e.id === 'cn-shanghai-test-shop')!
     expect(entry.path).not.toMatch(/[A-Z]:/)
   })
 })

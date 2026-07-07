@@ -19,8 +19,8 @@ export async function newRestaurant(dataDir: string): Promise<void> {
   try {
     const name = (await rl.question('餐厅名称: ')).trim()
     const country = ((await rl.question('国家代码(如 cn): ')).trim() || 'cn').toLowerCase()
-    const cityPinyin = slugify((await rl.question('城市拼音(如 beijing): ')).trim())
-    const cityCn = (await rl.question('城市中文名(如 北京): ')).trim()
+    const cityPinyin = slugify((await rl.question('城市拼音(如 shanghai): ')).trim())
+    const cityCn = (await rl.question('城市中文名(如 上海): ')).trim()
     const slug = slugify((await rl.question('文件 id slug(如 juqi-sanlitun): ')).trim() || name)
 
     console.log(`可选菜系: ${enums.cuisines.join(', ')}`)
