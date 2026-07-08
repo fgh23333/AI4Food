@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'web/index.html'
+      - 'frontend/**'
       - 'dist/index.json'
       - '.github/workflows/deploy-web.yml'
   workflow_dispatch:
@@ -14,7 +14,6 @@ permissions:
   pages: write
   id-token: write
 
-# 同一时间只跑一个部署，避免并发覆盖
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -23,26 +22,40 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
+      - uses: actions/checkout@v5
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v6
-
-      - name: Build preview bundle
-        run: |
-          # GitHub Pages 会把仓库根当站点根发布，
-          # 把 web/index.html 与 dist/index.json 放到发布目录的根。
-          mkdir -p _site
-          cp web/index.html _site/index.html
-          # 站点根需要能直接访问 /dist/index.json
-          mkdir -p _site/dist
-          cp dist/index.json _site/dist/index.json
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v5
+      - uses: pnpm/action-setup@v4
         with:
-          path: _site
+          version: 10
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          cache-dependency-path: frontend/pnpm-lock.yaml
+
+      - name: Install frontend deps
+        working-directory: frontend
+        run: pnpm install --frozen-lockfile
+
+      - name: Type-sync check
+        working-directory: frontend
+        run: pnpm check-schema
+
+      - name: Build
+        working-directory: frontend
+        run: pnpm build
+
+      - name: Stage data
+        run: |
+          mkdir -p frontend/dist/dist
+          cp dist/index.json frontend/dist/dist/index.json
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: frontend/dist
 
   deploy:
     needs: build
@@ -51,6 +64,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v5
