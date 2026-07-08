@@ -7,10 +7,10 @@ country: cn
 cuisine: 西餐
 price_level: 3
 status: open
-address: 上海市徐汇区龙腾大道2266号西岸金融城GATE M西岸门中心
-latitude: 31.1869
-longitude: 121.4417
-phone: "021-12345678"
+address: 上海市徐汇区龙腾大道2266号Gate M西岸梦中心1F层
+latitude: 31.1700
+longitude: 121.4320
+phone: "021-00000000"
 website: https://www.chilis.com
 opening_hours:
   mon: "10:00-22:00"
@@ -28,12 +28,12 @@ recommendations:
     note: 招牌铁板
   - name: 南部熏房汉堡
     note: 必点
-notes: Chili's奇利斯美式休闲餐饮连锁·GATE M西岸门店（徐汇滨江/西岸金融城）。龙腾大道。电话待核验。坐标为大致位置。
-verified: false
-source: Google/大众点评
+notes: Chili's奇利斯美式休闲餐饮连锁·西岸梦中心店。徐汇滨江龙腾大道2266号Gate M西岸梦中心1F层。坐标与地址来自高德地图。电话待核验。
+verified: true
+source: 高德地图/Google/大众点评
 updated_at: 2026-07-07
 ---
 
 # Chili's 奇利斯（GATE M西岸门店）
 
-徐汇滨江龙腾大道GATE M西岸门中心的美式休闲餐厅连锁分店，西岸金融城商圈。电话待核验。坐标为大致位置。
+徐汇滨江龙腾大道Gate M西岸梦中心1F层的美式休闲餐厅连锁分店。电话待核验。

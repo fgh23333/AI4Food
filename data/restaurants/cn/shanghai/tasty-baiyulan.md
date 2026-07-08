@@ -7,9 +7,9 @@ country: cn
 cuisine: 西餐
 price_level: 3
 status: open
-address: 上海市虹口区东长治路588号白玉兰广场L1-19号
-latitude: 31.2534
-longitude: 121.4956
+address: 上海市虹口区东长治路588号上海白玉兰广场购物中心F1层
+latitude: 31.248966
+longitude: 121.499191
 phone: "021-65677076"
 website: https://www.tasty.com.tw
 opening_hours:
@@ -26,12 +26,12 @@ visited_date: 2026-07-07
 recommendations:
   - name: 招牌牛排套餐
     note: 经典套餐
-notes: TASTY西堤牛排连锁·北外滩白玉兰店（白玉兰广场L1）。北外滩商圈。坐标为大致位置。
+notes: TASTY西堤牛排连锁·北外滩白玉兰店（白玉兰广场F1层）。北外滩商圈。坐标与地址来自高德地图。
 verified: true
-source: Google/携程
+source: 高德地图/Google/携程
 updated_at: 2026-07-07
 ---
 
 # TASTY 西堤牛排（北外滩白玉兰店）
 
-虹口北外滩白玉兰广场的西堤牛排连锁分店。坐标为大致位置。
+虹口北外滩白玉兰广场F1层的西堤牛排连锁分店。

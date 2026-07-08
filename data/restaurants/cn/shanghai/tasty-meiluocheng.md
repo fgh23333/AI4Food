@@ -7,9 +7,9 @@ country: cn
 cuisine: 西餐
 price_level: 3
 status: open
-address: 上海市徐汇区肇嘉浜路1111号美罗城4楼A区
-latitude: 31.1934
-longitude: 121.4356
+address: 上海市徐汇区肇嘉浜路1111号美罗城F4层
+latitude: 31.192219
+longitude: 121.440927
 phone: "021-33688099"
 website: https://www.tasty.com.tw
 opening_hours:

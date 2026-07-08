@@ -1,0 +1,39 @@
+---
+id: cn-shanghai-tasty-tiankongzhicheng
+name: TASTY 西堤牛排
+name_en: Tasty Steak
+city: 上海
+country: cn
+cuisine: 西餐
+price_level: 3
+status: open
+address: 上海市青浦区徐泾崧泽大道2229弄66号天空万科广场L3层
+latitude: 31.176507
+longitude: 121.252681
+phone: "021-00000000"
+website: https://www.tasty.com.tw
+opening_hours:
+  mon: "11:30-21:00"
+  tue: "11:30-21:00"
+  wed: "11:30-21:00"
+  thu: "11:30-21:00"
+  fri: "11:30-21:00"
+  sat: "11:30-21:00"
+  sun: "11:30-21:00"
+tags: [西餐, 牛排, 连锁, 情侣约会, 朋友聚餐, 套餐, 天空之城, 天空万科广场, 徐泾, 青浦]
+rating: 4.5
+visited_date: 2026-07-08
+recommendations:
+  - name: 招牌牛排套餐
+    note: 经典套餐
+  - name: 惠灵顿牛排
+    note: 招牌，酥皮菲力
+notes: TASTY西堤牛排连锁·天空之城店。青浦徐泾崧泽大道天空万科广场L3层。王品集团旗下牛排主题餐厅。坐标与地址来自高德地图。电话待核验。
+verified: true
+source: 高德地图
+updated_at: 2026-07-08
+---
+
+# TASTY 西堤牛排（天空之城店）
+
+徐泾天空万科广场L3层的西堤牛排连锁分店。

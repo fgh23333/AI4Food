@@ -7,9 +7,9 @@ country: cn
 cuisine: 东南亚菜
 price_level: 2
 status: open
-address: 上海市静安区共和新路2188号上海久光中心4楼M417室
-latitude: 31.2567
-longitude: 121.4634
+address: 上海市静安区共和新路2188号上海久光中心4层M417室
+latitude: 31.274945
+longitude: 121.452322
 phone: "021-00000000"
 opening_hours:
   mon: "11:00-21:30"
@@ -27,9 +27,9 @@ recommendations:
     note: 招牌
   - name: 肉骨茶
     note: 新加坡代表菜
-notes: 星洲小馆·新加坡菜连锁·久光中心店。大宁地区新加坡菜，上海新加坡菜打卡人气榜第2名。人均约88元。坐标为大致位置。电话待核验。
+notes: 星洲小馆·新加坡菜连锁·久光中心店。大宁地区新加坡菜，上海新加坡菜打卡人气榜第2名。坐标与地址来自高德地图。人均约86元。电话待核验。
 verified: true
-source: Google/携程/大众点评
+source: 高德地图/携程/大众点评
 updated_at: 2026-07-07
 ---
 
