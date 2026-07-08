@@ -35,6 +35,12 @@ describe('buildIndex', () => {
     expect(entry.notes).toBe('简短点评。')
   })
 
+  it('索引包含正文字段 description（trim 后的 Markdown 正文）', () => {
+    const index = buildIndex(fixturesDir, repoRoot)
+    const entry = index.find((e) => e.id === 'cn-shanghai-test-shop')!
+    expect(entry.description).toBe('# 测试餐厅\n\n正文内容。')
+  })
+
   it('无扩展字段的餐厅，对应字段为 undefined 而非报错', () => {
     const index = buildIndex(fixturesDir, repoRoot)
     // 任意条目只要存在即说明扩展字段类型安全（不会因缺字段抛错）

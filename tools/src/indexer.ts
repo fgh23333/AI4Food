@@ -23,6 +23,7 @@ export interface IndexEntry {
   opening_hours?: Record<string, string>
   recommendations?: RestaurantFrontmatter['recommendations']
   notes?: string
+  description?: string
 }
 
 function toPosix(p: string): string {
@@ -33,7 +34,7 @@ export function buildIndex(dataDir: string, repoRoot: string): IndexEntry[] {
   const files = scanRestaurantFiles(dataDir)
   const entries: IndexEntry[] = []
   for (const file of files) {
-    const { frontmatter: fm } = parseFrontmatter(file)
+    const { frontmatter: fm, body } = parseFrontmatter(file)
     const entry: IndexEntry = {
       id: fm.id,
       name: fm.name,
@@ -53,6 +54,7 @@ export function buildIndex(dataDir: string, repoRoot: string): IndexEntry[] {
       opening_hours: fm.opening_hours,
       recommendations: fm.recommendations,
       notes: fm.notes,
+      description: body.trim(),
     }
     entries.push(entry)
   }
