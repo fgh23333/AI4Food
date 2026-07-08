@@ -6,7 +6,7 @@ city: 上海
 country: cn
 cuisine: 东南亚菜
 price_level: 2
-status: open
+status: closed
 address: 上海市黄浦区南京东路829号上海世茂广场L4层东区411-4
 latitude: 31.2362
 longitude: 121.4805
@@ -19,7 +19,7 @@ opening_hours:
   fri: "11:00-21:30"
   sat: "11:00-21:30"
   sun: "11:00-21:30"
-tags: [东南亚菜, 新加坡菜, 连锁, 海南鸡饭, 肉骨茶, 世茂广场, 南京东路, 人民广场]
+tags: [东南亚菜, 新加坡菜, 连锁, 海南鸡饭, 肉骨茶, 世茂广场, 南京东路, 人民广场, 已关店]
 rating: 4.0
 visited_date: 2026-07-08
 recommendations:
@@ -27,9 +27,9 @@ recommendations:
     note: 招牌
   - name: 肉骨茶
     note: 新加坡代表菜
-notes: 星洲小馆·新加坡菜连锁·世茂广场店。南京东路/人民广场商圈上海世茂广场4楼。坐标为世茂广场大致位置。
+notes: 星洲小馆·新加坡菜连锁·世茂广场店（已关店）。南京东路/人民广场商圈上海世茂广场4楼。高德地图当前在营业的14家门店中无此店，疑已关店，保留并标记为 closed。坐标为世茂广场大致位置。
 verified: true
-source: 360地图/携程
+source: 360地图/携程/高德地图(已不在营业列表)
 updated_at: 2026-07-08
 ---
 

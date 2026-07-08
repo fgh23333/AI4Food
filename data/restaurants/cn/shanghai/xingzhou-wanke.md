@@ -7,9 +7,9 @@ country: cn
 cuisine: 东南亚菜
 price_level: 2
 status: open
-address: 上海市徐汇区徐汇万科广场
-latitude: 31.1745
-longitude: 121.4289
+address: 上海市徐汇区沪闵路9191号徐汇万科广场L3楼
+latitude: 31.156418
+longitude: 121.431737
 phone: "021-00000000"
 opening_hours:
   mon: "11:00-21:30"
@@ -27,12 +27,12 @@ recommendations:
     note: 招牌
   - name: 肉骨茶
     note: 新加坡代表菜
-notes: 星洲小馆·新加坡菜连锁·徐汇万科广场店。上海南站商圈。坐标为大致位置。电话待核验。
+notes: 星洲小馆·新加坡菜连锁·徐汇万科广场店。上海南站商圈。坐标与地址来自高德地图。电话待核验。
 verified: true
-source: Google/大众点评
+source: 高德地图/大众点评
 updated_at: 2026-07-07
 ---
 
 # 星洲小馆·新加坡菜（徐汇万科广场店）
 
-徐汇上海南站万科广场的新加坡菜连锁分店。坐标为大致位置。
+徐汇上海南站万科广场的新加坡菜连锁分店。
