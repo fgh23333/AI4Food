@@ -1,6 +1,6 @@
 # 路线图
 
-记录后续规划方向。每期单独设计，本期（数据仓库一期）的成果为它们预留了接入点，不会推翻重来。
+记录后续规划方向。一期的数据仓库与三期的前端 SPA 已落地，其余各期单独设计，一期成果为它们预留了接入点，不会推翻重来。
 
 ---
 
@@ -22,15 +22,20 @@
 
 数据来源是已生成的 `dist/index.json`，无需改数据层。
 
-## 🖥️ 三期：前端展示网站
+> 注：三期前端已用 SPA 直读 JSON 实现，二期 API 可作为未来 AI 能力（四期）的统一接入层，二者后续会合并设计。
 
-静态站点（SSG），渲染：
+## 🖥️ 三期：前端展示网站（✅ 已实现）
 
-- **地图视图**：基于餐厅的 `latitude` / `longitude` 字段（一期已支持，地图渲染层留到本期）
-- 列表 / 筛选（城市、菜系、价位、评分）
-- 餐厅详情页（frontmatter + 正文）
+Vue 3 单页应用（SPA），直读已生成的 `dist/index.json`，部署在 GitHub Pages：
 
-候选技术：Cloudflare Pages / GitHub Pages。技术形态在本期设计时定。
+- 列表 / 筛选（城市、菜系、价位、营业状态）
+- 搜索（店名、菜系、地址、招牌菜、标签）
+- 连锁品牌合并展示（可展开各分店）
+- 餐厅详情页（frontmatter 结构化字段 + Markdown 探店正文）
+
+线上站点：https://fgh23333.github.io/AI4Food/ 。代码位于 `frontend/`，本地运行见 [README](../README.md) 的「前端」一节。
+
+> 地图视图（基于 `latitude`/`longitude`）在本期设计阶段已明确 descoped，不实现。
 
 ## 🤖 四期：AI 能力
 
@@ -51,11 +56,11 @@ LLM 接入点已在 Hono 路由预留（`/api/ai/recommend` 占位），数据�
 2. 经设计评审与用户确认
 3. 再写实现计划执行
 
-本期已为上述各期预留的接入点：
+本期已为后续各期预留的接入点：
 
 | 接入点 | 位置 | 服务于 |
 |--------|------|--------|
-| schema 字段 | `schema/restaurant.schema.json` | 前端表单、AI 生成 |
-| 索引产物 | `dist/index.json` | 前端数据源、API 数据源 |
+| schema 字段 | `schema/restaurant.schema.json` | AI 生成、未来前端表单 |
+| 索引产物 | `dist/index.json` | 前端数据源（已接入）、API 数据源 |
 | Hono 路由骨架 | `tools/src/server/hono.ts` | 后端 API、AI 接入 |
-| 坐标字段 | frontmatter `latitude`/`longitude` | 地图渲染 |
+| 坐标字段 | frontmatter `latitude`/`longitude` | 未来若启用地图视图可直接复用（本期未做） |

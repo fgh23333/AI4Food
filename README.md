@@ -25,7 +25,8 @@ AI4Food/
 │   ├── restaurant.schema.json
 │   └── enums.json
 ├── tools/                                         # TypeScript 工具链
-├── dist/index.json                                # 索引产物（CI 生成）
+├── frontend/                                      # Vue 3 SPA 前端（GitHub Pages 部署）
+├── dist/index.json                                # 索引产物（CI 生成，前端数据源）
 └── docs/                                          # 贡献/数据/开发文档
 ```
 
@@ -106,16 +107,34 @@ updated_at: 2026-06-15
 
 ---
 
+## 🖥️ 前端
+
+仓库内置一个 Vue 3 单页应用（SPA），读取 `dist/index.json` 渲染餐厅列表、筛选、搜索、连锁品牌合并与详情页（含 Markdown 探店正文）。不做地图视图。
+
+**线上**：https://fgh23333.github.io/AI4Food/
+
+**本地预览**（需 Node 22 + pnpm 10）：
+
+```bash
+cd frontend
+pnpm install
+pnpm dev         # 本地开发服务器
+pnpm build       # 产物输出到 frontend/dist/
+```
+
+前端代码与工具链（`tools/`）相互独立，各自一份 `pnpm` 包。改餐厅数据时无需动前端，CI 会在合并到 `main` 后重建索引并部署 Pages。
+
+---
+
 ## 🗺️ 路线图
 
-**本期（数据仓库一期）**：数据格式、schema、校验工具链、CI、贡献流程。
+**一期（数据仓库）+ 三期（前端 SPA）已实现**：数据格式、schema、校验工具链、CI、贡献流程，以及上线 https://fgh23333.github.io/AI4Food/ 的 Vue SPA。
 
 **后续规划**（见 [ROADMAP](docs/ROADMAP.md)）：
-- 🖥️ 前端展示网站（地图 / 列表 / 筛选）
 - 🔌 后端只读 API（基于 Hono）
 - 🤖 AI 美食助手（智能推荐 + 辅助贡献）
 
-本期设计已为上述内容预留接入点，不会推翻重来。
+一期设计已为后续内容预留接入点，不会推翻重来。
 
 ---
 
