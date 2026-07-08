@@ -103,6 +103,53 @@
     "description": "# Chili's 奇利斯（滨江店）\n\n浦东滨江大道上的美式休闲餐厅，江景位加分。南部熏房汉堡和法希塔是招牌，分量足适合多人分享。营业到深夜。坐标为大致位置。"
   },
   {
+    "id": "cn-shanghai-chilis-changtai",
+    "name": "Chili's 奇利斯",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "美式",
+      "西餐",
+      "连锁",
+      "汉堡",
+      "朋友聚餐",
+      "长泰广场",
+      "张江",
+      "浦东"
+    ],
+    "path": "data/restaurants/cn/shanghai/chilis-changtai.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市浦东新区祖冲之路1239弄长泰广场6座1楼172室（金科路/祖冲之路路口）",
+    "latitude": 31.205,
+    "longitude": 121.606,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-24:00",
+      "tue": "11:00-24:00",
+      "wed": "11:00-24:00",
+      "thu": "11:00-24:00",
+      "fri": "11:00-24:00",
+      "sat": "11:00-24:00",
+      "sun": "11:00-24:00"
+    },
+    "recommendations": [
+      {
+        "name": "法希塔",
+        "note": "招牌铁板，自助包饼"
+      },
+      {
+        "name": "南部熏房汉堡",
+        "note": "牛肉嫩，芝士香"
+      }
+    ],
+    "notes": "Chili's奇利斯美式休闲餐饮连锁·长泰广场店。浦东张江长泰广场6座1楼（金科路/祖冲之路路口）。地址来自高德地图。坐标为长泰广场大致位置。电话待核验。",
+    "description": "# Chili's 奇利斯（长泰广场店）\n\n浦东张江长泰广场的美式休闲餐厅连锁分店。法希塔和汉堡是招牌。"
+  },
+  {
     "id": "cn-shanghai-chilis-daxuelu",
     "name": "Chili's 奇利斯",
     "city": "上海",
@@ -167,10 +214,10 @@
     ],
     "path": "data/restaurants/cn/shanghai/chilis-gatema.md",
     "updated_at": "2026-07-07",
-    "address": "上海市徐汇区龙腾大道2266号西岸金融城GATE M西岸门中心",
-    "latitude": 31.1869,
-    "longitude": 121.4417,
-    "phone": "021-12345678",
+    "address": "上海市徐汇区龙腾大道2266号Gate M西岸梦中心1F层",
+    "latitude": 31.17,
+    "longitude": 121.432,
+    "phone": "021-00000000",
     "opening_hours": {
       "mon": "10:00-22:00",
       "tue": "10:00-22:00",
@@ -190,8 +237,8 @@
         "note": "必点"
       }
     ],
-    "notes": "Chili's奇利斯美式休闲餐饮连锁·GATE M西岸门店（徐汇滨江/西岸金融城）。龙腾大道。电话待核验。坐标为大致位置。",
-    "description": "# Chili's 奇利斯（GATE M西岸门店）\n\n徐汇滨江龙腾大道GATE M西岸门中心的美式休闲餐厅连锁分店，西岸金融城商圈。电话待核验。坐标为大致位置。"
+    "notes": "Chili's奇利斯美式休闲餐饮连锁·西岸梦中心店。徐汇滨江龙腾大道2266号Gate M西岸梦中心1F层。坐标与地址来自高德地图。电话待核验。",
+    "description": "# Chili's 奇利斯（GATE M西岸门店）\n\n徐汇滨江龙腾大道Gate M西岸梦中心1F层的美式休闲餐厅连锁分店。电话待核验。"
   },
   {
     "id": "cn-shanghai-chilis-hongshoufang",
@@ -283,6 +330,55 @@
     "description": "# Chili's 奇利斯（久光中心店）\n\n静安共和新路久光中心的美式休闲餐厅连锁分店，大宁商圈。坐标为大致位置。"
   },
   {
+    "id": "cn-shanghai-chilis-legoland",
+    "name": "Chili's 奇利斯",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "美式",
+      "西餐",
+      "连锁",
+      "汉堡",
+      "亲子",
+      "朋友聚餐",
+      "乐园配套"
+    ],
+    "path": "data/restaurants/cn/shanghai/chilis-legoland.md",
+    "updated_at": "2026-07-07",
+    "address": "上海市金山区枫泾镇乐纷路268号爱琴海·缤纷里V1幢101号",
+    "latitude": 30.907,
+    "longitude": 121.157,
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "南部熏房汉堡",
+        "note": "招牌必点，芝士香牛肉嫩"
+      },
+      {
+        "name": "法希塔",
+        "note": "铁板上桌，自助包饼"
+      },
+      {
+        "name": "烤肋排",
+        "note": "烟熏风味，分量足"
+      }
+    ],
+    "notes": "美式休闲餐饮连锁·上海乐高乐园店（全球首家Chili's乐园店，2025年7月5日开业）。位于金山区枫泾镇上海乐高乐园度假区配套商业街「爱琴海·缤纷里」V1幢101号。游园用餐补给站。",
+    "description": "# Chili's 奇利斯（上海乐高乐园店）\n\n金山枫泾上海乐高乐园度假区「爱琴海·缤纷里」内的美式休闲餐厅，全球首家Chili's乐园店，2025年7月5日开业。毗邻乐高乐园入口，游园间隙的能量补给站。坐标为大致位置。"
+  },
+  {
     "id": "cn-shanghai-chilis-tongrenlu",
     "name": "Chili's 奇利斯",
     "city": "上海",
@@ -326,6 +422,55 @@
     ],
     "notes": "Chili's奇利斯美式休闲餐饮连锁·铜仁路店。该店已关闭（用户反馈），按数据规范保留关店记录不删除，status 标 closed。坐标为大致位置。",
     "description": "# Chili's 奇利斯（铜仁路店）\n\n静安铜仁路的美式休闲餐厅连锁分店。法希塔和汉堡是招牌。坐标为大致位置。"
+  },
+  {
+    "id": "cn-shanghai-chilis-xinyaoguanghuan",
+    "name": "Chili's 奇利斯",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "美式",
+      "西餐",
+      "连锁",
+      "汉堡",
+      "亲子",
+      "朋友聚餐",
+      "购物中心"
+    ],
+    "path": "data/restaurants/cn/shanghai/chilis-xinyaoguanghuan.md",
+    "updated_at": "2026-07-07",
+    "address": "上海市徐汇区漕宝路261号鑫耀·光环Live",
+    "latitude": 31.168,
+    "longitude": 121.4147,
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "南部熏房汉堡",
+        "note": "招牌必点，芝士香牛肉嫩"
+      },
+      {
+        "name": "法希塔",
+        "note": "铁板上桌，自助包饼"
+      },
+      {
+        "name": "烤肋排",
+        "note": "烟熏风味，分量足"
+      }
+    ],
+    "notes": "美式休闲餐饮连锁·鑫耀·光环Live店（2025年开业）。位于徐汇漕河泾鑫耀·光环Live综合体（隈研吾设计地标内）。汉堡和法希塔是招牌，分量大适合分享。",
+    "description": "# Chili's 奇利斯（鑫耀·光环Live店）\n\n徐汇漕宝路鑫耀·光环Live综合体内的美式休闲餐厅，2025年开业，落座于隈研吾设计的建筑地标之下。南部熏房汉堡和法希塔是招牌，分量足适合多人分享。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-chilis-zhongsheng",
@@ -749,8 +894,6 @@
     "tags": [
       "意餐",
       "老牌",
-      "连锁",
-      "旗舰店",
       "披萨",
       "朋友聚餐",
       "情侣约会"
@@ -784,52 +927,8 @@
         "note": "收尾必点"
       }
     ],
-    "notes": "大马可意大利餐厅连锁·长宁旗舰店（京华店）。品牌1995年由意大利人马可·巴尔别里创立于上海，巅峰期6家以上门店，现仅存本店与浦东御山路加盟店两家。充满朴实的意式家庭氛围，常有外国客人，白桌布加酒窖。中山公园/江苏路一带意餐选择。",
-    "description": "# 大马可（DA·MARCO 京华店）\n\n上海老牌意大利餐厅，东诸安浜路维景酒店公寓一楼。窑烤薄底披萨和意面口碑稳定，氛围随意热闹，适合朋友聚餐和情侣约会。坐标为大致位置。"
-  },
-  {
-    "id": "cn-shanghai-damarco-yushanlu",
-    "name": "大马可",
-    "city": "上海",
-    "country": "cn",
-    "cuisine": "意大利菜",
-    "price_level": 3,
-    "status": "open",
-    "rating": 4,
-    "tags": [
-      "意餐",
-      "连锁",
-      "加盟店",
-      "披萨",
-      "朋友聚餐"
-    ],
-    "path": "data/restaurants/cn/shanghai/damarco-yushanlu.md",
-    "updated_at": "2026-07-07",
-    "address": "上海市浦东新区御山路350-354号",
-    "latitude": 31.1842,
-    "longitude": 121.5543,
-    "phone": "021-12345678",
-    "opening_hours": {
-      "mon": "12:00-22:00",
-      "tue": "12:00-22:00",
-      "wed": "12:00-22:00",
-      "thu": "12:00-22:00",
-      "fri": "12:00-22:00",
-      "sat": "12:00-22:00",
-      "sun": "12:00-22:00"
-    },
-    "recommendations": [
-      {
-        "name": "玛格丽特披萨",
-        "note": "窑烤薄底"
-      },
-      {
-        "name": "意式肉酱面",
-        "note": "经典"
-      }
-    ],
-    "notes": "大马可意大利餐厅连锁·浦东御山路加盟店。品牌1995年由意大利人马可·巴尔别里创立于上海，巅峰期6家以上门店，现收缩为长宁旗舰店与本加盟店两家。电话待核验。",
-    "description": "# 大马可（DA·MARCO 御山路加盟店）\n\n大马可浦东御山路加盟店。品牌现仅存长宁旗舰店（东诸安浜路103号）与本店两家。电话待核验，前往前建议确认。坐标为大致位置。"
+    "notes": "大马可意大利餐厅·长宁京华店。品牌1995年由意大利人马可·巴尔别里创立于上海，巅峰期曾有多家门店，现已收缩为仅此一家直营店。充满朴实的意式家庭氛围，常有外国客人，白桌布加酒窖。中山公园/江苏路一带意餐选择。",
+    "description": "# 大马可（DA·MARCO）\n\n上海老牌意大利餐厅，东诸安浜路维景酒店公寓一楼。窑烤薄底披萨和意面口碑稳定，氛围随意热闹，适合朋友聚餐和情侣约会。品牌现仅此一家直营店，坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-jiuji-babaishan",
@@ -1215,7 +1314,7 @@
     "country": "cn",
     "cuisine": "西餐",
     "price_level": 4,
-    "status": "open",
+    "status": "closed",
     "rating": 4,
     "tags": [
       "西餐",
@@ -1225,7 +1324,8 @@
       "情侣约会",
       "闺蜜聚餐",
       "新天地",
-      "首店"
+      "首店",
+      "已关店"
     ],
     "path": "data/restaurants/cn/shanghai/pscafe-xintiandi.md",
     "updated_at": "2026-07-07",
@@ -1252,8 +1352,8 @@
         "note": "招牌"
       }
     ],
-    "notes": "PS.Cafe连锁·新天地广场店（上海首店，2019开业）。源自新加坡的精品咖啡馆发展而来的全日餐厅，提供精心设计的菜单。新天地商圈。坐标为大致位置。",
-    "description": "# PS.Cafe（新天地广场店）\n\n新天地广场的PS.Cafe上海首店。源自新加坡乌节路的精品咖啡馆品牌，现已发展为全日餐厅。坐标为大致位置。"
+    "notes": "PS.Cafe连锁·新天地广场店（上海首店，2019开业，现已关闭）。源自新加坡的精品咖啡馆发展而来的全日餐厅。新天地商圈。坐标为大致位置。",
+    "description": "# PS.Cafe（新天地广场店，已关闭）\n\n新天地广场的PS.Cafe上海首店，已关闭。源自新加坡乌节路的精品咖啡馆品牌，现已发展为全日餐厅。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-rouroudami-dapuqiao",
@@ -1755,7 +1855,7 @@
     "country": "cn",
     "cuisine": "西餐",
     "price_level": 3,
-    "status": "open",
+    "status": "closed",
     "rating": 4.5,
     "tags": [
       "北欧",
@@ -1764,22 +1864,22 @@
       "烘焙",
       "连锁",
       "小酒馆",
-      "新天地"
+      "新天地",
+      "已关店"
     ],
     "path": "data/restaurants/cn/shanghai/smaka-fuxingsoho.md",
     "updated_at": "2026-07-07",
-    "address": "上海市黄浦区马当路388号SOHO复兴广场B座102室",
+    "address": "上海市黄浦区马当路388号SOHO复兴广场B座102室（淡水路277号）",
     "latitude": 31.2156,
     "longitude": 121.4689,
-    "phone": "021-12345678",
     "opening_hours": {
-      "mon": "10:00-22:00",
-      "tue": "10:00-22:00",
-      "wed": "10:00-22:00",
-      "thu": "10:00-22:00",
-      "fri": "10:00-22:00",
-      "sat": "10:00-22:00",
-      "sun": "10:00-22:00"
+      "mon": "09:00-20:00",
+      "tue": "09:00-20:00",
+      "wed": "09:00-20:00",
+      "thu": "09:00-20:00",
+      "fri": "09:00-20:00",
+      "sat": "09:00-21:00",
+      "sun": "09:00-21:00"
     },
     "recommendations": [
       {
@@ -1799,8 +1899,8 @@
         "note": "甜品招牌"
       }
     ],
-    "notes": "SMAKA北欧瑞典风情餐厅连锁·复兴SOHO店（餐厅/小酒馆形态）。新天地/淮海路商圈，正餐为主。电话待核验。坐标为大致位置。",
-    "description": "# SMAKA（复兴SOHO店）\n\n黄浦马当路SOHO复兴广场的北欧瑞典餐厅，SMAKA品牌门店之一，餐厅/小酒馆形态，瑞典肉丸是招牌正餐。电话待核验。坐标为大致位置。"
+    "notes": "SMAKA北欧瑞典风情餐厅·复兴SOHO店（已关店）。位于SOHO复兴广场B座一层102（马当路388号/淡水路277号同一处）。2021年资料确认存在（That's Shanghai/携程/大众点评），但高德地图当前SMAKA在营业3家门店中无此店，疑已关店，保留并标记 closed。",
+    "description": "# SMAKA（复兴SOHO店）\n\n黄浦马当路SOHO复兴广场B座一层的北欧瑞典餐厅（淡水路277号同一处），SMAKA品牌门店之一，餐厅/小酒馆形态，瑞典肉丸是招牌正餐。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-smaka-huiju",
@@ -1821,10 +1921,9 @@
     ],
     "path": "data/restaurants/cn/shanghai/smaka-huiju.md",
     "updated_at": "2026-07-07",
-    "address": "上海市长宁区北新泾/淞虹路上海荟聚（Livat）",
-    "latitude": 31.2234,
-    "longitude": 121.3567,
-    "phone": "021-12345678",
+    "address": "上海市长宁区金钟路788号上海荟聚（Livat）F4层",
+    "latitude": 31.222259,
+    "longitude": 121.356103,
     "opening_hours": {
       "mon": "10:00-22:00",
       "tue": "10:00-22:00",
@@ -1844,8 +1943,57 @@
         "note": "人气甜品"
       }
     ],
-    "notes": "SMAKA北欧瑞典风情餐厅与烘焙连锁·上海荟聚店（Livat）。北新泾/淞虹路商圈。电话待核验。坐标为大致位置。",
-    "description": "# SMAKA（上海荟聚店）\n\n长宁上海荟聚（Livat）的北欧瑞典咖啡馆与烘焙店，SMAKA品牌门店之一。电话待核验。坐标为大致位置。"
+    "notes": "SMAKA北欧瑞典风情餐厅与烘焙·上海荟聚店（Livat）。长宁北新泾金钟路788号上海荟聚F4层，上海荟聚2024年9月开业。坐标与地址来自高德地图。",
+    "description": "# SMAKA（上海荟聚店）\n\n长宁上海荟聚（Livat）F4层的北欧瑞典咖啡馆与烘焙店，SMAKA品牌门店之一。"
+  },
+  {
+    "id": "cn-shanghai-smaka-youmi",
+    "name": "SMAKA",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "北欧",
+      "瑞典",
+      "西餐",
+      "烘焙",
+      "连锁",
+      "咖啡",
+      "早餐",
+      "浦江",
+      "闵行",
+      "柚米社区"
+    ],
+    "path": "data/restaurants/cn/shanghai/smaka-youmi.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市闵行区浦锦街道浦康路339弄柚米社区",
+    "latitude": 31.098,
+    "longitude": 121.505,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "08:00-20:00",
+      "tue": "08:00-20:00",
+      "wed": "08:00-20:00",
+      "thu": "08:00-20:00",
+      "fri": "08:00-20:00",
+      "sat": "08:00-20:00",
+      "sun": "08:00-20:00"
+    },
+    "recommendations": [
+      {
+        "name": "肉桂卷",
+        "note": "瑞典经典"
+      },
+      {
+        "name": "布达佩斯蛋糕",
+        "note": "人气甜品"
+      }
+    ],
+    "notes": "SMAKA北欧瑞典风情餐厅与烘焙连锁·柚米社区店。闵行浦锦街道浦康路339弄柚米社区。地址来自高德地图。坐标为柚米社区大致位置。电话待核验。",
+    "description": "# SMAKA（柚米社区店）\n\n闵行浦锦街道浦康路柚米社区的北欧瑞典咖啡馆与烘焙店，SMAKA品牌门店之一。"
   },
   {
     "id": "cn-shanghai-smaka-yuyuanlu",
@@ -1917,9 +2065,9 @@
     ],
     "path": "data/restaurants/cn/shanghai/tasty-baiyulan.md",
     "updated_at": "2026-07-07",
-    "address": "上海市虹口区东长治路588号白玉兰广场L1-19号",
-    "latitude": 31.2534,
-    "longitude": 121.4956,
+    "address": "上海市虹口区东长治路588号上海白玉兰广场购物中心F1层",
+    "latitude": 31.248966,
+    "longitude": 121.499191,
     "phone": "021-65677076",
     "opening_hours": {
       "mon": "10:30-21:00",
@@ -1936,11 +2084,11 @@
         "note": "经典套餐"
       }
     ],
-    "notes": "TASTY西堤牛排连锁·北外滩白玉兰店（白玉兰广场L1）。北外滩商圈。坐标为大致位置。",
-    "description": "# TASTY 西堤牛排（北外滩白玉兰店）\n\n虹口北外滩白玉兰广场的西堤牛排连锁分店。坐标为大致位置。"
+    "notes": "TASTY西堤牛排连锁·北外滩白玉兰店（白玉兰广场F1层）。北外滩商圈。坐标与地址来自高德地图。",
+    "description": "# TASTY 西堤牛排（北外滩白玉兰店）\n\n虹口北外滩白玉兰广场F1层的西堤牛排连锁分店。"
   },
   {
-    "id": "cn-shanghai-tasty-huaizhonglu",
+    "id": "cn-shanghai-tasty-changtai",
     "name": "TASTY 西堤牛排",
     "city": "上海",
     "country": "cn",
@@ -1955,7 +2103,151 @@
       "情侣约会",
       "朋友聚餐",
       "套餐",
-      "淮海路"
+      "张江",
+      "购物中心"
+    ],
+    "path": "data/restaurants/cn/shanghai/tasty-changtai.md",
+    "updated_at": "2026-07-07",
+    "address": "上海市浦东新区祖冲之路1239弄长泰广场东区3座2层",
+    "latitude": 31.204273,
+    "longitude": 121.601978,
+    "phone": "021-68387906",
+    "opening_hours": {
+      "mon": "11:00-21:00",
+      "tue": "11:00-21:00",
+      "wed": "11:00-21:00",
+      "thu": "11:00-21:00",
+      "fri": "11:00-21:00",
+      "sat": "11:00-21:00",
+      "sun": "11:00-21:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌牛排套餐",
+        "note": "经典套餐"
+      },
+      {
+        "name": "惠灵顿牛排",
+        "note": "招牌，酥皮菲力"
+      }
+    ],
+    "notes": "TASTY西堤牛排连锁·张江长泰广场店。王品集团旗下牛排主题餐厅，张江商圈。坐标为大致位置。",
+    "description": "# TASTY 西堤牛排（长泰广场店）\n\n浦东张江长泰广场的西堤牛排连锁分店。惠灵顿牛排是招牌。坐标为大致位置。"
+  },
+  {
+    "id": "cn-shanghai-tasty-daningguoji",
+    "name": "TASTY 西堤牛排",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "西餐",
+      "牛排",
+      "连锁",
+      "情侣约会",
+      "朋友聚餐",
+      "套餐",
+      "大宁国际",
+      "静安",
+      "大宁"
+    ],
+    "path": "data/restaurants/cn/shanghai/tasty-daningguoji.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市静安区大宁国际商业广场2008号12座5楼",
+    "latitude": 31.274449,
+    "longitude": 121.451618,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:30-21:00",
+      "tue": "11:30-21:00",
+      "wed": "11:30-21:00",
+      "thu": "11:30-21:00",
+      "fri": "11:30-21:00",
+      "sat": "11:30-21:00",
+      "sun": "11:30-21:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌牛排套餐",
+        "note": "经典套餐"
+      },
+      {
+        "name": "惠灵顿牛排",
+        "note": "招牌，酥皮菲力"
+      }
+    ],
+    "notes": "TASTY西堤牛排连锁·大宁国际店。静安大宁国际商业广场12座5楼。王品集团旗下牛排主题餐厅。坐标与地址来自高德地图。电话待核验。",
+    "description": "# TASTY 西堤牛排（大宁国际店）\n\n大宁国际商业广场12座5楼的西堤牛排连锁分店。"
+  },
+  {
+    "id": "cn-shanghai-tasty-hongkoulongmeng",
+    "name": "TASTY 西堤牛排",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "closed",
+    "rating": 4.5,
+    "tags": [
+      "西餐",
+      "牛排",
+      "连锁",
+      "情侣约会",
+      "朋友聚餐",
+      "套餐",
+      "虹口",
+      "购物中心",
+      "已关店"
+    ],
+    "path": "data/restaurants/cn/shanghai/tasty-hongkoulongmeng.md",
+    "updated_at": "2026-07-07",
+    "address": "上海市虹口区西江湾路388号凯德龙之梦5楼A04-A05",
+    "latitude": 31.2739,
+    "longitude": 121.4828,
+    "phone": "021-36533516",
+    "opening_hours": {
+      "mon": "11:30-22:00",
+      "tue": "11:30-22:00",
+      "wed": "11:30-22:00",
+      "thu": "11:30-22:00",
+      "fri": "11:30-22:00",
+      "sat": "11:30-22:00",
+      "sun": "11:30-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌牛排套餐",
+        "note": "经典套餐"
+      },
+      {
+        "name": "惠灵顿牛排",
+        "note": "招牌，酥皮菲力"
+      }
+    ],
+    "notes": "TASTY西堤牛排连锁·虹口龙之梦店（已关店）。凯德龙之梦5楼。高德地图当前西堤牛排上海8家在营业门店中无此店，疑已关店，保留并标记 closed。",
+    "description": "# TASTY 西堤牛排（虹口龙之梦店）\n\n虹口西江湾路凯德龙之梦的西堤牛排连锁分店。惠灵顿牛排是招牌。坐标为大致位置。"
+  },
+  {
+    "id": "cn-shanghai-tasty-huaizhonglu",
+    "name": "TASTY 西堤牛排",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "closed",
+    "rating": 4,
+    "tags": [
+      "西餐",
+      "牛排",
+      "连锁",
+      "情侣约会",
+      "朋友聚餐",
+      "套餐",
+      "淮海路",
+      "已关店"
     ],
     "path": "data/restaurants/cn/shanghai/tasty-huaizhonglu.md",
     "updated_at": "2026-07-07",
@@ -1978,7 +2270,7 @@
         "note": "经典套餐"
       }
     ],
-    "notes": "TASTY西堤牛排连锁·淮海中路店。平价西式牛排套餐。坐标为大致位置。",
+    "notes": "TASTY西堤牛排连锁·淮海中路店（已关店）。高德地图当前西堤牛排上海8家在营业门店中无此店，疑已关店，保留并标记 closed。",
     "description": "# TASTY 西堤牛排（淮海中路店）\n\n淮海中路的西堤牛排连锁分店。坐标为大致位置。"
   },
   {
@@ -2000,9 +2292,9 @@
     ],
     "path": "data/restaurants/cn/shanghai/tasty-meiluocheng.md",
     "updated_at": "2026-07-07",
-    "address": "上海市徐汇区肇嘉浜路1111号美罗城4楼A区",
-    "latitude": 31.1934,
-    "longitude": 121.4356,
+    "address": "上海市徐汇区肇嘉浜路1111号美罗城F4层",
+    "latitude": 31.192219,
+    "longitude": 121.440927,
     "phone": "021-33688099",
     "opening_hours": {
       "mon": "10:30-21:00",
@@ -2025,6 +2317,247 @@
     ],
     "notes": "TASTY西堤牛排连锁·美罗城店。王品集团旗下平价牛排套餐，意式及西式套餐为主，性价比高。徐家汇商圈。坐标为大致位置。",
     "description": "# TASTY 西堤牛排（美罗城店）\n\n徐汇美罗城的西堤牛排连锁分店。平价牛排套餐，性价比高。坐标为大致位置。"
+  },
+  {
+    "id": "cn-shanghai-tasty-shijihui",
+    "name": "TASTY 西堤牛排",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "西餐",
+      "牛排",
+      "连锁",
+      "情侣约会",
+      "朋友聚餐",
+      "套餐",
+      "世纪汇",
+      "陆家嘴",
+      "浦东"
+    ],
+    "path": "data/restaurants/cn/shanghai/tasty-shijihui.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市浦东新区世纪大道1192号世纪汇广场F4层",
+    "latitude": 31.228103,
+    "longitude": 121.526372,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:30-21:00",
+      "tue": "11:30-21:00",
+      "wed": "11:30-21:00",
+      "thu": "11:30-21:00",
+      "fri": "11:30-21:00",
+      "sat": "11:30-21:00",
+      "sun": "11:30-21:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌牛排套餐",
+        "note": "经典套餐"
+      },
+      {
+        "name": "惠灵顿牛排",
+        "note": "招牌，酥皮菲力"
+      }
+    ],
+    "notes": "TASTY西堤牛排连锁·世纪汇店。浦东陆家嘴世纪大道世纪汇广场F4层。王品集团旗下牛排主题餐厅。坐标与地址来自高德地图。电话待核验。",
+    "description": "# TASTY 西堤牛排（世纪汇店）\n\n浦东世纪大道世纪汇广场F4层的西堤牛排连锁分店。"
+  },
+  {
+    "id": "cn-shanghai-tasty-songjiangyinxiangcheng",
+    "name": "TASTY 西堤牛排",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "西餐",
+      "牛排",
+      "连锁",
+      "情侣约会",
+      "朋友聚餐",
+      "套餐",
+      "松江印象城",
+      "松江大学城",
+      "松江"
+    ],
+    "path": "data/restaurants/cn/shanghai/tasty-songjiangyinxiangcheng.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市松江区广富林路1788弄松江印象城L4层",
+    "latitude": 31.061295,
+    "longitude": 121.223692,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:30-21:00",
+      "tue": "11:30-21:00",
+      "wed": "11:30-21:00",
+      "thu": "11:30-21:00",
+      "fri": "11:30-21:00",
+      "sat": "11:30-21:00",
+      "sun": "11:30-21:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌牛排套餐",
+        "note": "经典套餐"
+      },
+      {
+        "name": "惠灵顿牛排",
+        "note": "招牌，酥皮菲力"
+      }
+    ],
+    "notes": "TASTY西堤牛排连锁·松江印象城店。松江广富林路松江印象城L4层。王品集团旗下牛排主题餐厅。坐标与地址来自高德地图。电话待核验。",
+    "description": "# TASTY 西堤牛排（松江印象城店）\n\n松江印象城L4层的西堤牛排连锁分店。"
+  },
+  {
+    "id": "cn-shanghai-tasty-tiankongzhicheng",
+    "name": "TASTY 西堤牛排",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "西餐",
+      "牛排",
+      "连锁",
+      "情侣约会",
+      "朋友聚餐",
+      "套餐",
+      "天空之城",
+      "天空万科广场",
+      "徐泾",
+      "青浦"
+    ],
+    "path": "data/restaurants/cn/shanghai/tasty-tiankongzhicheng.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市青浦区徐泾崧泽大道2229弄66号天空万科广场L3层",
+    "latitude": 31.176507,
+    "longitude": 121.252681,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:30-21:00",
+      "tue": "11:30-21:00",
+      "wed": "11:30-21:00",
+      "thu": "11:30-21:00",
+      "fri": "11:30-21:00",
+      "sat": "11:30-21:00",
+      "sun": "11:30-21:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌牛排套餐",
+        "note": "经典套餐"
+      },
+      {
+        "name": "惠灵顿牛排",
+        "note": "招牌，酥皮菲力"
+      }
+    ],
+    "notes": "TASTY西堤牛排连锁·天空之城店。青浦徐泾崧泽大道天空万科广场L3层。王品集团旗下牛排主题餐厅。坐标与地址来自高德地图。电话待核验。",
+    "description": "# TASTY 西堤牛排（天空之城店）\n\n徐泾天空万科广场L3层的西堤牛排连锁分店。"
+  },
+  {
+    "id": "cn-shanghai-tasty-zhonghaihuanyucheng",
+    "name": "TASTY 西堤牛排",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "西餐",
+      "牛排",
+      "连锁",
+      "情侣约会",
+      "朋友聚餐",
+      "套餐",
+      "环宇城MAX",
+      "真如",
+      "普陀"
+    ],
+    "path": "data/restaurants/cn/shanghai/tasty-zhonghaihuanyucheng.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市普陀区铜川路699弄1号真如环宇城MAX L2层",
+    "latitude": 31.251357,
+    "longitude": 121.409748,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:30-21:00",
+      "tue": "11:30-21:00",
+      "wed": "11:30-21:00",
+      "thu": "11:30-21:00",
+      "fri": "11:30-21:00",
+      "sat": "11:30-21:00",
+      "sun": "11:30-21:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌牛排套餐",
+        "note": "经典套餐"
+      },
+      {
+        "name": "惠灵顿牛排",
+        "note": "招牌，酥皮菲力"
+      }
+    ],
+    "notes": "TASTY西堤牛排连锁·中海环宇城店。普陀真如铜川路中海环宇城MAX L2层。王品集团旗下牛排主题餐厅。坐标与地址来自高德地图。电话待核验。",
+    "description": "# TASTY 西堤牛排（中海环宇城店）\n\n真如中海环宇城MAX L2层的西堤牛排连锁分店。"
+  },
+  {
+    "id": "cn-shanghai-tasty-zhonghuanbailian",
+    "name": "TASTY 西堤牛排",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "西餐",
+    "price_level": 3,
+    "status": "closed",
+    "rating": 4,
+    "tags": [
+      "西餐",
+      "牛排",
+      "连锁",
+      "情侣约会",
+      "朋友聚餐",
+      "套餐",
+      "普陀",
+      "购物中心",
+      "已关店"
+    ],
+    "path": "data/restaurants/cn/shanghai/tasty-zhonghuanbailian.md",
+    "updated_at": "2026-07-07",
+    "address": "上海市普陀区真光路1288号百联中环购物广场B区3楼L324",
+    "latitude": 31.2489,
+    "longitude": 121.3906,
+    "phone": "021-62595709",
+    "opening_hours": {
+      "mon": "11:30-21:00",
+      "tue": "11:30-21:00",
+      "wed": "11:30-21:00",
+      "thu": "11:30-21:00",
+      "fri": "11:30-21:00",
+      "sat": "11:30-21:00",
+      "sun": "11:30-21:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌牛排套餐",
+        "note": "经典套餐"
+      },
+      {
+        "name": "惠灵顿牛排",
+        "note": "招牌，酥皮菲力"
+      }
+    ],
+    "notes": "TASTY西堤牛排连锁·中环百联店（已关店）。百联中环购物广场B区3楼。高德地图当前西堤牛排上海8家在营业门店中无此店，疑已关店，保留并标记 closed。",
+    "description": "# TASTY 西堤牛排（中环百联店）\n\n普陀真光路百联中环购物广场的西堤牛排连锁分店。惠灵顿牛排是招牌。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-xianzhu-bailianyouyicheng",
@@ -2169,6 +2702,263 @@
     "description": "# 鲜主·牛肉海鲜·排档火锅（CP静安店）\n\n静安CP静安商场的鲜主火锅连锁分店。主打牛肉海鲜自选火锅，9.9元/盘鲜切牛肉高性价比。坐标为大致位置。"
   },
   {
+    "id": "cn-shanghai-xingzhou-changninghuiju",
+    "name": "星洲小馆·新加坡料理",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "上海荟聚",
+      "Livat",
+      "北新泾",
+      "长宁"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-changninghuiju.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市长宁区金钟路788号上海荟聚（Livat）森林中庭L4层E02号",
+    "latitude": 31.222259,
+    "longitude": 121.356103,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      },
+      {
+        "name": "咖椰吐司",
+        "note": "经典"
+      }
+    ],
+    "notes": "星洲小馆·新加坡料理连锁·长宁荟聚店。长宁北新泾上海荟聚（Livat）森林中庭4楼，与SMAKA同商场。坐标与地址来自高德地图。人均约95元。电话待核验。",
+    "description": "# 星洲小馆·新加坡料理（长宁荟聚店）\n\n长宁北新泾上海荟聚（Livat）4楼的新加坡菜连锁分店。主打海南鸡饭、肉骨茶等。"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-haimengyifang",
+    "name": "星洲小馆·新加坡菜",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "海梦一方",
+      "春申",
+      "闵行",
+      "梅陇"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-haimengyifang.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市闵行区莲花南路1389号海梦一方购物中心3层L03-21",
+    "latitude": 31.100631,
+    "longitude": 121.414788,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      },
+      {
+        "name": "咖椰吐司",
+        "note": "经典"
+      }
+    ],
+    "notes": "星洲小馆·新加坡菜连锁·海梦一方店。闵行春申/梅陇商圈海梦一方购物中心3层L03-21（莲花南路1389号，中信泰富2023-07开业，地铁15号线景西路站）。大众点评、城市吧均有收录。坐标与地址来自高德地图。电话待核验。",
+    "description": "# 星洲小馆·新加坡菜（海梦一方店）\n\n闵行莲花南路海梦一方购物中心3楼的新加坡菜连锁分店。主打海南鸡饭、肉骨茶等。"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-huanyuchengmax",
+    "name": "星洲小馆·新加坡菜",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "环宇城MAX",
+      "真如",
+      "普陀"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-huanyuchengmax.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市普陀区铜川路699弄1号中海·真如环宇城MAX购物中心5层5020号",
+    "latitude": 31.249926,
+    "longitude": 121.409152,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      }
+    ],
+    "notes": "星洲小馆·新加坡菜连锁·真如环宇城MAX店。普陀真如商圈中海·真如环宇城MAX（铜川路699弄1号，地铁11/14号线真如站，2023-12开业）5层5020号。大众点评、城市吧均有收录。坐标与地址来自高德地图。电话待核验。",
+    "description": "# 星洲小馆·新加坡菜（真如环宇城MAX店）\n\n普陀真如中海·环宇城MAX的新加坡菜连锁分店。主打海南鸡饭、肉骨茶等。"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-huarunshidai",
+    "name": "星洲小馆·新加坡菜",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "华润时代广场",
+      "八佰伴",
+      "张杨路"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-huarunshidai.md",
+    "updated_at": "2026-07-07",
+    "address": "上海市浦东新区张杨路500号华润时代广场6楼L603室",
+    "latitude": 31.226186,
+    "longitude": 121.516982,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      },
+      {
+        "name": "咖椰吐司",
+        "note": "经典"
+      },
+      {
+        "name": "榴莲飞饼",
+        "note": "特色"
+      }
+    ],
+    "notes": "星洲小馆·新加坡菜连锁·华润时代店。浦东八佰伴/张杨路商圈华润时代广场6楼。新浪、大众点评、360地图均有收录，浦东新区东南亚菜好评榜上榜。坐标与地址来自高德地图。人均约91元。电话待核验。",
+    "description": "# 星洲小馆·新加坡菜（华润时代店）\n\n浦东张杨路华润时代广场6楼的新加坡菜连锁分店。主打海南鸡饭、肉骨茶、咖椰吐司、榴莲飞饼等。"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-jingyaoqiantan",
+    "name": "星洲小馆·新加坡料理",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "晶耀前滩",
+      "前滩",
+      "浦东"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-jingyaoqiantan.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市浦东新区三林镇耀体路308号晶耀前滩东区2层L248号",
+    "latitude": 31.152968,
+    "longitude": 121.477875,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      },
+      {
+        "name": "咖椰吐司",
+        "note": "经典"
+      }
+    ],
+    "notes": "星洲小馆·新加坡料理连锁·晶耀前滩店。浦东前滩晶耀前滩东区2楼。坐标与地址来自高德地图。人均约104元。电话待核验。",
+    "description": "# 星洲小馆·新加坡料理（晶耀前滩店）\n\n浦东前滩晶耀前滩东区2楼的新加坡菜连锁分店。主打海南鸡饭、肉骨茶等。"
+  },
+  {
     "id": "cn-shanghai-xingzhou-jiuguang",
     "name": "星洲小馆·新加坡菜",
     "city": "上海",
@@ -2188,9 +2978,9 @@
     ],
     "path": "data/restaurants/cn/shanghai/xingzhou-jiuguang.md",
     "updated_at": "2026-07-07",
-    "address": "上海市静安区共和新路2188号上海久光中心4楼M417室",
-    "latitude": 31.2567,
-    "longitude": 121.4634,
+    "address": "上海市静安区共和新路2188号上海久光中心4层M417室",
+    "latitude": 31.274945,
+    "longitude": 121.452322,
     "phone": "021-00000000",
     "opening_hours": {
       "mon": "11:00-21:30",
@@ -2211,57 +3001,11 @@
         "note": "新加坡代表菜"
       }
     ],
-    "notes": "星洲小馆·新加坡菜连锁·久光中心店。大宁地区新加坡菜，上海新加坡菜打卡人气榜第2名。人均约88元。坐标为大致位置。电话待核验。",
+    "notes": "星洲小馆·新加坡菜连锁·久光中心店。大宁地区新加坡菜，上海新加坡菜打卡人气榜第2名。坐标与地址来自高德地图。人均约86元。电话待核验。",
     "description": "# 星洲小馆·新加坡菜（久光中心店）\n\n静安大宁久光中心的新加坡菜连锁分店。坐标为大致位置。"
   },
   {
-    "id": "cn-shanghai-xingzhou-wanke",
-    "name": "星洲小馆·新加坡菜",
-    "city": "上海",
-    "country": "cn",
-    "cuisine": "东南亚菜",
-    "price_level": 2,
-    "status": "open",
-    "rating": 4,
-    "tags": [
-      "东南亚菜",
-      "新加坡菜",
-      "连锁",
-      "海南鸡饭",
-      "肉骨茶",
-      "上海南站",
-      "徐汇万科"
-    ],
-    "path": "data/restaurants/cn/shanghai/xingzhou-wanke.md",
-    "updated_at": "2026-07-07",
-    "address": "上海市徐汇区徐汇万科广场",
-    "latitude": 31.1745,
-    "longitude": 121.4289,
-    "phone": "021-00000000",
-    "opening_hours": {
-      "mon": "11:00-21:30",
-      "tue": "11:00-21:30",
-      "wed": "11:00-21:30",
-      "thu": "11:00-21:30",
-      "fri": "11:00-21:30",
-      "sat": "11:00-21:30",
-      "sun": "11:00-21:30"
-    },
-    "recommendations": [
-      {
-        "name": "海南鸡饭",
-        "note": "招牌"
-      },
-      {
-        "name": "肉骨茶",
-        "note": "新加坡代表菜"
-      }
-    ],
-    "notes": "星洲小馆·新加坡菜连锁·徐汇万科广场店。上海南站商圈。坐标为大致位置。电话待核验。",
-    "description": "# 星洲小馆·新加坡菜（徐汇万科广场店）\n\n徐汇上海南站万科广场的新加坡菜连锁分店。坐标为大致位置。"
-  },
-  {
-    "id": "cn-shanghai-xingzhou-wudinglu",
+    "id": "cn-shanghai-xingzhou-kuaiming",
     "name": "星洲小馆·新加坡菜",
     "city": "上海",
     "country": "cn",
@@ -2275,14 +3019,17 @@
       "连锁",
       "海南鸡饭",
       "肉骨茶",
+      "快易名商",
+      "武定路",
       "同乐坊",
-      "江宁路"
+      "江宁路",
+      "静安"
     ],
-    "path": "data/restaurants/cn/shanghai/xingzhou-wudinglu.md",
-    "updated_at": "2026-07-07",
-    "address": "上海市静安区武定路555号102室",
-    "latitude": 31.2312,
-    "longitude": 121.4567,
+    "path": "data/restaurants/cn/shanghai/xingzhou-kuaiming.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市静安区武定路555号快易名商F1层",
+    "latitude": 31.232819,
+    "longitude": 121.449427,
     "phone": "021-63139365",
     "opening_hours": {
       "mon": "11:00-21:30",
@@ -2311,7 +3058,404 @@
         "note": "招牌"
       }
     ],
-    "notes": "星洲小馆·新加坡菜连锁·武定路店。主打新加坡菜，海南鸡饭、肉骨茶、咖椰吐司等。同乐坊/江宁路商圈，静安区东南亚菜口味榜。人均约88元。坐标为大致位置。",
-    "description": "# 星洲小馆·新加坡菜（武定路店）\n\n静安武定路的新加坡菜连锁分店。主打海南鸡饭、肉骨茶等新加坡菜。坐标为大致位置。"
+    "notes": "星洲小馆·新加坡菜连锁·快易名商店（武定路555号）。即原\"武定路店\"，高德登记店名为快易名商店。静安同乐坊/江宁路商圈。坐标与地址来自高德地图。人均约98元。",
+    "description": "# 星洲小馆·新加坡菜（快易名商店）\n\n静安武定路555号快易名商1楼的新加坡菜连锁分店。主打海南鸡饭、肉骨茶等。"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-lalabaodu",
+    "name": "星洲小馆·新加坡料理",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "啦啦宝都",
+      "金桥",
+      "浦东"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-lalabaodu.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市浦东新区新金桥路738号LaLaport上海金桥5楼502",
+    "latitude": 31.251546,
+    "longitude": 121.603145,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      },
+      {
+        "name": "咖椰吐司",
+        "note": "经典"
+      }
+    ],
+    "notes": "星洲小馆·新加坡料理连锁·啦啦宝都店。浦东金桥LaLaport上海金桥5楼。坐标与地址来自高德地图。人均约76元。电话待核验。",
+    "description": "# 星洲小馆·新加坡料理（啦啦宝都店）\n\n浦东金桥LaLaport上海金桥5楼的新加坡菜连锁分店。主打海南鸡饭、肉骨茶等。"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-shimao",
+    "name": "星洲小馆·新加坡菜",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 2,
+    "status": "closed",
+    "rating": 4,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "世茂广场",
+      "南京东路",
+      "人民广场",
+      "已关店"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-shimao.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市黄浦区南京东路829号上海世茂广场L4层东区411-4",
+    "latitude": 31.2362,
+    "longitude": 121.4805,
+    "phone": "021-63139365",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      }
+    ],
+    "notes": "星洲小馆·新加坡菜连锁·世茂广场店（已关店）。南京东路/人民广场商圈上海世茂广场4楼。高德地图当前在营业的14家门店中无此店，疑已关店，保留并标记为 closed。坐标为世茂广场大致位置。",
+    "description": "# 星洲小馆·新加坡菜（世茂广场店）\n\n黄浦南京东路上海世茂广场4楼的新加坡菜连锁分店。主打海南鸡饭、肉骨茶等。坐标为大致位置。"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-taiyanggong",
+    "name": "星洲小馆·新加坡料理",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "太阳宫",
+      "瑞虹天地",
+      "虹口"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-taiyanggong.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市虹口区瑞虹路181号瑞虹天地太阳宫L5-15&16",
+    "latitude": 31.263515,
+    "longitude": 121.49999,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      },
+      {
+        "name": "咖椰吐司",
+        "note": "经典"
+      }
+    ],
+    "notes": "星洲小馆·新加坡料理连锁·太阳宫店。虹口瑞虹天地太阳宫5楼。坐标与地址来自高德地图。人均约96元。电话待核验。",
+    "description": "# 星洲小馆·新加坡料理（太阳宫店）\n\n虹口瑞虹天地太阳宫5楼的新加坡菜连锁分店。主打海南鸡饭、肉骨茶等。"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-tiankongwanke",
+    "name": "星洲小馆",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 3,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "天空万科广场",
+      "徐泾",
+      "青浦"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-tiankongwanke.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市青浦区徐泾镇崧泽大道2229弄66号天空万科广场UNI vanke MALL F3层（徐盈路地铁站旁）",
+    "latitude": 31.17699,
+    "longitude": 121.253155,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      }
+    ],
+    "notes": "星洲小馆·新加坡料理连锁·天空万科广场店。青浦徐泾天空万科广场3楼，徐盈路地铁站旁。坐标与地址来自高德地图。人均约101元。电话待核验。",
+    "description": "# 星洲小馆（天空万科广场店）\n\n青浦徐泾天空万科广场3楼（徐盈路地铁站旁）的新加坡菜连锁分店。主打海南鸡饭、肉骨茶等。"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-tianzikfang",
+    "name": "星洲小馆·新加坡料理",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "田子坊",
+      "打浦桥",
+      "建国中路",
+      "黄浦"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-tianzikfang.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市黄浦区建国中路65弄1号（9号线打浦桥站，田子坊片区）",
+    "latitude": 31.209961,
+    "longitude": 121.469257,
+    "phone": "021-64183028",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      },
+      {
+        "name": "咖椰吐司",
+        "note": "经典"
+      }
+    ],
+    "notes": "星洲小馆·新加坡料理连锁·田子坊店（建国中路65弄1号，田子坊片区，9号线打浦桥站）。亦称\"建国中路店\"\"星洲海南鸡饭\"，连续多年大众点评必吃榜东南亚菜。坐标与地址来自高德地图。人均约88元。",
+    "description": "# 星洲小馆·新加坡料理（田子坊店）\n\n黄浦建国中路（田子坊片区、打浦桥站）的新加坡菜连锁分店。主打海南鸡饭、肉骨茶等。"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-wanke",
+    "name": "星洲小馆·新加坡菜",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "上海南站",
+      "徐汇万科"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-wanke.md",
+    "updated_at": "2026-07-07",
+    "address": "上海市徐汇区沪闵路9191号徐汇万科广场L3楼",
+    "latitude": 31.156418,
+    "longitude": 121.431737,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      }
+    ],
+    "notes": "星洲小馆·新加坡菜连锁·徐汇万科广场店。上海南站商圈。坐标与地址来自高德地图。电话待核验。",
+    "description": "# 星洲小馆·新加坡菜（徐汇万科广场店）\n\n徐汇上海南站万科广场的新加坡菜连锁分店。"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-wanxiangcheng",
+    "name": "星洲小馆·新加坡菜",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "万象城",
+      "龙柏",
+      "吴中路"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-wanxiangcheng.md",
+    "updated_at": "2026-07-07",
+    "address": "上海市闵行区吴中路1599号万象城5层L517C室",
+    "latitude": 31.170574,
+    "longitude": 121.368885,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      },
+      {
+        "name": "咖椰吐司",
+        "note": "经典"
+      }
+    ],
+    "notes": "星洲小馆·新加坡菜连锁·万象城店。闵行龙柏/吴中路商圈万象城5楼。大众点评、携程、高德、知乎均有收录。坐标与地址来自高德地图。人均约90元。电话待核验。",
+    "description": "# 星洲小馆·新加坡菜（万象城店）\n\n闵行万象城（吴中路1599号）5楼的新加坡菜连锁分店。主打海南鸡饭、肉骨茶、咖椰吐司等。"
+  },
+  {
+    "id": "cn-shanghai-xingzhou-wujiaochang",
+    "name": "星洲小馆·新加坡料理",
+    "city": "上海",
+    "country": "cn",
+    "cuisine": "东南亚菜",
+    "price_level": 2,
+    "status": "open",
+    "rating": 4.5,
+    "tags": [
+      "东南亚菜",
+      "新加坡菜",
+      "连锁",
+      "海南鸡饭",
+      "肉骨茶",
+      "五角场",
+      "万达广场",
+      "杨浦"
+    ],
+    "path": "data/restaurants/cn/shanghai/xingzhou-wujiaochang.md",
+    "updated_at": "2026-07-08",
+    "address": "上海市杨浦区淞沪路77号五角场万达广场B1013（文通冰室边）",
+    "latitude": 31.300845,
+    "longitude": 121.514578,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      },
+      {
+        "name": "咖椰吐司",
+        "note": "经典"
+      }
+    ],
+    "notes": "星洲小馆·新加坡料理连锁·五角场万达店。杨浦五角场万达广场B1层。坐标与地址来自高德地图。人均约99元。电话待核验。",
+    "description": "# 星洲小馆·新加坡料理（五角场万达店）\n\n杨浦五角场万达广场的新加坡菜连锁分店。主打海南鸡饭、肉骨茶等。"
   }
 ]
