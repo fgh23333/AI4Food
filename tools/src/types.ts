@@ -51,3 +51,29 @@ export interface RestaurantEnums {
   statuses: string[]
   priceLevels: number[]
 }
+
+// 索引条目：IndexEntry 的字段是前后端约定的数据契约。
+// 定义在此纯类型文件，使 server/ 层 import 类型时不必拉入 indexer.ts（含 node:fs）。
+// indexer.ts re-export 此接口作为对外导出。
+export interface IndexEntry {
+  id: string
+  name: string
+  city: string
+  country: string
+  cuisine: string
+  price_level: number
+  status: string
+  rating?: number
+  tags?: string[]
+  path: string
+  updated_at?: string
+  // 展示用扩展字段（全部可选，缺失即 undefined）
+  address?: string
+  latitude?: number
+  longitude?: number
+  phone?: string
+  opening_hours?: Record<string, string>
+  recommendations?: RecommendationItem[]
+  notes?: string
+  description?: string
+}

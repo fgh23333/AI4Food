@@ -6,6 +6,7 @@ import { checkUnique } from './check-unique'
 import { writeIndex } from './indexer'
 import { newRestaurant } from './new-restaurant'
 import { createApp } from './server/hono'
+import { nodeLoader } from './server/loader-node'
 
 const repoRoot = resolve(import.meta.dirname, '..', '..')
 const dataDir = resolve(repoRoot, 'data', 'restaurants')
@@ -53,9 +54,13 @@ async function main(): Promise<void> {
       break
     }
     case 'server': {
-      const app = createApp()
-      console.log('Hono app 已创建（本期仅本地预览，未自动监听端口）')
-      console.log(`路由: ${app.routes.length} 条`)
+      const { serve } = await import('@hono/node-server')
+      const app = createApp(nodeLoader)
+      const port = Number(process.env.PORT ?? 8787)
+      serve({ fetch: app.fetch.bind(app), port }, (info) => {
+        console.log(`API 运行于 http://localhost:${info.port}`)
+        console.log('端点: GET /api/restaurants · GET /api/restaurants/:id · GET /api/meta')
+      })
       break
     }
     default:

@@ -6,6 +6,12 @@ node_modules/
 tools/dist/
 *.tsbuildinfo
 
+# Wrangler 生成的 Worker 类型声明（改 wrangler.jsonc 后用 `wrangler types` 重生成）
+tools/worker-configuration.d.ts
+
+# Wrangler 本地状态/缓存
+tools/.wrangler/
+
 # 编辑器与系统
 .vscode/
 .idea/

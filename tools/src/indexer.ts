@@ -2,29 +2,10 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { relative, resolve, sep } from 'node:path'
 import { scanRestaurantFiles, parseFrontmatter } from './frontmatter'
 import type { RestaurantFrontmatter } from './types'
+import type { IndexEntry } from './types'
 
-export interface IndexEntry {
-  id: string
-  name: string
-  city: string
-  country: string
-  cuisine: string
-  price_level: number
-  status: string
-  rating?: number
-  tags?: string[]
-  path: string
-  updated_at?: string
-  // 展示用扩展字段（全部可选，缺失即 undefined）
-  address?: string
-  latitude?: number
-  longitude?: number
-  phone?: string
-  opening_hours?: Record<string, string>
-  recommendations?: RestaurantFrontmatter['recommendations']
-  notes?: string
-  description?: string
-}
+// re-export：IndexEntry 定义在 ./types（纯类型文件），此处对外保留导出以兼容现有引用。
+export type { IndexEntry } from './types'
 
 function toPosix(p: string): string {
   return p.split(sep).join('/')
@@ -68,7 +49,7 @@ export function writeIndex(dataDir: string, repoRoot: string, outPath: string): 
   return index
 }
 
-// src/indexer.ts → 仓库根（src → tools → 仓库根，退 2 层）
+// src/indexer.ts -> 仓库根（src -> tools -> 仓库根，退 2 层）
 const defaultRepoRoot = resolve(import.meta.dirname, '..', '..')
 
 export function loadIndex(distPath?: string): IndexEntry[] {

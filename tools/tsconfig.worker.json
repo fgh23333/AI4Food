@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": [],
+    "lib": ["ES2022", "WebWorker"],
+    "noEmit": true
+  },
+  "include": [
+    "src/server/worker.ts",
+    "src/server/hono.ts",
+    "src/server/query.ts",
+    "src/server/loader.ts",
+    "worker-configuration.d.ts"
+  ]
+}

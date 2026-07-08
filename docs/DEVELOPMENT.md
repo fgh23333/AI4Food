@@ -24,7 +24,7 @@ schema/                    # 单一事实来源（改字段只动这里）
 
 tools/
 ├── src/
-│   ├── types.ts           # 共享类型定义
+│   ├── types.ts           # 共享类型定义（含 IndexEntry 数据契约）
 │   ├── enums.ts           # loadEnums: 从 schema/enums.json 读取
 │   ├── frontmatter.ts     # parseFrontmatter + scanRestaurantFiles
 │   ├── check-unique.ts    # id 唯一性与路径一致性校验
@@ -32,7 +32,14 @@ tools/
 │   ├── indexer.ts         # buildIndex + writeIndex + loadIndex
 │   ├── new-restaurant.ts  # 交互式脚手架
 │   ├── cli.ts             # 命令入口（validate/index/new/server...）
-│   └── server/hono.ts     # Hono 预留 API 空壳
+│   └── server/            # 只读查询 API（二期）
+│       ├── hono.ts        # Hono app：列表/详情/元数据路由 + 参数校验
+│       ├── query.ts       # 纯函数查询逻辑（filter/sort/paginate/meta）
+│       ├── loader.ts      # 数据加载抽象 + Worker 实现（资产绑定）
+│       ├── loader-node.ts # Node 实现（fs 读 dist/index.json）
+│       └── worker.ts      # Cloudflare Workers 入口
+├── wrangler.jsonc         # Worker 配置（assets 绑定 dist/）
+├── tsconfig.worker.json   # Worker 专用 tsconfig（隔离 node 类型）
 └── tests/                 # Vitest 测试 + fixtures
 ```
 
@@ -46,9 +53,11 @@ tools/
 | `pnpm run check-unique` | 校验 id 唯一性与路径一致性 |
 | `pnpm run index` | 生成 `dist/index.json` |
 | `pnpm run new` | 交互式生成新餐厅 md |
-| `pnpm run server` | 创建 Hono app（本期仅本地预览） |
+| `pnpm run server` | 启动 Node 版只读 API（本地 `http://localhost:8787`） |
+| `pnpm exec wrangler dev` | 启动 Cloudflare Workers 版 API（本地 `http://localhost:8788`，模拟生产运行时） |
+| `pnpm exec wrangler types` | 重新生成 `worker-configuration.d.ts`（改 `wrangler.jsonc` 后执行） |
 | `pnpm test` | 运行 Vitest 测试 |
-| `pnpm typecheck` | TypeScript 类型检查 |
+| `pnpm typecheck` | TypeScript 类型检查（主 tsconfig，Node 工具链） |
 
 > 注意：用 `pnpm run <cmd>` 而非裸 `pnpm <cmd>`，避免 pnpm CLI 对部分命令名的解析差异。
 
@@ -81,10 +90,36 @@ pnpm run validate
 
 全部通过再提交。
 
+## 本地 API 联调
+
+只读查询 API 有两种本地运行方式（行为一致，数据均来自 `dist/index.json`）：
+
+```bash
+cd tools
+
+# 方式一：Node 版（最快，复用 fs 读 dist/index.json）
+PORT=8787 pnpm run server
+
+# 方式二：Workers 版（模拟生产 Cloudflare 运行时，含资产绑定）
+pnpm exec wrangler dev --port 8788
+```
+
+端点示例：
+
+```bash
+curl 'http://localhost:8787/api/restaurants?city=上海&status=open&limit=10'
+curl http://localhost:8787/api/restaurants/cn-shanghai-tasty-baiyulan
+curl http://localhost:8787/api/meta
+```
+
+查询参数：`city` / `cuisine` / `price`(1-5) / `status` / `q`(模糊搜索 name/address/cuisine/tags) / `tag` / `sort`(name|rating|updated) / `limit`(≤200) / `offset`。
+
+> 改 `wrangler.jsonc` 的绑定后需重跑 `pnpm exec wrangler types` 刷新类型声明。
+
 ## 本期不做的事
 
-- ❌ 不实现前端网站（SSG / 地图 / 列表）
-- ❌ 不给 Hono 接入 LLM 或部署 API
+- ❌ 不实现前端网站（SSG / 地图 / 列表）—— 三期已用 Vue SPA 实现，地图视图 descoped
+- ❌ 不给 API 接入 LLM —— 留给四期（`/api/ai/*` 路由已预留）
 - ❌ 不引入 Git LFS、SSR 框架、monorepo 工具
 
 这些属于后续规划，见 [ROADMAP.md](./ROADMAP.md)。

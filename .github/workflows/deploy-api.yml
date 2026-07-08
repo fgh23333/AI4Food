@@ -1,0 +1,52 @@
+name: deploy-api
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'dist/index.json'
+      - 'tools/src/server/**'
+      - 'tools/src/types.ts'
+      - 'tools/wrangler.jsonc'
+      - 'tools/package.json'
+      - 'tools/pnpm-lock.yaml'
+      - '.github/workflows/deploy-api.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          cache-dependency-path: tools/pnpm-lock.yaml
+
+      - name: Install
+        working-directory: tools
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        working-directory: tools
+        run: pnpm typecheck
+
+      - name: Test
+        working-directory: tools
+        run: pnpm test
+
+      - name: Deploy to Cloudflare Workers
+        working-directory: tools
+        run: pnpm exec wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
