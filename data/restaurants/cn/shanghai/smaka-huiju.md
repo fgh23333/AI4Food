@@ -7,9 +7,9 @@ country: cn
 cuisine: 西餐
 price_level: 2
 status: open
-address: 上海市长宁区北新泾淞虹路上海荟聚（Livat）
-latitude: 31.2234
-longitude: 121.3567
+address: 上海市长宁区金钟路788号上海荟聚（Livat）F4层
+latitude: 31.222259
+longitude: 121.356103
 website: https://www.smakacafe.com
 opening_hours:
   mon: "10:00-22:00"
@@ -27,12 +27,12 @@ recommendations:
     note: 瑞典经典
   - name: 布达佩斯蛋糕
     note: 人气甜品
-notes: SMAKA北欧瑞典风情餐厅与烘焙·上海荟聚店（Livat）。北新泾/淞虹路商圈，上海荟聚2024年9月开业。坐标为大致位置。
+notes: SMAKA北欧瑞典风情餐厅与烘焙·上海荟聚店（Livat）。长宁北新泾金钟路788号上海荟聚F4层，上海荟聚2024年9月开业。坐标与地址来自高德地图。
 verified: true
-source: 大众点评/携程
+source: 高德地图/大众点评/携程
 updated_at: 2026-07-07
 ---
 
 # SMAKA（上海荟聚店）
 
-长宁上海荟聚（Livat）的北欧瑞典咖啡馆与烘焙店，SMAKA品牌门店之一。坐标为大致位置。
+长宁上海荟聚（Livat）F4层的北欧瑞典咖啡馆与烘焙店，SMAKA品牌门店之一。

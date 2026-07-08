@@ -7,9 +7,9 @@ country: cn
 cuisine: 西餐
 price_level: 3
 status: open
-address: 上海市浦东新区祖冲之路1239弄长泰广场东区3座3层
-latitude: 31.2088
-longitude: 121.6089
+address: 上海市浦东新区祖冲之路1239弄长泰广场东区3座2层
+latitude: 31.204273
+longitude: 121.601978
 phone: "021-68387906"
 website: https://www.tasty.com.tw
 opening_hours:
