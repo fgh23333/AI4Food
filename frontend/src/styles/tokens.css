@@ -1,0 +1,37 @@
+:root {
+  --bg: #f6f1ea;
+  --bg-grad: #efe7db;
+  --card: #ffffff;
+  --ink: #2a2018;
+  --ink-soft: #6c5d4f;
+  --ink-mute: #9c8d7d;
+  --brand: #c8553d;
+  --brand-dark: #a23b26;
+  --brand-soft: #fcebe3;
+  --accent: #e09f3e;
+  --accent-soft: #fbe9cf;
+  --line: #ece3d6;
+  --line-strong: #e0d4c2;
+  --shadow: 0 4px 14px rgba(120, 80, 50, 0.08), 0 1px 3px rgba(120, 80, 50, 0.05);
+  --shadow-lg: 0 14px 34px rgba(120, 80, 50, 0.14), 0 2px 6px rgba(120, 80, 50, 0.06);
+  --radius: 18px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17120f; --bg-grad: #1d1713; --card: #251d18;
+    --ink: #f3ece2; --ink-soft: #c4b4a3; --ink-mute: #8a7a6a;
+    --brand: #e0735a; --brand-dark: #c8553d; --brand-soft: #3a241c;
+    --accent: #f0b65c; --accent-soft: #3c2e16;
+    --line: #382d25; --line-strong: #463830;
+    --shadow: 0 4px 14px rgba(0,0,0,.34);
+    --shadow-lg: 0 14px 34px rgba(0,0,0,.5);
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+  background: radial-gradient(900px 500px at 100% -8%, var(--bg-grad), transparent), var(--bg);
+  color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 22px; }
