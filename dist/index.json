@@ -17,7 +17,39 @@
       "新店"
     ],
     "path": "data/restaurants/cn/shanghai/alilando-jingan.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市静安区昌平路700号近常德路（常德路688号PAC购物中心街区1楼）",
+    "latitude": 31.2289,
+    "longitude": 121.4531,
+    "phone": "021-62186600",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "魔鬼辣意面",
+        "note": "全网热门，辣度够劲"
+      },
+      {
+        "name": "慢炖牛肉配宽面",
+        "note": "肉香醇厚，番茄微酸，撒芝士碎"
+      },
+      {
+        "name": "黑松露菌菇披萨",
+        "note": "饼底外酥里软，边缘焦香"
+      },
+      {
+        "name": "伯爵城海鲜烩饭",
+        "note": "特色，食客好评"
+      }
+    ],
+    "notes": "全国首店地中海餐厅，奶白蓝调治愈空间，明档现做，户外阳光位氛围好。静安PAC购物中心，新晋网红，适合情侣约会和朋友小酌。"
   },
   {
     "id": "cn-shanghai-chilis-binjiang",
@@ -38,7 +70,35 @@
       "江景"
     ],
     "path": "data/restaurants/cn/shanghai/chilis-binjiang.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市浦东新区滨江大道3072号",
+    "latitude": 31.2389,
+    "longitude": 121.505,
+    "phone": "021-58568356",
+    "opening_hours": {
+      "mon": "11:00-24:00",
+      "tue": "11:00-24:00",
+      "wed": "11:00-24:00",
+      "thu": "11:00-24:00",
+      "fri": "11:00-24:00",
+      "sat": "11:00-24:00",
+      "sun": "11:00-24:00"
+    },
+    "recommendations": [
+      {
+        "name": "南部熏房汉堡",
+        "note": "招牌必点，芝士香牛肉嫩"
+      },
+      {
+        "name": "法希塔",
+        "note": "铁板上桌，自助包饼"
+      },
+      {
+        "name": "烤肋排",
+        "note": "烟熏风味，分量足"
+      }
+    ],
+    "notes": "美式休闲餐饮连锁（滨江店），可看江景。汉堡和法希塔是招牌，分量大适合分享。上海有多家分店。"
   },
   {
     "id": "cn-shanghai-chilis-daxuelu",
@@ -58,7 +118,31 @@
       "大学路"
     ],
     "path": "data/restaurants/cn/shanghai/chilis-daxuelu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市杨浦区大学路110号-11弄",
+    "latitude": 31.3017,
+    "longitude": 121.5143,
+    "phone": "15721580720",
+    "opening_hours": {
+      "mon": "11:00-24:00",
+      "tue": "11:00-24:00",
+      "wed": "11:00-24:00",
+      "thu": "11:00-24:00",
+      "fri": "11:00-24:00",
+      "sat": "11:00-24:00",
+      "sun": "11:00-24:00"
+    },
+    "recommendations": [
+      {
+        "name": "法希塔",
+        "note": "招牌铁板"
+      },
+      {
+        "name": "南部熏房汉堡",
+        "note": "必点"
+      }
+    ],
+    "notes": "Chili's奇利斯美式休闲餐饮连锁·大学路店。五角场/大学路商圈，氛围年轻。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-chilis-gatema",
@@ -79,7 +163,31 @@
       "西岸"
     ],
     "path": "data/restaurants/cn/shanghai/chilis-gatema.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市徐汇区龙腾大道2266号西岸金融城GATE M西岸门中心",
+    "latitude": 31.1869,
+    "longitude": 121.4417,
+    "phone": "021-12345678",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "法希塔",
+        "note": "招牌铁板"
+      },
+      {
+        "name": "南部熏房汉堡",
+        "note": "必点"
+      }
+    ],
+    "notes": "Chili's奇利斯美式休闲餐饮连锁·GATE M西岸门店（徐汇滨江/西岸金融城）。龙腾大道。电话待核验。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-chilis-hongshoufang",
@@ -98,7 +206,31 @@
       "朋友聚餐"
     ],
     "path": "data/restaurants/cn/shanghai/chilis-hongshoufang.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市普陀区西康路1143号",
+    "latitude": 31.2401,
+    "longitude": 121.4487,
+    "phone": "18717978398",
+    "opening_hours": {
+      "mon": "11:00-24:00",
+      "tue": "11:00-24:00",
+      "wed": "11:00-24:00",
+      "thu": "11:00-24:00",
+      "fri": "11:00-24:00",
+      "sat": "11:00-24:00",
+      "sun": "11:00-24:00"
+    },
+    "recommendations": [
+      {
+        "name": "法希塔",
+        "note": "招牌铁板"
+      },
+      {
+        "name": "烤肋排",
+        "note": "烟熏风味"
+      }
+    ],
+    "notes": "Chili's奇利斯美式休闲餐饮连锁·红寿坊店（西康路）。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-chilis-jiuguang",
@@ -118,7 +250,31 @@
       "购物中心"
     ],
     "path": "data/restaurants/cn/shanghai/chilis-jiuguang.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市静安区共和新路2188号久光中心",
+    "latitude": 31.2534,
+    "longitude": 121.4567,
+    "phone": "18016251909",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "法希塔",
+        "note": "招牌铁板"
+      },
+      {
+        "name": "烤肋排",
+        "note": "分量足"
+      }
+    ],
+    "notes": "Chili's奇利斯美式休闲餐饮连锁·久光中心店（大宁国际商业区）。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-chilis-tongrenlu",
@@ -138,7 +294,31 @@
       "已关店"
     ],
     "path": "data/restaurants/cn/shanghai/chilis-tongrenlu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市静安区铜仁路152号-11弄",
+    "latitude": 31.2284,
+    "longitude": 121.4598,
+    "phone": "021-62299331",
+    "opening_hours": {
+      "mon": "11:00-24:00",
+      "tue": "11:00-24:00",
+      "wed": "11:00-24:00",
+      "thu": "11:00-24:00",
+      "fri": "11:00-24:00",
+      "sat": "11:00-24:00",
+      "sun": "11:00-24:00"
+    },
+    "recommendations": [
+      {
+        "name": "法希塔",
+        "note": "招牌铁板，自助包饼"
+      },
+      {
+        "name": "南部熏房汉堡",
+        "note": "牛肉嫩，芝士香"
+      }
+    ],
+    "notes": "Chili's奇利斯美式休闲餐饮连锁·铜仁路店。该店已关闭（用户反馈），按数据规范保留关店记录不删除，status 标 closed。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-chilis-zhongsheng",
@@ -159,7 +339,31 @@
       "莘庄"
     ],
     "path": "data/restaurants/cn/shanghai/chilis-zhongsheng.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市闵行区都市路5001号仲盛世界商城",
+    "latitude": 31.1123,
+    "longitude": 121.3917,
+    "phone": "021-12345678",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "法希塔",
+        "note": "招牌铁板"
+      },
+      {
+        "name": "烤肋排",
+        "note": "烟熏风味"
+      }
+    ],
+    "notes": "Chili's奇利斯美式休闲餐饮连锁·仲盛店（莘庄仲盛世界商城）。电话待核验。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-chunweibanyufu-baoshan",
@@ -178,7 +382,31 @@
       "朋友聚餐"
     ],
     "path": "data/restaurants/cn/shanghai/chunweibanyufu-baoshan.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市宝山区共和新路4727号新陆国际商务大厦1层",
+    "latitude": 31.3017,
+    "longitude": 121.4487,
+    "phone": "021-56885727",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌活斑鱼",
+        "note": "现杀现片，涮五秒"
+      },
+      {
+        "name": "鸡枞菌配竹荪",
+        "note": "菌菇有嚼劲"
+      }
+    ],
+    "notes": "纯味斑鱼府连锁·宝山店。主打活斑鱼火锅，鱼片薄透涮五秒即食。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-chunweibanyufu-huaizhonglu",
@@ -197,7 +425,31 @@
       "淮海路"
     ],
     "path": "data/restaurants/cn/shanghai/chunweibanyufu-huaizhonglu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市黄浦区淮海中路780号新歌大厦3楼",
+    "latitude": 31.2156,
+    "longitude": 121.4623,
+    "phone": "18616587588",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌活斑鱼",
+        "note": "现杀现片，涮五秒"
+      },
+      {
+        "name": "特色蘸料",
+        "note": "搭配鲜美"
+      }
+    ],
+    "notes": "纯味斑鱼府连锁·淮海中路店（新歌大厦3楼，全聚德楼下）。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-chunweibanyufu-huanyuchengmax",
@@ -216,7 +468,31 @@
       "购物中心"
     ],
     "path": "data/restaurants/cn/shanghai/chunweibanyufu-huanyuchengmax.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市普陀区中海环宇城Max购物中心4层4047/4048",
+    "latitude": 31.2534,
+    "longitude": 121.4134,
+    "phone": "021-12345678",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌活斑鱼",
+        "note": "现杀现片，涮五秒"
+      },
+      {
+        "name": "鸡枞菌配竹荪",
+        "note": "菌菇有嚼劲"
+      }
+    ],
+    "notes": "纯味斑鱼府连锁·中海环宇城MAX店（普陀）。电话待核验。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-chunweibanyufu-huanyuhui",
@@ -236,7 +512,31 @@
       "新天地"
     ],
     "path": "data/restaurants/cn/shanghai/chunweibanyufu-huanyuhui.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市黄浦区建国东路341号中海环宇荟",
+    "latitude": 31.2189,
+    "longitude": 121.4756,
+    "phone": "19301221109",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌活斑鱼",
+        "note": "现杀现片，涮五秒"
+      },
+      {
+        "name": "鸡枞菌配竹荪",
+        "note": "菌菇有嚼劲"
+      }
+    ],
+    "notes": "纯味斑鱼府连锁·中海环宇荟店（建国东路/黄陂南路838弄）。新天地/淮海路商圈。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-chunweibanyufu-jingan",
@@ -256,7 +556,35 @@
       "朋友聚餐"
     ],
     "path": "data/restaurants/cn/shanghai/chunweibanyufu-jingan.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市静安区武宁南路381号",
+    "latitude": 31.2317,
+    "longitude": 121.4451,
+    "phone": "021-62775551",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌活斑鱼",
+        "note": "现杀现片，薄如蝉翼，涮五秒即食"
+      },
+      {
+        "name": "鸡枞菌配竹荪",
+        "note": "菌菇有嚼劲"
+      },
+      {
+        "name": "特色蘸料",
+        "note": "搭配斑鱼鲜美"
+      }
+    ],
+    "notes": "上海连锁鱼火锅（静安店），主打活斑鱼，鱼片刀工薄透下锅五秒即熟。近地铁13、14号线5A号出口，饭点人气火爆。"
   },
   {
     "id": "cn-shanghai-chunweibanyufu-pudong",
@@ -275,7 +603,31 @@
       "浦东"
     ],
     "path": "data/restaurants/cn/shanghai/chunweibanyufu-pudong.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市浦东新区崂山路588号-2",
+    "latitude": 31.2317,
+    "longitude": 121.5143,
+    "phone": "021-58926197",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌活斑鱼",
+        "note": "现杀现片，涮五秒"
+      },
+      {
+        "name": "特色蘸料",
+        "note": "搭配鲜美"
+      }
+    ],
+    "notes": "纯味斑鱼府连锁·浦东店（崂山路588号）。曾入选浦东火锅好评榜。营业状态建议前往前确认。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-chunweibanyufu-yanggaozhonglu",
@@ -294,7 +646,31 @@
       "朋友聚餐"
     ],
     "path": "data/restaurants/cn/shanghai/chunweibanyufu-yanggaozhonglu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市浦东新区南洋泾路578号DCB东潮街2层",
+    "latitude": 31.2489,
+    "longitude": 121.5643,
+    "phone": "021-58923178",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌活斑鱼",
+        "note": "现杀现片，涮五秒"
+      },
+      {
+        "name": "特色蘸料",
+        "note": "搭配鲜美"
+      }
+    ],
+    "notes": "纯味斑鱼府连锁·阳高中路店（南洋泾路DCB东潮街）。主打活斑鱼火锅。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-chunweibanyufu-zongdian",
@@ -315,7 +691,35 @@
       "浦东"
     ],
     "path": "data/restaurants/cn/shanghai/chunweibanyufu-zongdian.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市浦东新区东方路778号金陵紫金山大酒店",
+    "latitude": 31.2345,
+    "longitude": 121.5234,
+    "phone": "021-68861228",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌活斑鱼",
+        "note": "现杀现片，薄透涮五秒"
+      },
+      {
+        "name": "鸡枞菌配竹荪",
+        "note": "菌菇有嚼劲"
+      },
+      {
+        "name": "新鲜小炒",
+        "note": "总店新品"
+      }
+    ],
+    "notes": "纯味斑鱼府连锁·上海总店。2026年焕新迁至紫金山酒店，两层楼空间大，有私密包房。品牌曾入选上海必吃榜。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-damarco-jinghua",
@@ -336,7 +740,35 @@
       "情侣约会"
     ],
     "path": "data/restaurants/cn/shanghai/damarco-jinghua.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市长宁区东诸安浜路103号维景酒店公寓1楼",
+    "latitude": 31.2204,
+    "longitude": 121.4294,
+    "phone": "021-62104495",
+    "opening_hours": {
+      "mon": "12:00-23:00",
+      "tue": "12:00-23:00",
+      "wed": "12:00-23:00",
+      "thu": "12:00-23:00",
+      "fri": "12:00-23:00",
+      "sat": "12:00-23:00",
+      "sun": "12:00-23:00"
+    },
+    "recommendations": [
+      {
+        "name": "玛格丽特披萨",
+        "note": "窑烤薄底，招牌"
+      },
+      {
+        "name": "意式肉酱面",
+        "note": "经典口味"
+      },
+      {
+        "name": "提拉米苏",
+        "note": "收尾必点"
+      }
+    ],
+    "notes": "大马可意大利餐厅连锁·长宁旗舰店（京华店）。品牌1995年由意大利人马可·巴尔别里创立于上海，巅峰期6家以上门店，现仅存本店与浦东御山路加盟店两家。充满朴实的意式家庭氛围，常有外国客人，白桌布加酒窖。中山公园/江苏路一带意餐选择。"
   },
   {
     "id": "cn-shanghai-damarco-yushanlu",
@@ -355,7 +787,31 @@
       "朋友聚餐"
     ],
     "path": "data/restaurants/cn/shanghai/damarco-yushanlu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市浦东新区御山路350-354号",
+    "latitude": 31.1842,
+    "longitude": 121.5543,
+    "phone": "021-12345678",
+    "opening_hours": {
+      "mon": "12:00-22:00",
+      "tue": "12:00-22:00",
+      "wed": "12:00-22:00",
+      "thu": "12:00-22:00",
+      "fri": "12:00-22:00",
+      "sat": "12:00-22:00",
+      "sun": "12:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "玛格丽特披萨",
+        "note": "窑烤薄底"
+      },
+      {
+        "name": "意式肉酱面",
+        "note": "经典"
+      }
+    ],
+    "notes": "大马可意大利餐厅连锁·浦东御山路加盟店。品牌1995年由意大利人马可·巴尔别里创立于上海，巅峰期6家以上门店，现收缩为长宁旗舰店与本加盟店两家。电话待核验。"
   },
   {
     "id": "cn-shanghai-jiuji-babaishan",
@@ -377,7 +833,31 @@
       "金鹰国际"
     ],
     "path": "data/restaurants/cn/shanghai/jiuji-babaishan.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市静安区陕西北路278号金鹰国际购物中心F6层",
+    "latitude": 31.2289,
+    "longitude": 121.4634,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌炭火烤鸟",
+        "note": "烧鸟招牌"
+      },
+      {
+        "name": "寿喜锅",
+        "note": "推荐"
+      }
+    ],
+    "notes": "酒集·八百善炭烤居酒屋·金鹰国际店。陕西北路金鹰国际购物中心F6层，近南京西路商圈。地道日式炭烤居酒屋，性价比高。坐标为大致位置。电话待核验。"
   },
   {
     "id": "cn-shanghai-jiuyi-dagu",
@@ -399,7 +879,39 @@
       "静安寺"
     ],
     "path": "data/restaurants/cn/shanghai/jiuyi-dagu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市静安区大沽路403号",
+    "latitude": 31.2289,
+    "longitude": 121.4678,
+    "phone": "13816571927",
+    "opening_hours": {
+      "mon": "17:00-01:00",
+      "tue": "17:00-01:00",
+      "wed": "17:00-01:00",
+      "thu": "17:00-01:00",
+      "fri": "17:00-01:00",
+      "sat": "17:00-01:00",
+      "sun": "17:00-01:00"
+    },
+    "recommendations": [
+      {
+        "name": "明太子西葫芦",
+        "note": "招牌"
+      },
+      {
+        "name": "烤和牛肋条",
+        "note": "推荐"
+      },
+      {
+        "name": "盐烤厚切牛舌",
+        "note": "招牌"
+      },
+      {
+        "name": "大肠头",
+        "note": "热门"
+      }
+    ],
+    "notes": "酒一烧鸟·酒场。南京西路/静安寺商圈日式居酒屋，主打备长炭串烧与日式酒水，深夜食堂氛围。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-lawrys-wuyilu",
@@ -423,7 +935,35 @@
       "首店"
     ],
     "path": "data/restaurants/cn/shanghai/lawrys-wuyilu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市长宁区武夷路168号-1层B101-B104号（WYSH翡悦里）",
+    "latitude": 31.2189,
+    "longitude": 121.4234,
+    "phone": "021-62111778",
+    "opening_hours": {
+      "mon": "17:00-22:00",
+      "tue": "17:00-22:00",
+      "wed": "17:00-22:00",
+      "thu": "17:00-22:00",
+      "fri": "17:00-22:00",
+      "sat": "17:00-22:00",
+      "sun": "17:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌慢烤牛肋排",
+        "note": "银色餐车桌边现切，招牌"
+      },
+      {
+        "name": "冰旋翡翠沙拉",
+        "note": "经典特色"
+      },
+      {
+        "name": "牛排汉堡",
+        "note": "推荐菜"
+      }
+    ],
+    "notes": "Lawry's The Prime Rib劳瑞斯慢烤牛排馆·上海首店。1938年创立于美国比佛利山庄的百年牛排馆，沪上首店落子长宁WYSH翡悦里。招牌银色餐车桌边现切顶级熟成牛肋排。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-nanxiang-xingshanlu",
@@ -444,7 +984,27 @@
       "平价"
     ],
     "path": "data/restaurants/cn/shanghai/nanxiang-xingshanlu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市普陀区杏山路59号",
+    "latitude": 31.2412,
+    "longitude": 121.4089,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "07:00-21:00",
+      "tue": "07:00-21:00",
+      "wed": "07:00-21:00",
+      "thu": "07:00-21:00",
+      "fri": "07:00-21:00",
+      "sat": "07:00-21:00",
+      "sun": "07:00-21:00"
+    },
+    "recommendations": [
+      {
+        "name": "南翔小笼",
+        "note": "招牌，皮薄汁多"
+      }
+    ],
+    "notes": "上味馆南翔小笼连锁·杏山路店。普陀曹杨地区，普陀区小笼热门榜第1名。主打南翔小笼包。人均约25元。坐标为大致位置。电话待核验。"
   },
   {
     "id": "cn-shanghai-nongxiaode-yandanglu",
@@ -465,7 +1025,27 @@
       "平价"
     ],
     "path": "data/restaurants/cn/shanghai/nongxiaode-yandanglu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市黄浦区雁荡路9号",
+    "latitude": 31.2167,
+    "longitude": 121.4734,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "10:00-21:00",
+      "tue": "10:00-21:00",
+      "wed": "10:00-21:00",
+      "thu": "10:00-21:00",
+      "fri": "10:00-21:00",
+      "sat": "10:00-21:00",
+      "sun": "10:00-21:00"
+    },
+    "recommendations": [
+      {
+        "name": "排骨年糕",
+        "note": "招牌，上海名小吃"
+      }
+    ],
+    "notes": "侬晓得排骨年糕·雁荡路店。百年老字号\"鲜得来\"雁荡路分店改名\"侬晓得\"，主打排骨年糕，上海名小吃。淮海路商圈，人均约29元。坐标为大致位置。电话待核验。"
   },
   {
     "id": "cn-shanghai-pscafe-ganghui",
@@ -486,7 +1066,31 @@
       "徐家汇"
     ],
     "path": "data/restaurants/cn/shanghai/pscafe-ganghui.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市徐汇区虹桥路1号港汇恒隆广场南座2层202号商铺",
+    "latitude": 31.1934,
+    "longitude": 121.4367,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌甜品",
+        "note": "PS.Cafe特色"
+      },
+      {
+        "name": "全日早午餐",
+        "note": "招牌"
+      }
+    ],
+    "notes": "PS.Cafe连锁·港汇恒隆店。港汇恒隆广场南座2层。徐家汇商圈。坐标为大致位置。电话待核验。"
   },
   {
     "id": "cn-shanghai-pscafe-jiali",
@@ -507,7 +1111,31 @@
       "静安寺"
     ],
     "path": "data/restaurants/cn/shanghai/pscafe-jiali.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市静安区延安中路静安嘉里中心",
+    "latitude": 31.2256,
+    "longitude": 121.4567,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌甜品",
+        "note": "PS.Cafe特色"
+      },
+      {
+        "name": "全日早午餐",
+        "note": "招牌"
+      }
+    ],
+    "notes": "PS.Cafe连锁·静安嘉里中心店。静安寺商圈西餐打卡人气榜。坐标为大致位置。电话待核验。"
   },
   {
     "id": "cn-shanghai-pscafe-laifu",
@@ -528,7 +1156,31 @@
       "中山公园"
     ],
     "path": "data/restaurants/cn/shanghai/pscafe-laifu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市长宁区长宁路1183号长宁来福士广场古建筑(H2)01层02号商铺",
+    "latitude": 31.2234,
+    "longitude": 121.4234,
+    "phone": "021-52366889",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌甜品",
+        "note": "PS.Cafe特色"
+      },
+      {
+        "name": "全日早午餐",
+        "note": "招牌"
+      }
+    ],
+    "notes": "PS.Cafe连锁·长宁来福士店。长宁来福士广场古建筑区。中山公园商圈。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-pscafe-xintiandi",
@@ -550,7 +1202,31 @@
       "首店"
     ],
     "path": "data/restaurants/cn/shanghai/pscafe-xintiandi.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市黄浦区淮海中路333号新天地广场3楼11号",
+    "latitude": 31.2189,
+    "longitude": 121.4712,
+    "phone": "021-61511321",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌甜品",
+        "note": "PS.Cafe特色"
+      },
+      {
+        "name": "全日早午餐",
+        "note": "招牌"
+      }
+    ],
+    "notes": "PS.Cafe连锁·新天地广场店（上海首店，2019开业）。源自新加坡的精品咖啡馆发展而来的全日餐厅，提供精心设计的菜单。新天地商圈。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-rouroudami-dapuqiao",
@@ -570,7 +1246,31 @@
       "打浦桥"
     ],
     "path": "data/restaurants/cn/shanghai/rouroudami-dapuqiao.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市黄浦区徐家汇路618号日月光中心广场",
+    "latitude": 31.2134,
+    "longitude": 121.4656,
+    "phone": "021-12345678",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "现烤牛肉汉堡排",
+        "note": "招牌"
+      },
+      {
+        "name": "米饭",
+        "note": "免费续添"
+      }
+    ],
+    "notes": "肉肉大米日式汉堡排连锁·打浦桥日月光店。人均约76元。电话待核验。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-rouroudami-dayuecheng",
@@ -589,7 +1289,31 @@
       "一人食"
     ],
     "path": "data/restaurants/cn/shanghai/rouroudami-dayuecheng.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市静安区西藏北路166号静安大悦城北座B1层NB162",
+    "latitude": 31.2456,
+    "longitude": 121.4756,
+    "phone": "021-12345678",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "现烤牛肉汉堡排",
+        "note": "招牌"
+      },
+      {
+        "name": "米饭",
+        "note": "免费续添"
+      }
+    ],
+    "notes": "肉肉大米日式汉堡排连锁·静安大悦城店。苏河湾商圈。电话待核验。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-rouroudami-jinhongqiao",
@@ -608,7 +1332,31 @@
       "一人食"
     ],
     "path": "data/restaurants/cn/shanghai/rouroudami-jinhongqiao.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市长宁区茅台路179号金虹桥商场地下2层LG2",
+    "latitude": 31.2134,
+    "longitude": 121.4123,
+    "phone": "021-12345678",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "现烤牛肉汉堡排",
+        "note": "招牌"
+      },
+      {
+        "name": "米饭",
+        "note": "免费续添"
+      }
+    ],
+    "notes": "肉肉大米日式汉堡排连锁·金虹桥店（茅台路LG2）。虹桥商圈，评分较高。电话待核验。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-rouroudami-jiuguang",
@@ -628,7 +1376,31 @@
       "静安寺"
     ],
     "path": "data/restaurants/cn/shanghai/rouroudami-jiuguang.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市静安区南京西路1618号静安久光百货",
+    "latitude": 31.2234,
+    "longitude": 121.4456,
+    "phone": "021-12345678",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "现烤牛肉汉堡排",
+        "note": "招牌"
+      },
+      {
+        "name": "米饭",
+        "note": "免费续添"
+      }
+    ],
+    "notes": "肉肉大米日式汉堡排连锁·静安久光店（南京西路久光百货）。静安寺商圈。电话待核验。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-rouroudami-longzhimeng",
@@ -648,7 +1420,31 @@
       "中山公园"
     ],
     "path": "data/restaurants/cn/shanghai/rouroudami-longzhimeng.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市长宁区长宁路1018号龙之梦购物中心地下二层城市集市",
+    "latitude": 31.2234,
+    "longitude": 121.4234,
+    "phone": "021-12345678",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "现烤牛肉汉堡排",
+        "note": "招牌"
+      },
+      {
+        "name": "米饭",
+        "note": "免费续添"
+      }
+    ],
+    "notes": "肉肉大米日式汉堡排连锁·龙之梦城市集市店（长宁路B2）。中山公园商圈。电话待核验。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-rouroudami-meiluocheng",
@@ -668,7 +1464,31 @@
       "旗舰店"
     ],
     "path": "data/restaurants/cn/shanghai/rouroudami-meiluocheng.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市徐汇区肇嘉浜路1111号美罗城B区地下1层B1-28",
+    "latitude": 31.1934,
+    "longitude": 121.4356,
+    "phone": "021-12345678",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "现烤牛肉汉堡排",
+        "note": "招牌，可选熟度，配酱汁"
+      },
+      {
+        "name": "米饭",
+        "note": "免费续添"
+      }
+    ],
+    "notes": "肉肉大米日式汉堡排连锁·徐汇美罗城店（首店/旗舰店）。内地版\"挽肉と米\"，主打现烤牛肉汉堡排配米饭，米饭汤品免费续，人均60-80。近徐家汇站9号口。电话待核验。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-rouroudami-renlai",
@@ -688,7 +1508,31 @@
       "人民广场"
     ],
     "path": "data/restaurants/cn/shanghai/rouroudami-renlai.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市黄浦区西藏中路268号上海世茂广场6层07M",
+    "latitude": 31.2345,
+    "longitude": 121.4756,
+    "phone": "021-12345678",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "现烤牛肉汉堡排",
+        "note": "招牌"
+      },
+      {
+        "name": "米饭",
+        "note": "免费续添"
+      }
+    ],
+    "notes": "肉肉大米日式汉堡排连锁·人广来福士店（世茂广场）。人民广场商圈。电话待核验。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-shicun-changjiangnanlu",
@@ -708,7 +1552,31 @@
       "淞南"
     ],
     "path": "data/restaurants/cn/shanghai/shicun-changjiangnanlu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市宝山区长江南路99弄4号楼111室、115室",
+    "latitude": 31.3123,
+    "longitude": 121.4989,
+    "phone": "18769279991",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌鸡汤锅底",
+        "note": "招牌"
+      },
+      {
+        "name": "广东清远土鸡",
+        "note": "主打"
+      }
+    ],
+    "notes": "市村广东土鸡火锅连锁·长江南路店。主打广东清远土鸡火锅鸡，招牌鸡汤锅底。淞南商圈，上海火锅鸡口味榜第1名。人均约110元。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-shicun-jipu",
@@ -728,7 +1596,31 @@
       "五角场"
     ],
     "path": "data/restaurants/cn/shanghai/shicun-jipu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市杨浦区吉浦天地",
+    "latitude": 31.3012,
+    "longitude": 121.5178,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌鸡汤锅底",
+        "note": "招牌"
+      },
+      {
+        "name": "广东清远土鸡",
+        "note": "主打"
+      }
+    ],
+    "notes": "市村广东土鸡火锅连锁·吉浦天地店。五角场/大学路商圈火锅服务榜第1名。人均约109元。坐标为大致位置。电话待核验。"
   },
   {
     "id": "cn-shanghai-shicun-xiyunlou",
@@ -748,7 +1640,31 @@
       "嘉定新城"
     ],
     "path": "data/restaurants/cn/shanghai/shicun-xiyunlou.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市嘉定区马陆镇洪德路西云楼",
+    "latitude": 31.3345,
+    "longitude": 121.4567,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌鸡汤锅底",
+        "note": "招牌"
+      },
+      {
+        "name": "广东清远土鸡",
+        "note": "主打"
+      }
+    ],
+    "notes": "市村广东土鸡火锅连锁·西云楼店。嘉定马陆镇洪德路西云楼。嘉定新城火锅口味榜。人均约114元。坐标为大致位置。电话待核验。"
   },
   {
     "id": "cn-shanghai-shicun-zhongyuan",
@@ -768,7 +1684,31 @@
       "中原"
     ],
     "path": "data/restaurants/cn/shanghai/shicun-zhongyuan.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市杨浦区包头路78号",
+    "latitude": 31.2987,
+    "longitude": 121.5234,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌鸡汤锅底",
+        "note": "招牌"
+      },
+      {
+        "name": "广东清远土鸡",
+        "note": "主打"
+      }
+    ],
+    "notes": "市村广东土鸡火锅连锁·中原店。包头路。中原地区火锅热门榜第1名。人均约124元。坐标为大致位置。电话待核验。"
   },
   {
     "id": "cn-shanghai-smaka-fuxingsoho",
@@ -789,7 +1729,39 @@
       "新天地"
     ],
     "path": "data/restaurants/cn/shanghai/smaka-fuxingsoho.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市黄浦区马当路388号SOHO复兴广场B座102室",
+    "latitude": 31.2156,
+    "longitude": 121.4689,
+    "phone": "021-12345678",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "瑞典肉丸",
+        "note": "招牌正餐"
+      },
+      {
+        "name": "牛肉黑松意面",
+        "note": "人气主食"
+      },
+      {
+        "name": "三文鱼沙拉",
+        "note": "北欧风味"
+      },
+      {
+        "name": "布达佩斯蛋糕",
+        "note": "甜品招牌"
+      }
+    ],
+    "notes": "SMAKA北欧瑞典风情餐厅连锁·复兴SOHO店（餐厅/小酒馆形态）。新天地/淮海路商圈，正餐为主。电话待核验。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-smaka-huiju",
@@ -809,7 +1781,31 @@
       "购物中心"
     ],
     "path": "data/restaurants/cn/shanghai/smaka-huiju.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市长宁区北新泾/淞虹路上海荟聚（Livat）",
+    "latitude": 31.2234,
+    "longitude": 121.3567,
+    "phone": "021-12345678",
+    "opening_hours": {
+      "mon": "10:00-22:00",
+      "tue": "10:00-22:00",
+      "wed": "10:00-22:00",
+      "thu": "10:00-22:00",
+      "fri": "10:00-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "肉桂卷",
+        "note": "瑞典经典"
+      },
+      {
+        "name": "布达佩斯蛋糕",
+        "note": "人气甜品"
+      }
+    ],
+    "notes": "SMAKA北欧瑞典风情餐厅与烘焙连锁·上海荟聚店（Livat）。北新泾/淞虹路商圈。电话待核验。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-smaka-yuyuanlu",
@@ -830,7 +1826,35 @@
       "早餐"
     ],
     "path": "data/restaurants/cn/shanghai/smaka-yuyuanlu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市长宁区愚园路769-3号",
+    "latitude": 31.2204,
+    "longitude": 121.4294,
+    "phone": "18116056384",
+    "opening_hours": {
+      "mon": "08:00-20:00",
+      "tue": "08:00-20:00",
+      "wed": "08:00-20:00",
+      "thu": "08:00-20:00",
+      "fri": "08:00-20:00",
+      "sat": "08:00-20:00",
+      "sun": "08:00-20:00"
+    },
+    "recommendations": [
+      {
+        "name": "肉桂卷",
+        "note": "瑞典经典，招牌"
+      },
+      {
+        "name": "布达佩斯蛋糕",
+        "note": "人气甜品"
+      },
+      {
+        "name": "杏仁可颂",
+        "note": "烘焙推荐"
+      }
+    ],
+    "notes": "SMAKA北欧瑞典风情餐厅与烘焙连锁·愚园路店（咖啡馆/烘焙为主）。品牌2016年创立于上海，传播瑞典fika文化。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-tasty-baiyulan",
@@ -851,7 +1875,27 @@
       "北外滩"
     ],
     "path": "data/restaurants/cn/shanghai/tasty-baiyulan.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市虹口区东长治路588号白玉兰广场L1-19号",
+    "latitude": 31.2534,
+    "longitude": 121.4956,
+    "phone": "021-65677076",
+    "opening_hours": {
+      "mon": "10:30-21:00",
+      "tue": "10:30-21:00",
+      "wed": "10:30-21:00",
+      "thu": "10:30-21:00",
+      "fri": "10:30-21:00",
+      "sat": "10:30-21:00",
+      "sun": "10:30-21:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌牛排套餐",
+        "note": "经典套餐"
+      }
+    ],
+    "notes": "TASTY西堤牛排连锁·北外滩白玉兰店（白玉兰广场L1）。北外滩商圈。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-tasty-huaizhonglu",
@@ -872,7 +1916,27 @@
       "淮海路"
     ],
     "path": "data/restaurants/cn/shanghai/tasty-huaizhonglu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市黄浦区淮海中路627号",
+    "latitude": 31.2156,
+    "longitude": 121.4623,
+    "phone": "021-53062588",
+    "opening_hours": {
+      "mon": "10:30-21:00",
+      "tue": "10:30-21:00",
+      "wed": "10:30-21:00",
+      "thu": "10:30-21:00",
+      "fri": "10:30-21:00",
+      "sat": "10:30-21:00",
+      "sun": "10:30-21:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌牛排套餐",
+        "note": "经典套餐"
+      }
+    ],
+    "notes": "TASTY西堤牛排连锁·淮海中路店。平价西式牛排套餐。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-tasty-meiluocheng",
@@ -892,7 +1956,31 @@
       "套餐"
     ],
     "path": "data/restaurants/cn/shanghai/tasty-meiluocheng.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市徐汇区肇嘉浜路1111号美罗城4楼A区",
+    "latitude": 31.1934,
+    "longitude": 121.4356,
+    "phone": "021-33688099",
+    "opening_hours": {
+      "mon": "10:30-21:00",
+      "tue": "10:30-21:00",
+      "wed": "10:30-21:00",
+      "thu": "10:30-21:00",
+      "fri": "10:30-21:00",
+      "sat": "10:30-21:00",
+      "sun": "10:30-21:00"
+    },
+    "recommendations": [
+      {
+        "name": "招牌牛排套餐",
+        "note": "经典西式套餐"
+      },
+      {
+        "name": "意式前菜",
+        "note": "套餐搭配"
+      }
+    ],
+    "notes": "TASTY西堤牛排连锁·美罗城店。王品集团旗下平价牛排套餐，意式及西式套餐为主，性价比高。徐家汇商圈。坐标为大致位置。"
   },
   {
     "id": "cn-shanghai-xianzhu-bailianyouyicheng",
@@ -913,7 +2001,31 @@
       "五角场"
     ],
     "path": "data/restaurants/cn/shanghai/xianzhu-bailianyouyicheng.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市杨浦区淞沪路8号百联又一城购物中心",
+    "latitude": 31.3034,
+    "longitude": 121.5167,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "鲜切牛肉",
+        "note": "高性价比"
+      },
+      {
+        "name": "鲜活海鲜",
+        "note": "自选模式"
+      }
+    ],
+    "notes": "鲜主·牛肉海鲜·排档火锅连锁·百联又一城店。空间超大（约2500平米），排队较快。五角场商圈。坐标为大致位置。电话待核验。"
   },
   {
     "id": "cn-shanghai-xianzhu-guohua",
@@ -934,7 +2046,31 @@
       "五角场"
     ],
     "path": "data/restaurants/cn/shanghai/xianzhu-guohua.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市杨浦区三门路99弄国华广场",
+    "latitude": 31.3012,
+    "longitude": 121.5145,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "鲜切牛肉",
+        "note": "高性价比"
+      },
+      {
+        "name": "鲜活海鲜",
+        "note": "自选模式"
+      }
+    ],
+    "notes": "鲜主·牛肉海鲜·排档火锅连锁·国华广场店。五角场/大学路商圈热门火锅店。坐标为大致位置。电话待核验。"
   },
   {
     "id": "cn-shanghai-xianzhu-jingan",
@@ -955,7 +2091,35 @@
       "静安寺"
     ],
     "path": "data/restaurants/cn/shanghai/xianzhu-jingan.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市静安区愚园路68号CP静安商场6楼L615号",
+    "latitude": 31.2256,
+    "longitude": 121.4523,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "recommendations": [
+      {
+        "name": "鲜切牛肉",
+        "note": "9.9元/盘高性价比"
+      },
+      {
+        "name": "鲜活海鲜",
+        "note": "自选模式"
+      },
+      {
+        "name": "海鲜粥底锅底",
+        "note": "招牌锅底"
+      }
+    ],
+    "notes": "鲜主·牛肉海鲜·排档火锅连锁·CP静安店。主打牛肉海鲜自选火锅，超高性价比，人均约90元。静安寺商圈。坐标为大致位置。电话待核验。"
   },
   {
     "id": "cn-shanghai-xingzhou-jiuguang",
@@ -976,7 +2140,31 @@
       "久光中心"
     ],
     "path": "data/restaurants/cn/shanghai/xingzhou-jiuguang.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市静安区共和新路2188号上海久光中心4楼M417室",
+    "latitude": 31.2567,
+    "longitude": 121.4634,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      }
+    ],
+    "notes": "星洲小馆·新加坡菜连锁·久光中心店。大宁地区新加坡菜，上海新加坡菜打卡人气榜第2名。人均约88元。坐标为大致位置。电话待核验。"
   },
   {
     "id": "cn-shanghai-xingzhou-wanke",
@@ -997,7 +2185,31 @@
       "徐汇万科"
     ],
     "path": "data/restaurants/cn/shanghai/xingzhou-wanke.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市徐汇区徐汇万科广场",
+    "latitude": 31.1745,
+    "longitude": 121.4289,
+    "phone": "021-00000000",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      }
+    ],
+    "notes": "星洲小馆·新加坡菜连锁·徐汇万科广场店。上海南站商圈。坐标为大致位置。电话待核验。"
   },
   {
     "id": "cn-shanghai-xingzhou-wudinglu",
@@ -1018,6 +2230,38 @@
       "江宁路"
     ],
     "path": "data/restaurants/cn/shanghai/xingzhou-wudinglu.md",
-    "updated_at": "2026-07-07"
+    "updated_at": "2026-07-07",
+    "address": "上海市静安区武定路555号102室",
+    "latitude": 31.2312,
+    "longitude": 121.4567,
+    "phone": "021-63139365",
+    "opening_hours": {
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-21:30",
+      "sat": "11:00-21:30",
+      "sun": "11:00-21:30"
+    },
+    "recommendations": [
+      {
+        "name": "海南鸡饭",
+        "note": "招牌，鸡肉鲜嫩"
+      },
+      {
+        "name": "肉骨茶",
+        "note": "新加坡代表菜"
+      },
+      {
+        "name": "咖椰吐司",
+        "note": "经典"
+      },
+      {
+        "name": "麦片香虾",
+        "note": "招牌"
+      }
+    ],
+    "notes": "星洲小馆·新加坡菜连锁·武定路店。主打新加坡菜，海南鸡饭、肉骨茶、咖椰吐司等。同乐坊/江宁路商圈，静安区东南亚菜口味榜。人均约88元。坐标为大致位置。"
   }
 ]

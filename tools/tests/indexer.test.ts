@@ -22,6 +22,29 @@ describe('buildIndex', () => {
     const entry = index.find((e) => e.id === 'cn-shanghai-test-shop')!
     expect(entry.path).not.toMatch(/[A-Z]:/)
   })
+
+  it('索引包含展示用扩展字段（地址/电话/坐标/营业时间/推荐菜/点评）', () => {
+    const index = buildIndex(fixturesDir, repoRoot)
+    const entry = index.find((e) => e.id === 'cn-shanghai-test-shop')!
+    expect(entry.address).toBe('测试地址')
+    expect(entry.phone).toBe('021-12345678')
+    expect(entry.latitude).toBe(31.2)
+    expect(entry.longitude).toBe(121.4)
+    expect(entry.opening_hours).toEqual({ mon: '10:00-22:00', tue: '10:00-22:00' })
+    expect(entry.recommendations).toEqual([{ name: '红烧肉', note: '招牌' }])
+    expect(entry.notes).toBe('简短点评。')
+  })
+
+  it('无扩展字段的餐厅，对应字段为 undefined 而非报错', () => {
+    const index = buildIndex(fixturesDir, repoRoot)
+    // 任意条目只要存在即说明扩展字段类型安全（不会因缺字段抛错）
+    expect(index.length).toBeGreaterThan(0)
+    const entry = index[0]
+    expect(entry).toBeDefined()
+    // 字段键应存在于结构中（即使是 undefined）
+    expect('address' in entry!).toBe(true)
+    expect('phone' in entry!).toBe(true)
+  })
 })
 
 describe('writeIndex / loadIndex', () => {

@@ -15,6 +15,14 @@ export interface IndexEntry {
   tags?: string[]
   path: string
   updated_at?: string
+  // 展示用扩展字段（全部可选，缺失即 undefined）
+  address?: string
+  latitude?: number
+  longitude?: number
+  phone?: string
+  opening_hours?: Record<string, string>
+  recommendations?: RestaurantFrontmatter['recommendations']
+  notes?: string
 }
 
 function toPosix(p: string): string {
@@ -38,6 +46,13 @@ export function buildIndex(dataDir: string, repoRoot: string): IndexEntry[] {
       tags: fm.tags,
       path: toPosix(relative(repoRoot, file)),
       updated_at: fm.updated_at,
+      address: fm.address,
+      latitude: fm.latitude,
+      longitude: fm.longitude,
+      phone: fm.phone,
+      opening_hours: fm.opening_hours,
+      recommendations: fm.recommendations,
+      notes: fm.notes,
     }
     entries.push(entry)
   }
