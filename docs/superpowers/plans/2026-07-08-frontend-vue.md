@@ -687,7 +687,7 @@ import type { RestaurantEntry } from '@/types/restaurant'
 
 const mk = (over: Partial<RestaurantEntry> = {}): RestaurantEntry => ({
   id: 'cn-shanghai-x', name: '测试', city: '上海', country: 'cn',
-  cuisine: '西餐', price_level: 2, status: 'open', ...over,
+  cuisine: '西餐', price_level: 2, status: 'open', path: 'data/restaurants/cn/shanghai/x.md', ...over,
 })
 
 describe('filterRestaurants', () => {
@@ -778,7 +778,7 @@ import type { RestaurantEntry } from '@/types/restaurant'
 
 const mk = (over: Partial<RestaurantEntry> = {}): RestaurantEntry => ({
   id: 'cn-shanghai-x', name: '测试', city: '上海', country: 'cn',
-  cuisine: '西餐', price_level: 2, status: 'open', ...over,
+  cuisine: '西餐', price_level: 2, status: 'open', path: 'data/restaurants/cn/shanghai/x.md', ...over,
 })
 
 describe('useChains', () => {
