@@ -22,12 +22,22 @@ export interface LlmClient {
 }
 
 // Worker AI binding 的最小类型（避免直接依赖全局 Ai 类型，便于 Node 侧引用）。
+// 注意：response 字段可能是 string（纯文本模型）或已解析的对象（当输出是合法 JSON 时，
+// 部分模型如 qwen3-30b 会把 response 解析成对象），运行时需做归一化。
 export interface AiBinding {
   run(
     model: string,
     input: { messages: { role: string; content: string }[] },
     options?: { gateway?: { id: string; skipCache?: boolean; cacheTtl?: number } },
-  ): Promise<{ response?: string; result?: { response?: string } }>
+  ): Promise<{ response?: unknown; result?: { response?: unknown } }>
+}
+
+// 把 AI binding 返回的 response（string 或对象）归一化为字符串。
+// 对象时 JSON.stringify，以便下游 parseJsonResponse 统一处理。
+function normalizeResponse(value: unknown): string {
+  if (typeof value === 'string') return value
+  if (value !== null && typeof value === 'object') return JSON.stringify(value)
+  return ''
 }
 
 // Worker 实现：env.AI.run 经 AI Gateway。
@@ -44,8 +54,10 @@ export function createWorkerLlm(ai: AiBinding, gatewayId = GATEWAY_ID): LlmClien
         },
         { gateway: { id: gatewayId, skipCache: false, cacheTtl: 300 } },
       )
-      // Workers AI 文本生成返回 { response } 或 { result: { response } }
-      const text = resp.response ?? resp.result?.response ?? ''
+      // Workers AI 文本生成返回 { response } 或 { result: { response } }。
+      // response 可能是字符串或对象（见 AiBinding 注释），统一归一化为字符串。
+      const raw = resp.response ?? resp.result?.response
+      const text = normalizeResponse(raw)
       return { text, model: MODEL }
     },
   }
