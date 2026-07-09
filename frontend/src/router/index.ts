@@ -10,6 +10,7 @@ const router = createRouter({
       component: () => import('@/views/RestaurantDetail.vue'),
       props: true,
     },
+    { path: '/ask', name: 'ask', component: () => import('@/views/AskAi.vue') },
   ],
   scrollBehavior() {
     return { top: 0 }
