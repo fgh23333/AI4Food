@@ -27,3 +27,6 @@ Thumbs.db
 *.log
 npm-debug.log*
 pnpm-debug.log*
+
+# Superpowers 工作产物（brief/report/diff/ledger，本地临时文件，不提交）
+.superpowers/
