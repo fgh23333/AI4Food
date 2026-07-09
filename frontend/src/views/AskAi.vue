@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { askRecommend, generateDraft, ApiError } from '@/lib/api'
+import DraftEditor from '@/components/DraftEditor.vue'
 import type { RecommendResponse, DraftResponse } from '@/types/ai'
 
 type Tab = 'recommend' | 'draft'
@@ -80,34 +81,6 @@ function formatError(e: unknown): string {
 function goDetail(id: string): void {
   router.push({ name: 'detail', params: { id } })
 }
-
-// 把草稿转成 frontmatter 文本，便于贡献者复制核对（不直接写入 data/）。
-function draftToYaml(d: DraftResponse['draft']): string {
-  const lines: string[] = ['---']
-  lines.push(`id: ""  # 待人工填写，格式 {country}-{city拼音}-{slug}`)
-  lines.push(`name: "${d.name}"`)
-  if (d.city) lines.push(`city: "${d.city}"`)
-  lines.push(`country: "${d.country ?? 'cn'}"`)
-  lines.push(`cuisine: "${d.cuisine}"`)
-  lines.push(`price_level: ${d.price_level}`)
-  lines.push(`status: "${d.status}"`)
-  if (d.tags?.length) lines.push(`tags: [${d.tags.map((t) => `"${t}"`).join(', ')}]`)
-  if (d.address) lines.push(`address: "${d.address}"`)
-  if (d.phone) lines.push(`phone: "${d.phone}"`)
-  if (d.notes) lines.push(`notes: "${d.notes}"`)
-  if (d.description) lines.push(`description: "${d.description}"`)
-  lines.push('---')
-  return lines.join('\n')
-}
-
-async function copyYaml(): Promise<void> {
-  if (!draftResult.value) return
-  try {
-    await navigator.clipboard.writeText(draftToYaml(draftResult.value.draft))
-  } catch {
-    // 剪贴板不可用时静默忽略，用户可手动选择文本复制
-  }
-}
 </script>
 
 <template>
@@ -154,7 +127,7 @@ async function copyYaml(): Promise<void> {
     </section>
 
     <!-- AI 草稿 -->
-    <section v-else class="panel">
+    <section v-else class="panel draft-panel">
       <p class="hint">描述一家你想收录的餐厅，AI 会生成 frontmatter 草稿供你核对——<strong>不会自动写入数据集</strong>，需人工校验后按贡献规范提交。</p>
       <div class="input-row">
         <textarea v-model="description" rows="3" placeholder="例如：愚园路新开了一家本帮菜，人均120，有包间，主打草头圈子" maxlength="500" :disabled="draftLoading" />
@@ -166,12 +139,11 @@ async function copyYaml(): Promise<void> {
       <div v-if="draftLoading" class="state">✍️ AI 正在生成草稿…</div>
       <div v-else-if="draftError" class="state error">⚠️ {{ draftError }}</div>
       <div v-else-if="draftResult" class="result">
-        <div v-if="draftResult.warnings.length" class="warnings">
+        <div v-if="draftResult.warnings.length" class="server-warnings">
           <p v-for="w in draftResult.warnings" :key="w">⚠️ {{ w }}</p>
         </div>
-        <pre class="yaml">{{ draftToYaml(draftResult.draft) }}</pre>
-        <button class="ghost" @click="copyYaml">复制 frontmatter</button>
-        <p class="meta">模型 {{ draftResult.model }} · 请核对字段后再提交，id/电话/坐标等需人工补全。</p>
+        <DraftEditor :draft="draftResult.draft" />
+        <p class="meta">模型 {{ draftResult.model }} · 请核对字段后再提交，id/坐标等需人工补全。</p>
       </div>
     </section>
   </main>
@@ -193,7 +165,6 @@ h1 { margin: 0; font-size: 30px; font-weight: 800; }
 .input-row input:focus, .input-row textarea:focus { outline: 2px solid var(--brand); border-color: var(--brand); }
 button.primary { background: var(--brand); color: #fff; border: 0; padding: 12px 22px; border-radius: 12px; font-size: 15px; cursor: pointer; white-space: nowrap; }
 button.primary:disabled { background: var(--ink-mute); cursor: not-allowed; }
-button.ghost { background: transparent; color: var(--brand); border: 1px solid var(--brand); padding: 8px 16px; border-radius: 10px; font-size: 14px; cursor: pointer; }
 .examples { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; }
 .ex-label { color: var(--ink-mute); font-size: 13px; }
 .chip { background: var(--brand-soft); color: var(--brand-dark); border: 0; padding: 6px 12px; border-radius: 16px; font-size: 13px; cursor: pointer; }
@@ -211,9 +182,9 @@ button.ghost { background: transparent; color: var(--brand); border: 1px solid v
 .pick-reason { margin: 8px 0 0; color: var(--ink-soft); font-size: 14px; line-height: 1.6; }
 .pick-link { font-size: 13px; color: var(--brand); }
 .empty { color: var(--ink-mute); text-align: center; padding: 24px; }
-.warnings { background: var(--accent-soft); border-radius: 10px; padding: 12px 14px; margin-bottom: 14px; }
-.warnings p { margin: 2px 0; font-size: 13px; color: var(--ink); }
-.yaml { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 16px; font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 13px; overflow-x: auto; color: var(--ink); white-space: pre-wrap; }
+.draft-panel { max-width: 1100px; }
+.server-warnings { background: var(--accent-soft); border-radius: 10px; padding: 12px 14px; margin-bottom: 14px; }
+.server-warnings p { margin: 2px 0; font-size: 13px; color: var(--ink); }
 .meta { margin-top: 14px; font-size: 12.5px; color: var(--ink-mute); }
 @media (max-width: 560px) { .input-row { flex-direction: column; } .panel { padding: 20px; } }
 </style>
