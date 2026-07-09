@@ -1,6 +1,6 @@
 # 路线图
 
-记录后续规划方向。一期的数据仓库与三期的前端 SPA 已落地，其余各期单独设计，一期成果为它们预留了接入点，不会推翻重来。
+记录后续规划方向。一期（数据仓库）、二期（后端只读 API）、三期（前端 SPA）均已落地，其余各期单独设计，一期成果为它们预留了接入点，不会推翻重来。
 
 ---
 
@@ -12,17 +12,19 @@
 - CI 自动校验与索引生成
 - 贡献流程与文档
 
-## 🔌 二期：后端只读 API
+## 🔌 二期：后端只读 API（✅ 已实现）
 
-基于已预留的 [`tools/src/server/hono.ts`](../tools/src/server/hono.ts) 骨架，实现只读查询接口：
+基于已预留的 [`tools/src/server/`](../tools/src/server) 实现 Cloudflare Workers 上的只读查询 API：
 
-- `GET /api/restaurants` — 列表（支持城市/菜系/价位筛选）
+- `GET /api/restaurants` — 列表（城市/菜系/价位/状态/标签/模糊搜索筛选 + 排序 + 分页）
 - `GET /api/restaurants/:id` — 单条详情
-- 部署到 Cloudflare Workers
+- `GET /api/meta` — 元数据（总数/在营/城市/菜系/价位集合）
+- 部署到 Cloudflare Workers，`dist/index.json` 作为静态资产绑定（运行时 fetch，无 fs 依赖）
+- **线上地址**：`https://ai4food.635262140.xyz`（自定义域，`*.workers.dev` 在中国大陆不可访问，故绑定自定义域供国内访问）
 
-数据来源是已生成的 `dist/index.json`，无需改数据层。
+查询逻辑（`query.ts`）是纯函数，Node 端与 Worker 端共享；`pnpm run server` 可本地 Node 联调，`pnpm exec wrangler dev` 可本地模拟 Workers 运行时。
 
-> 注：三期前端已用 SPA 直读 JSON 实现，二期 API 可作为未来 AI 能力（四期）的统一接入层，二者后续会合并设计。
+> 三期前端仍直读 `dist/index.json`，本 API 作为四期 AI 能力的统一接入层，与前端后续合并设计。
 
 ## 🖥️ 三期：前端展示网站（✅ 已实现）
 

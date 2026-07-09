@@ -12,15 +12,18 @@
     "server": "tsx src/cli.ts server",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "worker:typecheck": "wrangler types && tsc --project tsconfig.worker.json --noEmit"
   },
   "devDependencies": {
     "@types/node": "^22.5.0",
     "tsx": "^4.19.0",
     "typescript": "^5.6.0",
-    "vitest": "^2.1.0"
+    "vitest": "^2.1.0",
+    "wrangler": "^4.108.0"
   },
   "dependencies": {
+    "@hono/node-server": "^2.0.8",
     "ajv": "^8.17.0",
     "ajv-formats": "^3.0.1",
     "gray-matter": "^4.0.3",

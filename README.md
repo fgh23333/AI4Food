@@ -126,13 +126,47 @@ pnpm build       # 产物输出到 frontend/dist/
 
 ---
 
+## 🔌 后端只读 API
+
+基于 Hono 的只读查询 API，部署在 Cloudflare Workers，数据来自 `dist/index.json`（静态资产绑定，运行时无 fs 依赖）。
+
+**线上地址**：`https://ai4food.635262140.xyz`（自定义域；`*.workers.dev` 默认域名在中国大陆不可访问，故绑定自定义域）。
+
+**端点**：
+
+| 方法 | 路径 | 说明 |
+|------|------|------|
+| GET | `/api/restaurants` | 列表（`city`/`cuisine`/`price`/`status`/`tag`/`q` 筛选 + `sort` + `limit`/`offset` 分页） |
+| GET | `/api/restaurants/:id` | 单条详情 |
+| GET | `/api/meta` | 元数据（总数/在营/城市/菜系/价位） |
+
+**本地联调**（见 [开发规范](docs/DEVELOPMENT.md)）：
+
+```bash
+cd tools
+pnpm run server          # Node 版，http://localhost:8787
+# 或
+pnpm exec wrangler dev   # Workers 运行时，http://localhost:8788
+```
+
+示例：
+
+```bash
+curl 'http://localhost:8787/api/restaurants?city=上海&status=open&sort=rating&limit=10'
+curl http://localhost:8787/api/restaurants/cn-shanghai-tasty-baiyulan
+curl http://localhost:8787/api/meta
+```
+
+> 三期前端目前仍直读 `dist/index.json`，本 API 主要服务于四期 AI 能力与未来第三方接入。
+
+---
+
 ## 🗺️ 路线图
 
-**一期（数据仓库）+ 三期（前端 SPA）已实现**：数据格式、schema、校验工具链、CI、贡献流程，以及上线 https://fgh23333.github.io/AI4Food/ 的 Vue SPA。
+**一期（数据仓库）+ 二期（后端只读 API）+ 三期（前端 SPA）已实现**：数据格式、schema、校验工具链、CI、贡献流程，Cloudflare Workers 只读 API，以及上线 https://fgh23333.github.io/AI4Food/ 的 Vue SPA。
 
 **后续规划**（见 [ROADMAP](docs/ROADMAP.md)）：
-- 🔌 后端只读 API（基于 Hono）
-- 🤖 AI 美食助手（智能推荐 + 辅助贡献）
+- 🤖 AI 美食助手（智能推荐 + 辅助贡献，基于二期 API 接入 LLM）
 
 一期设计已为后续内容预留接入点，不会推翻重来。
 
