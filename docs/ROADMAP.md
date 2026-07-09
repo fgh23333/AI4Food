@@ -1,6 +1,6 @@
 # 路线图
 
-记录后续规划方向。一期（数据仓库）、二期（后端只读 API）、三期（前端 SPA）均已落地，其余各期单独设计，一期成果为它们预留了接入点，不会推翻重来。
+记录后续规划方向。一期（数据仓库）、二期（后端只读 API）、三期（前端 SPA）、四期（AI 能力）均已落地，其余各期单独设计，前期成果为它们预留了接入点，不会推翻重来。
 
 ---
 
@@ -39,14 +39,20 @@ Vue 3 单页应用（SPA），直读已生成的 `dist/index.json`，部署在 G
 
 > 地图视图（基于 `latitude`/`longitude`）在本期设计阶段已明确 descoped，不实现。
 
-## 🤖 四期：AI 能力
+## 🤖 四期：AI 能力（✅ 已实现）
 
-基于 Hono API 接入 LLM：
+基于 Hono API 接入 LLM（Cloudflare Workers AI + AI Gateway），两个路由：
 
-- **智能问答推荐**：自然语言提问（"上海陆家嘴适合商务宴请的粤菜"）→ 基于餐厅数据回答
-- **AI 辅助贡献**：自然语言描述 → 自动生成符合 schema 的餐厅 md，降低贡献门槛
+- **智能问答推荐** `POST /api/ai/recommend`：自然语言提问（"上海陆家嘴适合商务宴请的粤菜"）→ 规则检索候选（city/cuisine/标签逐级放宽，按评分截断至 30 家）+ LLM 重排 → 从候选集选 1-3 家并给理由，**反幻觉约束**禁止编造不在数据集里的餐厅
+- **AI 辅助贡献** `POST /api/ai/draft`：自然语言描述 → 生成符合 schema 的餐厅 frontmatter 草稿（枚举越界置默认 + warning），**仅生成 JSON 供人工核对，不写入 `data/`**
 
-LLM 接入点已在 Hono 路由预留（`/api/ai/recommend` 占位），数据层和校验层无需改动。
+技术栈：
+- 模型 `@cf/qwen/qwen3-30b-a3b-fp8`（约 $0.051/$0.34 per M tokens），经 AI Gateway `eatornot` 缓存 + 限流
+- `LlmClient` 抽象（测试注入 mock），纯函数检索/编排逻辑（`tools/src/server/ai/`）
+- 前端 `AskAi.vue` 视图（`/ask` 路由，列表页 hero 区入口），支持推荐结果跳转详情、草稿复制 frontmatter
+- CORS 白名单 `fgh23333.github.io` + localhost
+
+数据层和校验层无需改动，AI 不直接写数据，草稿需人工按贡献规范提交。设计依据见 [`docs/superpowers/specs/2026-07-09-ai-design.md`](superpowers/specs/2026-07-09-ai-design.md)。
 
 ---
 

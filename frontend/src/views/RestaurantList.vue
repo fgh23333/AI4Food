@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { RouterLink } from 'vue-router'
 import { useRestaurantsStore } from '@/stores/restaurants'
 import FilterBar from '@/components/FilterBar.vue'
 import RestaurantCard from '@/components/RestaurantCard.vue'
@@ -18,6 +19,7 @@ function hue(name: string): number {
     <div class="wrap">
       <div class="brand"><span class="logo">🍽️</span><div><h1>AI4Food</h1><p class="sub">社区共建的上海餐厅数据图鉴</p></div></div>
       <StatBar v-bind="store.stats" />
+      <RouterLink to="/ask" class="ai-entry">🤖 问问 AI：用自然语言找餐厅</RouterLink>
     </div>
   </header>
   <main class="wrap toolbar"><FilterBar v-model:query="store.query" v-model:cuisine="store.cuisine" v-model:price="store.price" v-model:onlyOpen="store.onlyOpen" v-model:mergeChains="store.mergeChains" :cuisine-options="store.cuisineOptions" :result-count="`显示 ${store.filtered.length} / ${store.all.length} 家`" /></main>
@@ -41,6 +43,8 @@ function hue(name: string): number {
 h1 { margin: 0; font-size: 30px; font-weight: 800; }
 .sub { margin: 2px 0 0; font-size: 13.5px; opacity: .9; }
 .hero :deep(.stats) { margin-top: 26px; }
+.ai-entry { display: inline-block; margin-top: 18px; background: rgba(255,255,255,.16); color: #fff; text-decoration: none; padding: 9px 16px; border-radius: 11px; font-size: 14px; font-weight: 500; transition: background .15s; }
+.ai-entry:hover { background: rgba(255,255,255,.26); }
 .toolbar { margin-top: -34px; position: relative; z-index: 5; }
 .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(336px, 1fr)); padding-bottom: 64px; }
 .state { text-align: center; padding: 80px 20px; color: var(--ink-mute); }

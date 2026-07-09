@@ -161,9 +161,41 @@ curl http://localhost:8787/api/meta
 
 ---
 
+## 🤖 AI 能力
+
+四期接入 LLM（Cloudflare Workers AI + AI Gateway），提供两个 AI 路由，线上基地址 `https://ai4food.635262140.xyz`：
+
+### 智能问答推荐
+
+```bash
+curl -X POST https://ai4food.635262140.xyz/api/ai/recommend \
+  -H 'content-type: application/json' \
+  -d '{"question":"上海有什么日料推荐"}'
+```
+
+返回 `answer`（一句话总结）与 `picks`（1-3 家候选，含 id/名称/理由/相关度）。后端先用规则检索候选（城市/菜系/标签逐级放宽，按评分截断至 30 家），再由 LLM 重排选出最匹配的几家，**反幻觉约束**确保只从数据集里选、不编造餐厅。
+
+### AI 辅助贡献
+
+```bash
+curl -X POST https://ai4food.635262140.xyz/api/ai/draft \
+  -H 'content-type: application/json' \
+  -d '{"description":"愚园路新开的一家本帮菜，人均120，有包间"}'
+```
+
+返回符合 schema 的 frontmatter 草稿（含枚举越界 warning）。**仅生成 JSON 供人工核对，不写入 `data/`**，需贡献者按规范补全 id/电话/坐标后提交。
+
+### 前端入口
+
+站点首页 hero 区点击「🤖 问问 AI」或访问 `/#/ask`，支持推荐结果直接跳转餐厅详情、草稿一键复制 frontmatter。
+
+> 模型 `@cf/qwen/qwen3-30b-a3b-fp8`，经 AI Gateway `eatornot` 缓存与限流。本地 `wrangler dev` 调 AI 路由在大陆网络下可能因 miniflare 远程代理超时，可用 REST 直连验证模型可达性。设计详见 [`docs/superpowers/specs/2026-07-09-ai-design.md`](docs/superpowers/specs/2026-07-09-ai-design.md)。
+
+---
+
 ## 🗺️ 路线图
 
-**一期（数据仓库）+ 二期（后端只读 API）+ 三期（前端 SPA）已实现**：数据格式、schema、校验工具链、CI、贡献流程，Cloudflare Workers 只读 API，以及上线 https://fgh23333.github.io/AI4Food/ 的 Vue SPA。
+**一期（数据仓库）+ 二期（后端只读 API）+ 三期（前端 SPA）+ 四期（AI 能力）已实现**：数据格式、schema、校验工具链、CI、贡献流程，Cloudflare Workers 只读 API，上线 https://fgh23333.github.io/AI4Food/ 的 Vue SPA，以及基于 Workers AI 的智能推荐与 AI 草稿生成。
 
 **后续规划**（见 [ROADMAP](docs/ROADMAP.md)）：
 - 🤖 AI 美食助手（智能推荐 + 辅助贡献，基于二期 API 接入 LLM）
