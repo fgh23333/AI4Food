@@ -77,3 +77,43 @@ export interface IndexEntry {
   notes?: string
   description?: string
 }
+
+// ===== 四期 AI 能力类型 =====
+
+// /api/ai/recommend 的推荐结果项
+export interface RecommendPick {
+  id: string
+  name?: string
+  reason: string
+  score: number
+}
+
+// /api/ai/recommend 响应
+export interface RecommendResponse {
+  answer: string
+  picks: RecommendPick[]
+  candidates_considered: number
+  model: string
+}
+
+// /api/ai/draft 生成的餐厅草稿（frontmatter 子集）
+export interface RestaurantDraft {
+  name: string
+  city?: string
+  country?: string
+  cuisine: string
+  price_level: number
+  status: string
+  tags?: string[]
+  address?: string
+  phone?: string
+  notes?: string
+  description?: string
+}
+
+// /api/ai/draft 响应
+export interface DraftResponse {
+  draft: RestaurantDraft
+  warnings: string[]
+  model: string
+}

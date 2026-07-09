@@ -10,6 +10,7 @@
     "src/server/hono.ts",
     "src/server/query.ts",
     "src/server/loader.ts",
+    "src/server/ai/**/*.ts",
     "worker-configuration.d.ts"
   ]
 }

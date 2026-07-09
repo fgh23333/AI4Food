@@ -1,11 +1,21 @@
 import { describe, it, expect } from 'vitest'
 import { createApp } from '../../src/server/hono'
 import type { DataLoader } from '../../src/server/loader'
+import type { LlmClient, LlmInput, LlmOutput } from '../../src/server/ai/llm'
 import type { IndexEntry } from '../../src/indexer'
 
 // 内存假 loader，注入固定数据
 function fakeLoader(entries: IndexEntry[]): DataLoader {
   return { async loadAll() { return entries } }
+}
+
+// mock LLM 客户端，返回固定文本
+function fakeLlm(text: string): LlmClient {
+  return {
+    async run(_input: LlmInput): Promise<LlmOutput> {
+      return { text, model: 'mock' }
+    },
+  }
 }
 
 // 类型化读取 JSON body（res.json() 默认返回 unknown）
@@ -134,5 +144,124 @@ describe('GET /api/meta', () => {
     expect(body.total).toBe(2)
     expect(body.open).toBe(1)
     expect(body.cuisines.sort()).toEqual(['本帮菜', '西餐'])
+  })
+})
+
+// ===== 四期 AI 路由 =====
+
+interface RecommendBody {
+  answer: string
+  picks: { id: string; reason: string; score: number }[]
+  candidates_considered: number
+  model: string
+}
+interface DraftBody {
+  draft: { name: string; cuisine: string; price_level: number; status: string }
+  warnings: string[]
+  model: string
+}
+
+describe('POST /api/ai/recommend', () => {
+  it('正常返回推荐', async () => {
+    const llmText = JSON.stringify({
+      answer: '推荐阿强',
+      picks: [{ id: 'cn-shanghai-a', reason: '本帮菜', score: 0.9 }],
+    })
+    const app = createApp(fakeLoader(entries), fakeLlm(llmText))
+    const res = await app.request('/api/ai/recommend', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ question: '上海本帮菜' }),
+    })
+    expect(res.status).toBe(200)
+    const body = await jsonBody<RecommendBody>(res)
+    expect(body.answer).toBe('推荐阿强')
+    expect(body.picks[0]?.id).toBe('cn-shanghai-a')
+  })
+
+  it('question 缺失返回 400', async () => {
+    const app = createApp(fakeLoader(entries), fakeLlm('{}'))
+    const res = await app.request('/api/ai/recommend', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({}),
+    })
+    expect(res.status).toBe(400)
+  })
+
+  it('question 超长返回 400', async () => {
+    const app = createApp(fakeLoader(entries), fakeLlm('{}'))
+    const res = await app.request('/api/ai/recommend', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ question: 'x'.repeat(501) }),
+    })
+    expect(res.status).toBe(400)
+  })
+
+  it('LLM 非法 JSON 返回 502', async () => {
+    const app = createApp(fakeLoader(entries), fakeLlm('乱文本'))
+    const res = await app.request('/api/ai/recommend', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ question: '上海菜' }),
+    })
+    expect(res.status).toBe(502)
+  })
+
+  it('未配置 LLM 返回 503', async () => {
+    const app = createApp(fakeLoader(entries)) // 不传 llm
+    const res = await app.request('/api/ai/recommend', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ question: '上海菜' }),
+    })
+    expect(res.status).toBe(503)
+  })
+})
+
+describe('POST /api/ai/draft', () => {
+  it('正常返回草稿', async () => {
+    const llmText = JSON.stringify({
+      name: '新店', cuisine: '本帮菜', price_level: 3, status: 'open',
+    })
+    const app = createApp(fakeLoader(entries), fakeLlm(llmText))
+    const res = await app.request('/api/ai/draft', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ description: '一家本帮菜' }),
+    })
+    expect(res.status).toBe(200)
+    const body = await jsonBody<DraftBody>(res)
+    expect(body.draft.name).toBe('新店')
+  })
+
+  it('description 缺失返回 400', async () => {
+    const app = createApp(fakeLoader(entries), fakeLlm('{}'))
+    const res = await app.request('/api/ai/draft', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({}),
+    })
+    expect(res.status).toBe(400)
+  })
+})
+
+describe('CORS', () => {
+  it('白名单来源返回 Access-Control-Allow-Origin', async () => {
+    const app = createApp(fakeLoader(entries))
+    const res = await app.request('/api/meta', {
+      headers: { origin: 'https://fgh23333.github.io' },
+    })
+    expect(res.headers.get('access-control-allow-origin')).toBe('https://fgh23333.github.io')
+  })
+
+  it('非白名单来源不返回 ACAO', async () => {
+    const app = createApp(fakeLoader(entries))
+    const res = await app.request('/api/meta', {
+      headers: { origin: 'https://evil.example.com' },
+    })
+    // Hono cors 对不匹配 origin 不加该头，get 返回 null
+    expect(res.headers.get('access-control-allow-origin')).toBeNull()
   })
 })
