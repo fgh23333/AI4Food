@@ -6,5 +6,10 @@
   "assets": {
     "directory": "../dist",
     "binding": "ASSETS"
-  }
+  },
+  // 自定义域：*.workers.dev 在中国大陆不可访问，绑定自定义域以供国内访问。
+  // zone 635262140.xyz 与本账号同账号，首次 `wrangler deploy` 时自动创建 DNS 记录与证书。
+  "routes": [
+    { "pattern": "ai4food.635262140.xyz", "custom_domain": true }
+  ]
 }
