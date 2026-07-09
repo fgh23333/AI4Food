@@ -130,6 +130,8 @@ pnpm build       # 产物输出到 frontend/dist/
 
 基于 Hono 的只读查询 API，部署在 Cloudflare Workers，数据来自 `dist/index.json`（静态资产绑定，运行时无 fs 依赖）。
 
+**线上地址**：`https://ai4food.635262140.xyz`（自定义域；`*.workers.dev` 默认域名在中国大陆不可访问，故绑定自定义域）。
+
 **端点**：
 
 | 方法 | 路径 | 说明 |

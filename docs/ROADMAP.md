@@ -20,6 +20,7 @@
 - `GET /api/restaurants/:id` — 单条详情
 - `GET /api/meta` — 元数据（总数/在营/城市/菜系/价位集合）
 - 部署到 Cloudflare Workers，`dist/index.json` 作为静态资产绑定（运行时 fetch，无 fs 依赖）
+- **线上地址**：`https://ai4food.635262140.xyz`（自定义域，`*.workers.dev` 在中国大陆不可访问，故绑定自定义域供国内访问）
 
 查询逻辑（`query.ts`）是纯函数，Node 端与 Worker 端共享；`pnpm run server` 可本地 Node 联调，`pnpm exec wrangler dev` 可本地模拟 Workers 运行时。
 
