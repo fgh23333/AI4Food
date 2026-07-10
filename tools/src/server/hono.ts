@@ -6,6 +6,7 @@ import type { LlmClient } from './ai/llm'
 import { recommend } from './ai/recommend'
 import { draft } from './ai/draft'
 import { enumsFromEntries } from './ai/retrieve'
+import { NOOP_TRACER, type Tracer } from './observability/tracer'
 
 const DEFAULT_LIMIT = 50
 const MAX_LIMIT = 200
@@ -74,7 +75,7 @@ function corsOrigin(origin: string): string {
   return ALLOWED_ORIGINS.has(origin) ? origin : ''
 }
 
-export function createApp(loader: DataLoader, llm?: LlmClient): Hono {
+export function createApp(loader: DataLoader, llm?: LlmClient, tracer: Tracer = NOOP_TRACER): Hono {
   const app = new Hono()
 
   app.use(
@@ -86,6 +87,21 @@ export function createApp(loader: DataLoader, llm?: LlmClient): Hono {
       maxAge: 86400,
     }),
   )
+
+  // trace 中间件：记 http 事件（路由/方法/状态码/耗时/成败）。Tracer 内部已容错。
+  app.use('/api/*', async (c, next) => {
+    const ctx = tracer.begin(`${c.req.method} ${new URL(c.req.url).pathname}`, c.req.method)
+    const start = ctx.start()
+    await next()
+    ctx.event({
+      type: 'http',
+      route: `${c.req.method} ${new URL(c.req.url).pathname}`,
+      method: c.req.method,
+      status: c.res.status,
+      durationMs: ctx.elapsed(start),
+      ok: c.res.status < 400,
+    })
+  })
 
   app.get('/api/restaurants', async (c) => {
     let parsed

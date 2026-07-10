@@ -3,6 +3,21 @@ import { createApp } from '../../src/server/hono'
 import type { DataLoader } from '../../src/server/loader'
 import type { LlmClient, LlmInput, LlmOutput } from '../../src/server/ai/llm'
 import type { IndexEntry } from '../../src/indexer'
+import { NOOP_TRACER, type Tracer, type TraceRecord } from '../../src/server/observability/tracer'
+
+function recordingTracer(): { tracer: Tracer; events: (TraceRecord & { traceId: string })[] } {
+  const events: (TraceRecord & { traceId: string })[] = []
+  const tracer: Tracer = {
+    begin(route: string, method?: string) {
+      const ctx = NOOP_TRACER.begin(route, method)
+      return {
+        ...ctx,
+        event(record) { events.push({ traceId: ctx.traceId, ...record }) },
+      }
+    },
+  }
+  return { tracer, events }
+}
 
 // 内存假 loader，注入固定数据
 function fakeLoader(entries: IndexEntry[]): DataLoader {
@@ -263,5 +278,34 @@ describe('CORS', () => {
     })
     // Hono cors 对不匹配 origin 不加该头，get 返回 null
     expect(res.headers.get('access-control-allow-origin')).toBeNull()
+  })
+})
+
+describe('hono trace（http 事件）', () => {
+  it('GET /api/meta 触发 http 事件，status 200，ok true', async () => {
+    const { tracer, events } = recordingTracer()
+    const app = createApp(fakeLoader(entries), undefined, tracer)
+    const res = await app.request('/api/meta')
+    expect(res.status).toBe(200)
+    const http = events.find((e) => e.type === 'http')
+    expect(http).toBeDefined()
+    expect(http!.status).toBe(200)
+    expect(http!.ok).toBe(true)
+    expect(http!.route).toBe('GET /api/meta')
+  })
+
+  it('非法参数返回 400 且记 ok false', async () => {
+    const { tracer, events } = recordingTracer()
+    const app = createApp(fakeLoader(entries), undefined, tracer)
+    await app.request('/api/restaurants?price=9')
+    const http = events.find((e) => e.type === 'http')!
+    expect(http.status).toBe(400)
+    expect(http.ok).toBe(false)
+  })
+
+  it('不传 tracer 时不报错（默认 NOOP）', async () => {
+    const app = createApp(fakeLoader(entries))
+    const res = await app.request('/api/meta')
+    expect(res.status).toBe(200)
   })
 })
