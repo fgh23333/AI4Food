@@ -262,6 +262,32 @@ describe('POST /api/ai/draft', () => {
   })
 })
 
+describe('AI 推荐 trace 链路', () => {
+  it('成功推荐触发 ai_retrieve/ai_llm/ai_parse/ai_result', async () => {
+    const { tracer, events } = recordingTracer()
+    const llm = fakeLlm(JSON.stringify({ answer: '去A店', picks: [{ id: 'cn-shanghai-a', reason: 'r', score: 0.9 }] }))
+    const app = createApp(fakeLoader(entries), llm, tracer)
+    const res = await app.request('/api/ai/recommend', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ question: '上海本帮菜' }) })
+    expect(res.status).toBe(200)
+    const types = events.map((e) => e.type)
+    expect(types).toContain('ai_retrieve')
+    expect(types).toContain('ai_llm')
+    expect(types).toContain('ai_parse')
+    expect(types).toContain('ai_result')
+    const result = events.find((e) => e.type === 'ai_result')!
+    expect(result.detail).toMatchObject({ picks: 1 })
+  })
+
+  it('LLM 返回乱码时 ai_parse 记 ok false', async () => {
+    const { tracer, events } = recordingTracer()
+    const llm = fakeLlm('这不是JSON')
+    const app = createApp(fakeLoader(entries), llm, tracer)
+    await app.request('/api/ai/recommend', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ question: 'x' }) })
+    const p = events.find((e) => e.type === 'ai_parse')!
+    expect(p.detail).toMatchObject({ ok: false })
+  })
+})
+
 describe('CORS', () => {
   it('白名单来源返回 Access-Control-Allow-Origin', async () => {
     const app = createApp(fakeLoader(entries))

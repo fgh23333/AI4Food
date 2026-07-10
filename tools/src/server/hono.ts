@@ -145,8 +145,9 @@ export function createApp(loader: DataLoader, llm?: LlmClient, tracer: Tracer = 
     }
     const all = await loader.loadAll()
     const enums = enumsFromEntries(all)
+    const ctx = tracer.begin('POST /api/ai/recommend', 'POST')
     try {
-      const result = await recommend(question, all, enums, llm)
+      const result = await recommend(question, all, enums, llm, ctx)
       return c.json(result)
     } catch (e) {
       const msg = e instanceof Error ? e.message : 'AI 推荐失败'
@@ -171,8 +172,9 @@ export function createApp(loader: DataLoader, llm?: LlmClient, tracer: Tracer = 
     }
     const all = await loader.loadAll()
     const enums = enumsFromEntries(all)
+    const ctx = tracer.begin('POST /api/ai/draft', 'POST')
     try {
-      const result = await draft(description, all, enums, llm)
+      const result = await draft(description, all, enums, llm, ctx)
       return c.json(result)
     } catch (e) {
       const msg = e instanceof Error ? e.message : 'AI 草稿生成失败'

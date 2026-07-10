@@ -14,6 +14,7 @@ export interface LlmInput {
 export interface LlmOutput {
   text: string
   model: string
+  usage?: { promptTokens?: number; completionTokens?: number }
 }
 
 // LLM 客户端抽象。测试用 mock 实现，Worker 用 createWorkerLlm。
@@ -29,7 +30,7 @@ export interface AiBinding {
     model: string,
     input: { messages: { role: string; content: string }[] },
     options?: { gateway?: { id: string; skipCache?: boolean; cacheTtl?: number } },
-  ): Promise<{ response?: unknown; result?: { response?: unknown } }>
+  ): Promise<{ response?: unknown; result?: { response?: unknown }; usage?: { prompt_tokens?: number; completion_tokens?: number } }>
 }
 
 // 把 AI binding 返回的 response（string 或对象）归一化为字符串。
@@ -58,7 +59,10 @@ export function createWorkerLlm(ai: AiBinding, gatewayId = GATEWAY_ID): LlmClien
       // response 可能是字符串或对象（见 AiBinding 注释），统一归一化为字符串。
       const raw = resp.response ?? resp.result?.response
       const text = normalizeResponse(raw)
-      return { text, model: MODEL }
+      const usage = resp.usage
+        ? { promptTokens: resp.usage.prompt_tokens, completionTokens: resp.usage.completion_tokens }
+        : undefined
+      return { text, model: MODEL, usage }
     },
   }
 }
