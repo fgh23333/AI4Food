@@ -278,6 +278,22 @@ describe('AI 推荐 trace 链路', () => {
     expect(result.detail).toMatchObject({ picks: 1 })
   })
 
+  it('http 事件与所有 ai_* 事件共享同一 traceId', async () => {
+    const { tracer, events } = recordingTracer()
+    const llm = fakeLlm(JSON.stringify({ answer: '去A店', picks: [{ id: 'cn-shanghai-a', reason: 'r', score: 0.9 }] }))
+    const app = createApp(fakeLoader(entries), llm, tracer)
+    const res = await app.request('/api/ai/recommend', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ question: '上海本帮菜' }) })
+    expect(res.status).toBe(200)
+    const httpEvent = events.find((e) => e.type === 'http')
+    const aiEvents = events.filter((e) => e.type.startsWith('ai_'))
+    expect(httpEvent).toBeDefined()
+    expect(aiEvents.length).toBeGreaterThan(0)
+    const traceId = httpEvent!.traceId
+    for (const e of aiEvents) {
+      expect(e.traceId).toBe(traceId)
+    }
+  })
+
   it('LLM 返回乱码时 ai_parse 记 ok false', async () => {
     const { tracer, events } = recordingTracer()
     const llm = fakeLlm('这不是JSON')

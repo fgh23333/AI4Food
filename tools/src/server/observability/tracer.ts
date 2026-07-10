@@ -38,8 +38,10 @@ export function mapRecordToDataPoint(record: TraceRecord & { traceId: string }):
 } {
   const detailStr = truncate(JSON.stringify(record.detail ?? {}), MAX_DETAIL_BYTES)
   return {
-    indexes: [record.traceId, record.type],
-    blobs: [record.route, record.method ?? '', detailStr],
+    indexes: [record.traceId],
+    // blobs field order: [0]=route, [1]=method, [2]=type, [3]=detail
+    blobs: [record.route, record.method ?? '', record.type, detailStr],
+    // doubles field order: [0]=timestamp, [1]=status, [2]=durationMs, [3]=ok
     doubles: [Date.now(), record.status ?? 0, record.durationMs ?? 0, record.ok ? 1 : 0],
   }
 }

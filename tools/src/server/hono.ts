@@ -6,7 +6,9 @@ import type { LlmClient } from './ai/llm'
 import { recommend } from './ai/recommend'
 import { draft } from './ai/draft'
 import { enumsFromEntries } from './ai/retrieve'
-import { NOOP_TRACER, type Tracer } from './observability/tracer'
+import { NOOP_TRACER, type Tracer, type TraceContext } from './observability/tracer'
+
+type Variables = { traceCtx: TraceContext }
 
 const DEFAULT_LIMIT = 50
 const MAX_LIMIT = 200
@@ -75,8 +77,8 @@ function corsOrigin(origin: string): string {
   return ALLOWED_ORIGINS.has(origin) ? origin : ''
 }
 
-export function createApp(loader: DataLoader, llm?: LlmClient, tracer: Tracer = NOOP_TRACER): Hono {
-  const app = new Hono()
+export function createApp(loader: DataLoader, llm?: LlmClient, tracer: Tracer = NOOP_TRACER): Hono<{ Variables: Variables }> {
+  const app = new Hono<{ Variables: Variables }>()
 
   app.use(
     '/api/*',
@@ -89,8 +91,11 @@ export function createApp(loader: DataLoader, llm?: LlmClient, tracer: Tracer = 
   )
 
   // trace 中间件：记 http 事件（路由/方法/状态码/耗时/成败）。Tracer 内部已容错。
+  // 每个请求只调用一次 tracer.begin()，并将 TraceContext 存入 Hono context variables，
+  // 供下游 AI 路由共享同一 traceId。
   app.use('/api/*', async (c, next) => {
     const ctx = tracer.begin(`${c.req.method} ${new URL(c.req.url).pathname}`, c.req.method)
+    c.set('traceCtx', ctx)
     const start = ctx.start()
     await next()
     ctx.event({
@@ -145,7 +150,8 @@ export function createApp(loader: DataLoader, llm?: LlmClient, tracer: Tracer = 
     }
     const all = await loader.loadAll()
     const enums = enumsFromEntries(all)
-    const ctx = tracer.begin('POST /api/ai/recommend', 'POST')
+    const traceCtx: TraceContext | undefined = c.get('traceCtx')
+    const ctx = traceCtx ?? NOOP_TRACER.begin('POST /api/ai/recommend', 'POST')
     try {
       const result = await recommend(question, all, enums, llm, ctx)
       return c.json(result)
@@ -172,7 +178,8 @@ export function createApp(loader: DataLoader, llm?: LlmClient, tracer: Tracer = 
     }
     const all = await loader.loadAll()
     const enums = enumsFromEntries(all)
-    const ctx = tracer.begin('POST /api/ai/draft', 'POST')
+    const traceCtx: TraceContext | undefined = c.get('traceCtx')
+    const ctx = traceCtx ?? NOOP_TRACER.begin('POST /api/ai/draft', 'POST')
     try {
       const result = await draft(description, all, enums, llm, ctx)
       return c.json(result)

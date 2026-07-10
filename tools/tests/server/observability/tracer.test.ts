@@ -22,10 +22,11 @@ describe('mapRecordToDataPoint', () => {
 
   it('完整字段映射到 indexes/blobs/doubles', () => {
     const dp = mapRecordToDataPoint(base({ method: 'GET', status: 200, durationMs: 12, detail: { x: 1 } }))
-    expect(dp.indexes).toEqual(['abcd1234', 'http'])
+    expect(dp.indexes).toEqual(['abcd1234'])
     expect(dp.blobs[0]).toBe('GET /api/meta')
     expect(dp.blobs[1]).toBe('GET')
-    expect(dp.blobs[2]).toBe('{"x":1}')
+    expect(dp.blobs[2]).toBe('http')
+    expect(dp.blobs[3]).toBe('{"x":1}')
     expect(dp.doubles[1]).toBe(200)
     expect(dp.doubles[2]).toBe(12)
     expect(dp.doubles[3]).toBe(1)
@@ -34,19 +35,20 @@ describe('mapRecordToDataPoint', () => {
   it('缺省 method/status/durationMs 时用空/0 兜底', () => {
     const dp = mapRecordToDataPoint(base({}))
     expect(dp.blobs[1]).toBe('')
+    expect(dp.blobs[2]).toBe('http')
     expect(dp.doubles[1]).toBe(0)
     expect(dp.doubles[2]).toBe(0)
   })
 
-  it('detail 缺失时 blobs[2] 为 "{}"', () => {
+  it('detail 缺失时 blobs[3] 为 "{}"', () => {
     const dp = mapRecordToDataPoint(base({ detail: undefined }))
-    expect(dp.blobs[2]).toBe('{}')
+    expect(dp.blobs[3]).toBe('{}')
   })
 
   it('detail 超大时截断到 15KB', () => {
     const big = { x: '字'.repeat(20000) }
     const dp = mapRecordToDataPoint(base({ detail: big }))
-    expect(dp.blobs[2]!.length).toBeLessThanOrEqual(15360)
+    expect(dp.blobs[3]!.length).toBeLessThanOrEqual(15360)
   })
 })
 
