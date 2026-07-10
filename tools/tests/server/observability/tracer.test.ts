@@ -7,6 +7,7 @@ import {
   createDualTracer,
   NOOP_TRACER,
   type TraceRecord,
+  type Tracer,
   type AnalyticsDataset,
 } from '../../../src/server/observability/tracer'
 
@@ -90,6 +91,52 @@ describe('createDualTracer', () => {
     const dual = createDualTracer([t1, t2])
     expect(() => dual.begin('r').event({ type: 'http', route: 'r', ok: true })).not.toThrow()
     expect((ok.writeDataPoint as ReturnType<typeof vi.fn>)).toHaveBeenCalled()
+    spy.mockRestore()
+  })
+
+  it('一个子 tracer begin() 抛错时，begin() 不抛且幸存子 tracer 仍收到 event()', () => {
+    const spy = vi.spyOn(console, 'log').mockImplementation(() => {})
+    const good: Tracer = {
+      begin: vi.fn((route: string, method?: string) => createConsoleTracer().begin(route, method)),
+    }
+    const bad: Tracer = {
+      begin: vi.fn(() => { throw new Error('begin boom') }),
+    }
+    const dual = createDualTracer([good, bad])
+    const ctx = dual.begin('GET /x', 'GET')
+    expect(() => ctx.event({ type: 'http', route: 'GET /x', ok: true })).not.toThrow()
+    // 幸存子 tracer 的 event 被调用（console.log 有输出）
+    expect(spy).toHaveBeenCalled()
+    spy.mockRestore()
+  })
+
+  it('所有子 tracer begin() 都抛错时，begin() 仍返回可用 ctx 且 event() 不抛', () => {
+    const bad1: Tracer = {
+      begin: vi.fn(() => { throw new Error('boom1') }),
+    }
+    const bad2: Tracer = {
+      begin: vi.fn(() => { throw new Error('boom2') }),
+    }
+    const dual = createDualTracer([bad1, bad2])
+    const ctx = dual.begin('GET /x', 'GET')
+    expect(ctx).toBeDefined()
+    expect(ctx.traceId).toBeTruthy()
+    expect(() => ctx.event({ type: 'http', route: 'GET /x', ok: true })).not.toThrow()
+  })
+})
+
+describe('createAnalyticsTracer begin() 防御', () => {
+  it('fallback begin() 抛错时，begin() 不抛且返回可用 ctx', () => {
+    const spy = vi.spyOn(console, 'log').mockImplementation(() => {})
+    const fallback: Tracer = {
+      begin: vi.fn(() => { throw new Error('fallback begin boom') }),
+    }
+    const dataset: AnalyticsDataset = { writeDataPoint: vi.fn() }
+    const tracer = createAnalyticsTracer(dataset, fallback)
+    const ctx = tracer.begin('GET /x', 'GET')
+    expect(ctx).toBeDefined()
+    expect(ctx.traceId).toBeTruthy()
+    expect(() => ctx.event({ type: 'http', route: 'GET /x', ok: true })).not.toThrow()
     spy.mockRestore()
   })
 })

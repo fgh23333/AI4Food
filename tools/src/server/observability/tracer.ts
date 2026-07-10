@@ -82,7 +82,13 @@ export function createConsoleTracer(): Tracer {
 export function createAnalyticsTracer(dataset: AnalyticsDataset, fallback: Tracer = createConsoleTracer()): Tracer {
   return {
     begin(route: string, method?: string): TraceContext {
-      const ctx = fallback.begin(route, method)
+      let ctx: TraceContext
+      try {
+        ctx = fallback.begin(route, method)
+      } catch {
+        // fallback begin() 抛错时降级到 console tracer，保证 begin() 绝不抛
+        ctx = createConsoleTracer().begin(route, method)
+      }
       return {
         ...ctx,
         event(record) {
@@ -102,11 +108,22 @@ export function createAnalyticsTracer(dataset: AnalyticsDataset, fallback: Trace
 export function createDualTracer(tracers: Tracer[]): Tracer {
   return {
     begin(route: string, method?: string): TraceContext {
-      const ctxs = tracers.map((t) => t.begin(route, method))
-      const traceId = ctxs[0]?.traceId ?? newTraceId()
+      const ctxs: TraceContext[] = []
+      for (const t of tracers) {
+        try {
+          ctxs.push(t.begin(route, method))
+        } catch {
+          // 该子 tracer begin() 抛错，跳过它，不影响其他
+        }
+      }
+      if (ctxs.length === 0) {
+        // 所有子 tracer 都抛错，返回 NOOP 上下文
+        return NOOP_TRACER.begin(route, method)
+      }
+      const traceId = ctxs[0]!.traceId
       return {
         traceId,
-        start: () => ctxs[0]?.start() ?? Date.now(),
+        start: () => ctxs[0]!.start(),
         elapsed: (s: number) => Date.now() - s,
         event(record) {
           for (const ctx of ctxs) {
