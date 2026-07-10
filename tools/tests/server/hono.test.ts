@@ -3,6 +3,21 @@ import { createApp } from '../../src/server/hono'
 import type { DataLoader } from '../../src/server/loader'
 import type { LlmClient, LlmInput, LlmOutput } from '../../src/server/ai/llm'
 import type { IndexEntry } from '../../src/indexer'
+import { NOOP_TRACER, type Tracer, type TraceRecord } from '../../src/server/observability/tracer'
+
+function recordingTracer(): { tracer: Tracer; events: (TraceRecord & { traceId: string })[] } {
+  const events: (TraceRecord & { traceId: string })[] = []
+  const tracer: Tracer = {
+    begin(route: string, method?: string) {
+      const ctx = NOOP_TRACER.begin(route, method)
+      return {
+        ...ctx,
+        event(record) { events.push({ traceId: ctx.traceId, ...record }) },
+      }
+    },
+  }
+  return { tracer, events }
+}
 
 // 内存假 loader，注入固定数据
 function fakeLoader(entries: IndexEntry[]): DataLoader {
@@ -247,6 +262,48 @@ describe('POST /api/ai/draft', () => {
   })
 })
 
+describe('AI 推荐 trace 链路', () => {
+  it('成功推荐触发 ai_retrieve/ai_llm/ai_parse/ai_result', async () => {
+    const { tracer, events } = recordingTracer()
+    const llm = fakeLlm(JSON.stringify({ answer: '去A店', picks: [{ id: 'cn-shanghai-a', reason: 'r', score: 0.9 }] }))
+    const app = createApp(fakeLoader(entries), llm, tracer)
+    const res = await app.request('/api/ai/recommend', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ question: '上海本帮菜' }) })
+    expect(res.status).toBe(200)
+    const types = events.map((e) => e.type)
+    expect(types).toContain('ai_retrieve')
+    expect(types).toContain('ai_llm')
+    expect(types).toContain('ai_parse')
+    expect(types).toContain('ai_result')
+    const result = events.find((e) => e.type === 'ai_result')!
+    expect(result.detail).toMatchObject({ picks: 1 })
+  })
+
+  it('http 事件与所有 ai_* 事件共享同一 traceId', async () => {
+    const { tracer, events } = recordingTracer()
+    const llm = fakeLlm(JSON.stringify({ answer: '去A店', picks: [{ id: 'cn-shanghai-a', reason: 'r', score: 0.9 }] }))
+    const app = createApp(fakeLoader(entries), llm, tracer)
+    const res = await app.request('/api/ai/recommend', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ question: '上海本帮菜' }) })
+    expect(res.status).toBe(200)
+    const httpEvent = events.find((e) => e.type === 'http')
+    const aiEvents = events.filter((e) => e.type.startsWith('ai_'))
+    expect(httpEvent).toBeDefined()
+    expect(aiEvents.length).toBeGreaterThan(0)
+    const traceId = httpEvent!.traceId
+    for (const e of aiEvents) {
+      expect(e.traceId).toBe(traceId)
+    }
+  })
+
+  it('LLM 返回乱码时 ai_parse 记 ok false', async () => {
+    const { tracer, events } = recordingTracer()
+    const llm = fakeLlm('这不是JSON')
+    const app = createApp(fakeLoader(entries), llm, tracer)
+    await app.request('/api/ai/recommend', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ question: 'x' }) })
+    const p = events.find((e) => e.type === 'ai_parse')!
+    expect(p.detail).toMatchObject({ ok: false })
+  })
+})
+
 describe('CORS', () => {
   it('白名单来源返回 Access-Control-Allow-Origin', async () => {
     const app = createApp(fakeLoader(entries))
@@ -263,5 +320,34 @@ describe('CORS', () => {
     })
     // Hono cors 对不匹配 origin 不加该头，get 返回 null
     expect(res.headers.get('access-control-allow-origin')).toBeNull()
+  })
+})
+
+describe('hono trace（http 事件）', () => {
+  it('GET /api/meta 触发 http 事件，status 200，ok true', async () => {
+    const { tracer, events } = recordingTracer()
+    const app = createApp(fakeLoader(entries), undefined, tracer)
+    const res = await app.request('/api/meta')
+    expect(res.status).toBe(200)
+    const http = events.find((e) => e.type === 'http')
+    expect(http).toBeDefined()
+    expect(http!.status).toBe(200)
+    expect(http!.ok).toBe(true)
+    expect(http!.route).toBe('GET /api/meta')
+  })
+
+  it('非法参数返回 400 且记 ok false', async () => {
+    const { tracer, events } = recordingTracer()
+    const app = createApp(fakeLoader(entries), undefined, tracer)
+    await app.request('/api/restaurants?price=9')
+    const http = events.find((e) => e.type === 'http')!
+    expect(http.status).toBe(400)
+    expect(http.ok).toBe(false)
+  })
+
+  it('不传 tracer 时不报错（默认 NOOP）', async () => {
+    const app = createApp(fakeLoader(entries))
+    const res = await app.request('/api/meta')
+    expect(res.status).toBe(200)
   })
 })

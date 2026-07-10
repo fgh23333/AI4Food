@@ -77,3 +77,16 @@ describe('createWorkerLlm', () => {
     expect(parseJsonResponse(out.text)).toEqual({ ok: true })
   })
 })
+
+describe('createWorkerLlm trace', () => {
+  it('ai.run 返回 usage 时 LlmOutput 携带 promptTokens', async () => {
+    const ai: AiBinding = { async run() { return { response: '{"a":1}', usage: { prompt_tokens: 42 } } as never } }
+    const out = await createWorkerLlm(ai).run({ system: 's', user: 'u' })
+    expect(out.usage?.promptTokens).toBe(42)
+  })
+  it('无 usage 时 usage 为 undefined', async () => {
+    const ai: AiBinding = { async run() { return { response: '{}' } } }
+    const out = await createWorkerLlm(ai).run({ system: 's', user: 'u' })
+    expect(out.usage).toBeUndefined()
+  })
+})

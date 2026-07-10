@@ -1,7 +1,8 @@
 import type { IndexEntry, RestaurantEnums, RecommendResponse, RecommendPick } from '../../types'
 import { retrieve } from './retrieve'
 import { buildRecommendPrompt } from './prompt'
-import { parseJsonResponse, type LlmClient } from './llm'
+import { parseJsonResponse, type LlmClient, GATEWAY_ID } from './llm'
+import type { TraceContext } from '../observability/tracer'
 
 // LLM 单次返回的原始结构（picks 的 id 可能不存在于候选集，需校验）
 interface LlmRecommendResult {
@@ -19,18 +20,28 @@ export async function recommend(
   entries: IndexEntry[],
   enums: RestaurantEnums,
   llm: LlmClient,
+  ctx?: TraceContext,
 ): Promise<RecommendResponse> {
   // 1. 规则检索候选集
   const { candidates } = retrieve(question, entries, enums)
+  ctx?.event({ type: 'ai_retrieve', route: 'recommend', ok: true, detail: { candidates: candidates.length, questionChars: question.length } })
 
   // 2. 构建提示词
   const { system, user } = buildRecommendPrompt(question, candidates)
 
   // 3. 调 LLM
-  const { text, model } = await llm.run({ system, user })
+  const { text, model, usage } = await llm.run({ system, user })
+  ctx?.event({ type: 'ai_llm', route: 'recommend', ok: true, detail: { model, promptChars: system.length + user.length, gateway: GATEWAY_ID, promptTokens: usage?.promptTokens } })
 
   // 4. 解析 JSON
-  const parsed = parseJsonResponse(text) as LlmRecommendResult
+  let parsed: LlmRecommendResult
+  try {
+    parsed = parseJsonResponse(text) as LlmRecommendResult
+    ctx?.event({ type: 'ai_parse', route: 'recommend', ok: true, detail: { rawChars: text.length, ok: true } })
+  } catch (e) {
+    ctx?.event({ type: 'ai_parse', route: 'recommend', ok: false, detail: { rawChars: text.length, ok: false, error: e instanceof Error ? e.message : 'parse fail' } })
+    throw e
+  }
 
   // 5. 提取 answer
   const answer = typeof parsed.answer === 'string' ? parsed.answer : '推荐生成失败'
@@ -49,6 +60,8 @@ export async function recommend(
     const entry = idToEntry.get(id)
     picks.push({ id, name: entry?.name, reason, score })
   }
+  const dropped = rawPicks.length - picks.length
+  ctx?.event({ type: 'ai_result', route: 'recommend', ok: true, detail: { picks: picks.length, dropped } })
 
   return {
     answer,

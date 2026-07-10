@@ -1,6 +1,7 @@
 import type { IndexEntry, RestaurantEnums, RestaurantDraft, DraftResponse } from '../../types'
 import { buildDraftPrompt } from './prompt'
-import { parseJsonResponse, type LlmClient } from './llm'
+import { parseJsonResponse, type LlmClient, GATEWAY_ID } from './llm'
+import type { TraceContext } from '../observability/tracer'
 
 // 枚举越界时的默认值
 const DEFAULT_CUISINE = '其他'
@@ -18,6 +19,7 @@ export async function draft(
   entries: IndexEntry[],
   enums: RestaurantEnums,
   llm: LlmClient,
+  ctx?: TraceContext,
 ): Promise<DraftResponse> {
   const warnings: string[] = []
 
@@ -25,12 +27,20 @@ export async function draft(
   const { system, user } = buildDraftPrompt(description, enums)
 
   // 2. 调 LLM
-  const { text, model } = await llm.run({ system, user })
+  const { text, model, usage } = await llm.run({ system, user })
+  ctx?.event({ type: 'ai_llm', route: 'draft', ok: true, detail: { model, promptChars: system.length + user.length, gateway: GATEWAY_ID, promptTokens: usage?.promptTokens } })
 
   // 3. 解析 JSON
-  const parsed = parseJsonResponse(text)
-  if (!isObj(parsed)) {
-    throw new Error('LLM 草稿响应不是 JSON 对象')
+  let parsed: unknown
+  try {
+    parsed = parseJsonResponse(text)
+    if (!isObj(parsed)) {
+      throw new Error('LLM 草稿响应不是 JSON 对象')
+    }
+    ctx?.event({ type: 'ai_parse', route: 'draft', ok: true, detail: { rawChars: text.length, ok: true } })
+  } catch (e) {
+    ctx?.event({ type: 'ai_parse', route: 'draft', ok: false, detail: { rawChars: text.length, ok: false, error: e instanceof Error ? e.message : 'parse fail' } })
+    throw e
   }
 
   // 4. 枚举校验
@@ -98,6 +108,8 @@ export async function draft(
 
   // entries 参数当前用于未来 id 唯一性检查预留（本期草稿不生成 id，由人工落盘时定）
   void entries
+
+  ctx?.event({ type: 'ai_result', route: 'draft', ok: true, detail: { warnings: warnings.length, fields: Object.keys(optionalFields).length } })
 
   return { draft: optionalFields, warnings, model }
 }
