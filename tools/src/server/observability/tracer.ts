@@ -50,7 +50,7 @@ function truncate(s: string, maxBytes: number): string {
   // 保证截断多字节字符中间时不抛、产出替换字符。
   const bytes = new TextEncoder().encode(s)
   if (bytes.length <= maxBytes) return s
-  return new TextDecoder('utf8', { fatal: false, ignoreBOM: false }).decode(bytes.subarray(0, maxBytes))
+  return new TextDecoder('utf8', { fatal: false }).decode(bytes.subarray(0, maxBytes))
 }
 
 function newTraceId(): string {

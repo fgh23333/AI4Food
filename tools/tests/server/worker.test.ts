@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { buildTracer } from '../../src/server/worker'
+import { buildTracer } from '../../src/server/tracer-builder'
 
 describe('buildTracer', () => {
   it('无 ANALYTICS binding 时返回 console tracer（非 dual），调一次不抛', () => {
