@@ -12,6 +12,11 @@
   "ai": {
     "binding": "AI"
   },
+  // Analytics Engine 绑定：生产环境 trace 双通道之 B 通道（console 为 A 通道）。
+  // 用于收集结构化 trace 数据，dataset 名称 "ai4food-trace"。
+  "analytics_engine_datasets": [
+    { "binding": "ANALYTICS", "dataset": "ai4food-trace" }
+  ],
   // 自定义域：*.workers.dev 在中国大陆不可访问，绑定自定义域以供国内访问。
   // zone 635262140.xyz 与本账号同账号，首次 `wrangler deploy` 时自动创建 DNS 记录与证书。
   "routes": [

@@ -11,6 +11,7 @@
     "src/server/query.ts",
     "src/server/loader.ts",
     "src/server/ai/**/*.ts",
+    "src/server/observability/tracer.ts",
     "worker-configuration.d.ts"
   ]
 }
