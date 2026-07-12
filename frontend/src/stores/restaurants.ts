@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import type { RestaurantEntry, DisplayItem } from '@/types/restaurant'
 import { filterRestaurants } from '@/composables/useFilter'
 import { toDisplayItems, brandKey, branchClosed } from '@/composables/useChains'
+import { fetchRestaurants } from '@/lib/api'
 
 export const useRestaurantsStore = defineStore('restaurants', () => {
   const all = ref<RestaurantEntry[]>([])
@@ -43,16 +44,21 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
 
   async function load(): Promise<void> {
     try {
-      const res = await fetch(`${import.meta.env.BASE_URL}dist/index.json`)
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
-      const data = (await res.json()) as RestaurantEntry[]
+      const data = await fetchRestaurants()
       all.value = Array.isArray(data) ? data : []
+      error.value = null
       loaded.value = true
     } catch (e) {
       error.value = e instanceof Error ? e.message : String(e)
-      loaded.value = true
+      loaded.value = true // 标记已尝试，触发错误边界
     }
   }
 
-  return { all, loaded, error, query, cuisine, price, onlyOpen, mergeChains, load, filtered, visible, stats, cuisineOptions }
+  async function retry(): Promise<void> {
+    error.value = null
+    loaded.value = false
+    await load()
+  }
+
+  return { all, loaded, error, query, cuisine, price, onlyOpen, mergeChains, load, retry, filtered, visible, stats, cuisineOptions }
 })
