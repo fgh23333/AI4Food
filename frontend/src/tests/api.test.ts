@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { askRecommend, generateDraft, ApiError } from '@/lib/api'
+import { askRecommend, generateDraft, fetchRestaurants, fetchMeta, fetchRestaurantById, ApiError } from '@/lib/api'
 
 // 模拟 fetch，验证 API 客户端正确拼装请求与解析响应
 function mockFetch(response: Response | Error): void {
@@ -72,5 +72,44 @@ describe('generateDraft', () => {
   it('400 抛 ApiError', async () => {
     mockFetch(jsonRes({ error: 'bad request' }, 400))
     await expect(generateDraft('')).rejects.toMatchObject({ name: 'ApiError', status: 400 })
+  })
+})
+
+describe('fetchRestaurants', () => {
+  it('成功返回 data 数组', async () => {
+    mockFetch(jsonRes({ data: [{ id: 'x', name: 'A', city: '上海', country: 'cn', cuisine: '本帮菜', price_level: 2, status: 'open', path: 'p' }], pagination: { total: 1, limit: 2000, offset: 0, returned: 1 } }))
+    const r = await fetchRestaurants()
+    expect(r).toHaveLength(1)
+    expect(r[0]?.id).toBe('x')
+    const url = String(vi.mocked(fetch).mock.calls[0]![0])
+    expect(url).toMatch(/\/api\/restaurants/)
+    const body = vi.mocked(fetch).mock.calls[0]![1] as RequestInit | undefined
+    expect(body?.method ?? 'GET').toBe('GET')
+  })
+  it('500 抛 ApiError', async () => {
+    mockFetch(jsonRes({ error: 'boom' }, 500))
+    await expect(fetchRestaurants()).rejects.toMatchObject({ name: 'ApiError', status: 500 })
+  })
+})
+
+describe('fetchMeta', () => {
+  it('返回 Meta', async () => {
+    mockFetch(jsonRes({ total: 5, open: 4, cities: ['上海'], cuisines: ['本帮菜'], price_levels: [1, 2] }))
+    const m = await fetchMeta()
+    expect(m.total).toBe(5)
+    expect(m.cuisines).toContain('本帮菜')
+  })
+})
+
+describe('fetchRestaurantById', () => {
+  it('200 返回 entry', async () => {
+    mockFetch(jsonRes({ id: 'x', name: 'A', city: '上海', country: 'cn', cuisine: '本帮菜', price_level: 2, status: 'open', path: 'p' }))
+    const r = await fetchRestaurantById('x')
+    expect(r?.id).toBe('x')
+  })
+  it('404 返回 null', async () => {
+    mockFetch(jsonRes({ error: 'not found' }, 404))
+    const r = await fetchRestaurantById('missing')
+    expect(r).toBeNull()
   })
 })
