@@ -323,6 +323,20 @@ describe('CORS', () => {
   })
 })
 
+describe('MAX_LIMIT 抬高（前端全量拉取）', () => {
+  it('limit=2000 时返回全部记录，不被截断', async () => {
+    const template = entries[0]!
+    const big: IndexEntry[] = Array.from({ length: 250 }, (_, i) => ({
+      ...template, id: `cn-shanghai-n${i}`, name: `店${i}`, path: `p${i}`,
+    }))
+    const app = createApp(fakeLoader(big))
+    const res = await app.request('/api/restaurants?limit=2000')
+    const body = await jsonBody<{ data: unknown[]; pagination: { returned: number } }>(res)
+    expect(res.status).toBe(200)
+    expect(body.data).toHaveLength(250) // 250 < 5000，全量返回
+  })
+})
+
 describe('hono trace（http 事件）', () => {
   it('GET /api/meta 触发 http 事件，status 200，ok true', async () => {
     const { tracer, events } = recordingTracer()
