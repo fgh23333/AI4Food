@@ -11,7 +11,8 @@ import { NOOP_TRACER, type Tracer, type TraceContext } from './observability/tra
 type Variables = { traceCtx: TraceContext }
 
 const DEFAULT_LIMIT = 50
-const MAX_LIMIT = 200
+// 前端列表页全量拉取（一次性取回，前端本地筛选）。抬高上限避免数据集增长后被截断。
+const MAX_LIMIT = 5000
 const VALID_SORTS: ReadonlySet<SortKey> = new Set(['name', 'rating', 'updated'])
 const MAX_AI_INPUT = 500 // question/description 最大字数
 
