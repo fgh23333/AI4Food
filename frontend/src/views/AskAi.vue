@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { askRecommend, generateDraft, ApiError } from '@/lib/api'
+import { dedupeChainPicks } from '@/lib/recommend'
 import DraftEditor from '@/components/DraftEditor.vue'
 import type { RecommendResponse, DraftResponse } from '@/types/ai'
 
@@ -11,6 +12,7 @@ const tab = ref<Tab>('recommend')
 // 智能推荐状态
 const question = ref('')
 const recommendResult = ref<RecommendResponse | null>(null)
+const dedupedPicks = computed(() => recommendResult.value ? dedupeChainPicks(recommendResult.value.picks) : [])
 const recommendLoading = ref(false)
 const recommendError = ref<string | null>(null)
 let recommendAbort: AbortController | null = null
@@ -111,8 +113,8 @@ function goDetail(id: string): void {
       <div v-else-if="recommendError" class="state error">⚠️ {{ recommendError }}</div>
       <div v-else-if="recommendResult" class="result">
         <p class="answer">{{ recommendResult.answer }}</p>
-        <div v-if="recommendResult.picks.length" class="picks">
-          <article v-for="pick in recommendResult.picks" :key="pick.id" class="pick" @click="goDetail(pick.id)">
+        <div v-if="dedupedPicks.length" class="picks">
+          <article v-for="pick in dedupedPicks" :key="pick.id" class="pick" @click="goDetail(pick.id)">
             <div class="pick-head">
               <span class="pick-name">{{ pick.name ?? pick.id }}</span>
               <span class="pick-score">{{ (pick.score * 100).toFixed(0) }}% 匹配</span>
