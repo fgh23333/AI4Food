@@ -1,16 +1,55 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { RouterLink } from 'vue-router'
+import { onMounted, watch } from 'vue'
+import { RouterLink, useRoute, useRouter } from 'vue-router'
 import { useRestaurantsStore } from '@/stores/restaurants'
+import { encodeFilters, decodeFilters } from '@/composables/useUrlSync'
 import FilterBar from '@/components/FilterBar.vue'
 import RestaurantCard from '@/components/RestaurantCard.vue'
 import ChainCard from '@/components/ChainCard.vue'
 import StatBar from '@/components/StatBar.vue'
+import ErrorBoundary from '@/components/ErrorBoundary.vue'
+import SkeletonCard from '@/components/SkeletonCard.vue'
+import EmptyState from '@/components/EmptyState.vue'
 
 const store = useRestaurantsStore()
-onMounted(() => { if (!store.loaded) store.load() })
+const route = useRoute()
+const router = useRouter()
+
+onMounted(() => {
+  const params = new URLSearchParams()
+  for (const [key, value] of Object.entries(route.query)) {
+    if (typeof value === 'string') params.set(key, value)
+    else if (Array.isArray(value)) value.forEach((v) => { if (typeof v === 'string') params.append(key, v) })
+  }
+  const fromUrl = decodeFilters(params)
+  // UrlFilters 字段名与 store 字段名不同（q↔query、open↔onlyOpen、merge↔mergeChains），
+  // 必须显式映射，不能整对象赋值（否则 q/open/merge 三个键对不上 store，URL 回填静默失效）。
+  store.setFilters({
+    ...(fromUrl.q !== undefined && { query: fromUrl.q }),
+    ...(fromUrl.cuisine !== undefined && { cuisine: fromUrl.cuisine }),
+    ...(fromUrl.price !== undefined && { price: fromUrl.price }),
+    ...(fromUrl.open !== undefined && { onlyOpen: fromUrl.open }),
+    ...(fromUrl.merge !== undefined && { mergeChains: fromUrl.merge }),
+  })
+  if (!store.loaded) store.load()
+})
+
+watch(
+  () => [store.query, store.cuisine, store.price, store.onlyOpen, store.mergeChains] as const,
+  () => {
+    const encoded = encodeFilters({ q: store.query, cuisine: store.cuisine, price: store.price, open: store.onlyOpen, merge: store.mergeChains })
+    router.replace({ query: Object.fromEntries(encoded) })
+  },
+)
+
 function hue(name: string): number {
   let h = 0; for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 360; return h
+}
+
+function resetFilters() {
+  store.query = ''
+  store.cuisine = ''
+  store.price = 0
 }
 </script>
 
@@ -24,9 +63,11 @@ function hue(name: string): number {
   </header>
   <main class="wrap toolbar"><FilterBar v-model:query="store.query" v-model:cuisine="store.cuisine" v-model:price="store.price" v-model:onlyOpen="store.onlyOpen" v-model:mergeChains="store.mergeChains" :cuisine-options="store.cuisineOptions" :result-count="`显示 ${store.filtered.length} / ${store.all.length} 家`" /></main>
   <main class="wrap">
-    <div v-if="store.error" class="state">⚠️ 数据加载失败：{{ store.error }}</div>
-    <div v-else-if="!store.loaded" class="state">加载中…</div>
-    <div v-else-if="!store.visible.length" class="state">没有匹配的餐厅，试试调整筛选。</div>
+    <ErrorBoundary v-if="store.error" :message="`数据加载失败：${store.error}`" @retry="store.retry" />
+    <div v-else-if="!store.loaded" class="grid">
+      <SkeletonCard v-for="n in 8" :key="n" />
+    </div>
+    <EmptyState v-else-if="!store.visible.length" @reset="resetFilters" />
     <div v-else class="grid">
       <template v-for="(item, i) in store.visible" :key="i">
         <RestaurantCard v-if="item.type === 'single'" :entry="item.entry" :hue="hue(item.entry.cuisine)" />
