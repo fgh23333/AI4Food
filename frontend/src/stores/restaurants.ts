@@ -60,5 +60,13 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     await load()
   }
 
-  return { all, loaded, error, query, cuisine, price, onlyOpen, mergeChains, load, retry, filtered, visible, stats, cuisineOptions }
+  function setFilters(partial: Partial<{ query: string; cuisine: string; price: number; onlyOpen: boolean; mergeChains: boolean }>): void {
+    if (partial.query !== undefined) query.value = partial.query
+    if (partial.cuisine !== undefined) cuisine.value = partial.cuisine
+    if (partial.price !== undefined) price.value = partial.price
+    if (partial.onlyOpen !== undefined) onlyOpen.value = partial.onlyOpen
+    if (partial.mergeChains !== undefined) mergeChains.value = partial.mergeChains
+  }
+
+  return { all, loaded, error, query, cuisine, price, onlyOpen, mergeChains, load, retry, setFilters, filtered, visible, stats, cuisineOptions }
 })
