@@ -4,6 +4,7 @@ import { useRestaurantsStore } from '@/stores/restaurants'
 import RatingStars from '@/components/RatingStars.vue'
 import PriceLevel from '@/components/PriceLevel.vue'
 import StatusBadge from '@/components/StatusBadge.vue'
+import MarkClosedButton from '@/components/MarkClosedButton.vue'
 import { renderMarkdown } from '@/lib/markdown'
 import { statusLabel } from '@/lib/status'
 import { REPO } from '@/lib/repo'
@@ -52,6 +53,9 @@ const dayLabel: Record<string, string> = { mon: '周一', tue: '周二', wed: '�
       <p v-if="entry.notes" class="notes">{{ entry.notes }}</p>
       <p class="updated">更新于 {{ entry.updated_at ?? '—' }}</p>
       <a :href="`${REPO}/blob/main/${entry.path}`" target="_blank" rel="noopener" class="src">查看源文件 →</a>
+      <div class="mark-closed">
+        <MarkClosedButton :entry="entry" />
+      </div>
     </article>
   </main>
 </template>
@@ -74,5 +78,6 @@ ul { margin: 0; padding-left: 20px; }
 .notes { margin-top: 20px; padding: 12px 14px; background: var(--bg); border-radius: 10px; font-size: 13px; color: var(--ink-soft); }
 .updated { font-size: 11px; color: var(--ink-mute); }
 .src { display: inline-block; margin-top: 16px; color: var(--brand); text-decoration: none; font-weight: 600; }
+.mark-closed { margin-top: 16px; }
 .state { text-align: center; padding: 60px 20px; color: var(--ink-mute); }
 </style>
