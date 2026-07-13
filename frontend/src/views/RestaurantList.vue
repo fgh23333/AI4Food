@@ -7,6 +7,9 @@ import FilterBar from '@/components/FilterBar.vue'
 import RestaurantCard from '@/components/RestaurantCard.vue'
 import ChainCard from '@/components/ChainCard.vue'
 import StatBar from '@/components/StatBar.vue'
+import ErrorBoundary from '@/components/ErrorBoundary.vue'
+import SkeletonCard from '@/components/SkeletonCard.vue'
+import EmptyState from '@/components/EmptyState.vue'
 
 const store = useRestaurantsStore()
 const route = useRoute()
@@ -42,6 +45,12 @@ watch(
 function hue(name: string): number {
   let h = 0; for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 360; return h
 }
+
+function resetFilters() {
+  store.query = ''
+  store.cuisine = ''
+  store.price = 0
+}
 </script>
 
 <template>
@@ -54,9 +63,11 @@ function hue(name: string): number {
   </header>
   <main class="wrap toolbar"><FilterBar v-model:query="store.query" v-model:cuisine="store.cuisine" v-model:price="store.price" v-model:onlyOpen="store.onlyOpen" v-model:mergeChains="store.mergeChains" :cuisine-options="store.cuisineOptions" :result-count="`显示 ${store.filtered.length} / ${store.all.length} 家`" /></main>
   <main class="wrap">
-    <div v-if="store.error" class="state">⚠️ 数据加载失败：{{ store.error }}</div>
-    <div v-else-if="!store.loaded" class="state">加载中…</div>
-    <div v-else-if="!store.visible.length" class="state">没有匹配的餐厅，试试调整筛选。</div>
+    <ErrorBoundary v-if="store.error" :message="`数据加载失败：${store.error}`" @retry="store.retry" />
+    <div v-else-if="!store.loaded" class="grid">
+      <SkeletonCard v-for="n in 8" :key="n" />
+    </div>
+    <EmptyState v-else-if="!store.visible.length" @reset="resetFilters" />
     <div v-else class="grid">
       <template v-for="(item, i) in store.visible" :key="i">
         <RestaurantCard v-if="item.type === 'single'" :entry="item.entry" :hue="hue(item.entry.cuisine)" />
