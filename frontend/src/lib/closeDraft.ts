@@ -49,13 +49,16 @@ export function buildClosedMarkdown(entry: RestaurantEntry, reason?: string): st
   }
   if (notes) lines.push(`notes: "${escapeYaml(notes)}"`)
 
-  if (entry.description) lines.push(`description: "${escapeYaml(entry.description)}"`)
   if (entry.updated_at) lines.push(`updated_at: "${escapeYaml(entry.updated_at)}"`)
 
   lines.push('---')
   lines.push('')
   lines.push(`# ${entry.name}（已关闭）`)
   lines.push('')
+  if (entry.description) {
+    lines.push(entry.description)
+    lines.push('')
+  }
 
   return lines.join('\n')
 }

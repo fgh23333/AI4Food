@@ -22,6 +22,12 @@ describe('buildClosedMarkdown', () => {
     const md = buildClosedMarkdown(entry(), '用户反馈已关')
     expect(md).toContain('用户反馈已关')
   })
+  it('description 不写入 frontmatter，作为正文保留（schema additionalProperties:false）', () => {
+    const md = buildClosedMarkdown(entry({ description: '这是探店正文。' }))
+    const fm = md.slice(0, md.indexOf('\n---', 4))
+    expect(fm).not.toContain('description:')
+    expect(md).toContain('这是探店正文。')
+  })
 })
 
 describe('buildGithubEditUrl', () => {
