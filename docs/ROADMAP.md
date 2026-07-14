@@ -1,6 +1,6 @@
 # 路线图
 
-记录后续规划方向。一期（数据仓库）、二期（后端只读 API）、三期（前端 SPA）、四期（AI 能力）均已落地，其余各期单独设计，前期成果为它们预留了接入点，不会推翻重来。
+记录后续规划方向。一期（数据仓库）、二期（后端只读 API）、三期（前端 SPA）、四期（AI 能力）、五期（可观测性与体验打磨）均已落地，其余各期单独设计，前期成果为它们预留了接入点，不会推翻重来。
 
 ---
 
@@ -53,6 +53,18 @@ Vue 3 单页应用（SPA），直读已生成的 `dist/index.json`，部署在 G
 - CORS 白名单 `fgh23333.github.io` + localhost
 
 数据层和校验层无需改动，AI 不直接写数据，草稿需人工按贡献规范提交。设计依据见 [`docs/superpowers/specs/2026-07-09-ai-design.md`](superpowers/specs/2026-07-09-ai-design.md)。
+
+## 📈 五期：可观测性与体验打磨（✅ 已实现）
+
+在不改数据层与 API 契约的前提下，补齐生产可观测性、前端体验与贡献闭环：
+
+- **全链路 trace**：`Tracer` 抽象 + `NOOP_TRACER` 兜底，单请求单 `traceId` 经 Hono 上下文变量贯穿；`http`/`ai_retrieve`/`ai_llm`/`ai_parse`/`ai_result` 事件双通道落盘--console.log（`wrangler tail` 可观测）+ Analytics Engine `ai4food-trace` dataset（`traceId` 单索引，blob/double 字段装路由/方法/状态/耗时）。trace 不记 prompt/问题全文，detail JSON 按字节截断至 15KB 留余量。
+- **前端数据源切换**：列表页改走 `/api/restaurants`（带重试），`deploy-web.yml` 不再打包 `dist/index.json`；`MAX_LIMIT` 抬至 5000 兜底全量拉取。
+- **URL 同步与三态渲染**：筛选条件（`q`/`cuisine`/`price`/`open`/`merge`）双向同步到 URL；列表页错误边界 + 骨架屏 + 空状态三态。
+- **推荐连锁去重**：AI 推荐结果按店名去重，同名取相关度最高，纯函数 `dedupeChainPicks` + `AskAi.vue` 响应式接入。
+- **标记已关闭**：详情页「标记已关闭」按钮生成 `status: closed` 草稿（保留全部字段、追加 `已关店` 标签、可选关店原因写入 notes、正文保留），跳转 GitHub edit 端点预填，引导贡献者提 PR 改状态而非删店。
+
+设计依据见 [`docs/superpowers/specs/2026-07-10-frontend-phase5-design.md`](superpowers/specs/2026-07-10-frontend-phase5-design.md)，执行计划见 [`docs/superpowers/plans/2026-07-10-frontend-phase5.md`](superpowers/plans/2026-07-10-frontend-phase5.md)。
 
 ---
 
