@@ -66,7 +66,7 @@ export function draftToMarkdown(d: RestaurantDraft): string {
 }
 
 // YAML 字符串转义：双引号、反斜杠、换行。
-function escapeYaml(s: string): string {
+export function escapeYaml(s: string): string {
   return s.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, ' ')
 }
 
