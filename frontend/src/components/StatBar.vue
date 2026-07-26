@@ -16,4 +16,9 @@ defineProps<{ total: number; open: number; cuisines: number; chains: number; cha
 .stat { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.18); border-radius: 14px; padding: 12px 18px; min-width: 104px; }
 .stat b { font-size: 24px; font-weight: 800; display: block; line-height: 1.1; }
 .stat span { font-size: 12px; opacity: .9; }
+/* 移动端：统计转 2×2 栅格（桌面 base 的 flex-wrap 不动） */
+@media (max-width: 768px) {
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); }
+  .stat { min-width: 0; }
+}
 </style>

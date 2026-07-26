@@ -50,4 +50,13 @@ const bar = `hsl(${props.hue} 68% 50%)`
 .note { font-size: 11px; color: var(--ink-mute); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 60%; }
 .src { font-size: 12px; color: var(--brand); text-decoration: none; font-weight: 600; }
 .src:hover { text-decoration: underline; }
+/* 溢出兜底：grid/flex 子项允许收缩到 min-content 以下，防长文本撑爆轨道（桌面渲染不变） */
+.card { min-width: 0; }
+.note { min-width: 0; }
+/* 移动端：head 允许换行、字号/留白温和收缩（桌面 base 不动） */
+@media (max-width: 768px) {
+  .head { flex-wrap: wrap; }
+  .name { font-size: 16px; }
+  .card { padding: 16px; gap: 10px; }
+}
 </style>

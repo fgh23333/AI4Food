@@ -30,4 +30,10 @@ defineProps<{ branches: RestaurantEntry[]; open: boolean }>()
 .badge.closed { color: #8a7a6a; background: #ece4d8; }
 .rate { font-size: 12.5px; font-weight: 700; color: var(--accent); }
 .go { color: var(--ink-mute); }
+/* 溢出兜底：让 .label 的 ellipsis 真正生效，防长分店名撑爆行（桌面渲染不变） */
+.label { min-width: 0; }
+/* 移动端：行内边距温和收紧（桌面 base 不动） */
+@media (max-width: 768px) {
+  .row { padding: 8px 6px; gap: 8px; }
+}
 </style>

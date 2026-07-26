@@ -29,4 +29,10 @@ select { appearance: none; background: var(--bg); color: var(--ink); border: 1px
 .toggle { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-soft); cursor: pointer; padding: 9px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); }
 .toggle input { width: 16px; height: 16px; accent-color: var(--brand); margin: 0; }
 .count { font-size: 12.5px; color: var(--ink-mute); margin-left: auto; }
+/* 移动端：工具条转纵向堆叠、子项全宽（桌面 base 的 flex-wrap 不动） */
+@media (max-width: 768px) {
+  .bar { flex-direction: column; align-items: stretch; gap: 8px; }
+  .bar > * { width: 100%; }
+  .count { margin-left: 0; }
+}
 </style>

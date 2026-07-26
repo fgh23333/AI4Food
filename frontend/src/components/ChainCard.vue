@@ -73,4 +73,14 @@ summary { list-style: none; cursor: pointer; padding: 9px 4px; font-size: 13px; 
 summary::-webkit-details-marker { display: none; }
 .chev { transition: transform .18s; }
 details[open] .chev { transform: rotate(180deg); }
+/* 溢出兜底：grid 子项允许收缩，防长文本撑爆（桌面渲染不变） */
+.card { min-width: 0; }
+/* 移动端：head/brand-left 允许换行、字号温和收缩（桌面 base 不动） */
+@media (max-width: 768px) {
+  .head { flex-wrap: wrap; }
+  .brand-left { flex-wrap: wrap; gap: 10px; }
+  .name { font-size: 16px; }
+  .card { padding: 16px; gap: 10px; }
+  .monogram { width: 40px; height: 40px; font-size: 19px; }
+}
 </style>
