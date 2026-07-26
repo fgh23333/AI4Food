@@ -193,9 +193,21 @@ curl -X POST https://ai4food.635262140.xyz/api/ai/draft \
 
 ---
 
+## 📈 可观测性
+
+五期为 API 与 AI 路由接入全链路 trace（不影响 API 契约与数据层）：
+
+- 单请求单 `traceId`，经 Hono 上下文变量贯穿 `http` 与 `ai_*` 事件。
+- 双通道落盘：`console.log`（`wrangler tail` 实时观测）+ Analytics Engine `ai4food-trace` dataset（按 `traceId` 检索，记录路由/方法/状态/耗时）。
+- trace 不记 prompt 与问题全文，detail JSON 按字节截断至 15KB；`Tracer` 抽象 + `NOOP_TRACER` 兜底，trace 失败永不阻塞主流程。
+
+生产验证：部署后 `wrangler tail` 观察事件流，Cloudflare dashboard 查 `ai4food-trace` dataset 有数据点。详见 [ROADMAP 五期](docs/ROADMAP.md)。
+
+---
+
 ## 🗺️ 路线图
 
-**一期（数据仓库）+ 二期（后端只读 API）+ 三期（前端 SPA）+ 四期（AI 能力）已实现**：数据格式、schema、校验工具链、CI、贡献流程，Cloudflare Workers 只读 API，上线 https://fgh23333.github.io/AI4Food/ 的 Vue SPA，以及基于 Workers AI 的智能推荐与 AI 草稿生成。
+**一期（数据仓库）+ 二期（后端只读 API）+ 三期（前端 SPA）+ 四期（AI 能力）+ 五期（可观测性与体验打磨）已实现**：数据格式、schema、校验工具链、CI、贡献流程，Cloudflare Workers 只读 API，上线 https://fgh23333.github.io/AI4Food/ 的 Vue SPA，基于 Workers AI 的智能推荐与 AI 草稿生成，以及全链路 trace、前端三态渲染、推荐去重与「标记已关闭」贡献闭环。
 
 **后续规划**（见 [ROADMAP](docs/ROADMAP.md)）：
 - 🤖 AI 美食助手（智能推荐 + 辅助贡献，基于二期 API 接入 LLM）
