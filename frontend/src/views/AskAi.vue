@@ -189,4 +189,17 @@ button.primary:disabled { background: var(--ink-mute); cursor: not-allowed; }
 .server-warnings p { margin: 2px 0; font-size: 13px; color: var(--ink); }
 .meta { margin-top: 14px; font-size: 12.5px; color: var(--ink-mute); }
 @media (max-width: 560px) { .input-row { flex-direction: column; } .panel { padding: 20px; } }
+/* 平板：标题/面板留白平滑收缩（clamp 上界=桌面值，1024 处连续；桌面 base 不动） */
+@media (max-width: 1024px) {
+  h1 { font-size: clamp(24px, 2.9vw, 30px); }
+  .hero { padding: clamp(32px, 4.5vw, 46px) 0 clamp(20px, 2.7vw, 28px); }
+  .panel { padding: clamp(20px, 2.7vw, 28px); }
+}
+/* 移动端：输入行列向、面板留白收紧、推荐卡头允许换行 */
+@media (max-width: 768px) {
+  .input-row { flex-direction: column; }
+  .panel { padding: 20px; }
+  .pick-head { flex-wrap: wrap; }
+  .pick-name { font-size: 15px; }
+}
 </style>

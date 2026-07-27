@@ -147,5 +147,5 @@ button.ghost:hover { background: var(--brand-soft); }
 .hint { margin-top: 10px; font-size: 12px; color: var(--ink-mute); }
 .hint code { background: var(--bg); padding: 1px 5px; border-radius: 4px; font-size: 11px; }
 .hint a { color: var(--brand); }
-@media (max-width: 720px) { .draft-editor { grid-template-columns: 1fr; } .row2 { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .draft-editor { grid-template-columns: 1fr; } .row2 { grid-template-columns: 1fr; } }
 </style>

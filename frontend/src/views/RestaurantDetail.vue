@@ -77,4 +77,13 @@ ul { margin: 0; padding-left: 20px; }
 .updated { font-size: 11px; color: var(--ink-mute); }
 .src { display: inline-block; margin-top: 16px; color: var(--brand); text-decoration: none; font-weight: 600; }
 .state { text-align: center; padding: 60px 20px; color: var(--ink-mute); }
+/* 移动端：padding 收紧、标题缩号、可点元素触达 ≥40px（桌面 base 不动） */
+@media (max-width: 768px) {
+  .detail { padding: 20px 16px 56px; }
+  .card { padding: 20px; }
+  h1 { font-size: 22px; }
+  .back { display: inline-flex; align-items: center; min-height: 40px; }
+  .row a { display: inline-flex; align-items: center; min-height: 40px; }
+  .src { display: inline-flex; align-items: center; min-height: 40px; }
+}
 </style>

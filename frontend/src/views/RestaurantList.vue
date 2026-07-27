@@ -87,7 +87,20 @@ h1 { margin: 0; font-size: 30px; font-weight: 800; }
 .ai-entry { display: inline-block; margin-top: 18px; background: rgba(255,255,255,.16); color: #fff; text-decoration: none; padding: 9px 16px; border-radius: 11px; font-size: 14px; font-weight: 500; transition: background .15s; }
 .ai-entry:hover { background: rgba(255,255,255,.26); }
 .toolbar { margin-top: -34px; position: relative; z-index: 5; }
-.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(336px, 1fr)); padding-bottom: 64px; }
+.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 336px), 1fr)); padding-bottom: 64px; }
+.grid > * { min-width: 0; }
 .state { text-align: center; padding: 80px 20px; color: var(--ink-mute); }
-@media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+/* 平板：标题/留白随宽度平滑收缩（clamp 上界=桌面值，1024 处连续；桌面 base 不动） */
+@media (max-width: 1024px) {
+  .hero { padding: clamp(32px, 4.5vw, 46px) 0 clamp(44px, 6.25vw, 64px); }
+  h1 { font-size: clamp(24px, 2.9vw, 30px); }
+  .sub { font-size: clamp(12.5px, 1.3vw, 13.5px); }
+  .hero :deep(.stats) { margin-top: clamp(18px, 2.5vw, 26px); }
+}
+/* 移动端：栅格转单列、工具条上移量收紧、AI 入口加大触达 */
+@media (max-width: 768px) {
+  .toolbar { margin-top: -24px; }
+  .grid { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-bottom: 48px; }
+  .ai-entry { padding: 11px 16px; }
+}
 </style>
