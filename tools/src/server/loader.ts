@@ -1,32 +1,27 @@
 import type { IndexEntry } from '../types'
 
-// Cloudflare 资产绑定的最小契约（等价于 Workers 全局 Fetcher 类型，
-// 在此本地声明以避免主 tsconfig 全局注入 workers 类型污染 Node 工具链）。
-export interface AssetFetcher {
-  fetch(request: Request): Promise<Response>
-}
-
 // 数据加载抽象：Node 与 Worker 各自实现，hono.ts 只依赖此接口。
 export interface DataLoader {
   loadAll(): Promise<IndexEntry[]>
 }
 
-// Worker 实现：通过 ASSETS 绑定 fetch index.json。
-// 带模块级缓存，Worker 实例内只读一次。
-// 注意：此文件不 import node:fs，保持 Worker 运行时纯净。
-export function createWorkerLoader(assets: AssetFetcher): DataLoader {
-  let cache: IndexEntry[] | null = null
+// 最小化 KV JSON 读取契约，避免引入完整的 workers 类型污染 Node 工具链。
+// Worker 侧的 KVNamespace 满足此接口。
+interface KvJsonReader {
+  get(key: string, type: 'json'): Promise<unknown | null>
+}
+
+// Worker 实现：从 KV 读取 index.json。
+// KV 本身有全球边缘缓存，无需模块级缓存；数据更新通过 kv put 生效，无需重部署 Worker。
+export function createWorkerLoader(kv: KvJsonReader): DataLoader {
   return {
     async loadAll(): Promise<IndexEntry[]> {
-      if (cache !== null) return cache
-      // 资产绑定用任意合法 URL 取路径部分；index.json 在 assets 目录根
-      const res = await assets.fetch(new Request('http://local/index.json'))
-      if (!res.ok) {
-        throw new Error(`无法加载 index.json: HTTP ${res.status}`)
+      const raw = await kv.get('index', 'json')
+      if (raw === null) {
+        throw new Error('KV key "index" 不存在')
       }
-      const data = (await res.json()) as IndexEntry[]
-      cache = Array.isArray(data) ? data : []
-      return cache
+      const data = raw as IndexEntry[]
+      return Array.isArray(data) ? data : []
     },
   }
 }
