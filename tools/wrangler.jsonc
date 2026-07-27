@@ -7,6 +7,11 @@
     "directory": "../dist",
     "binding": "ASSETS"
   },
+  // Workers KV：数据层与运行时分离。index.json 存入 KV，Worker 运行时动态读取，
+  // 数据更新无需重新部署 Worker。
+  "kv_namespaces": [
+    { "binding": "DATA_INDEX", "id": "4761929f4d0c4b60a2f1bd645f8fbeb2" }
+  ],
   // Workers AI 绑定：四期 AI 能力用，env.AI.run(model, ...)。
   // 无需外部 API key，账号级授权；走 AI Gateway(eatornot) 做缓存与限流。
   "ai": {
