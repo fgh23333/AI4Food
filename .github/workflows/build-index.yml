@@ -37,7 +37,7 @@ jobs:
 
       - name: Push index to KV
         working-directory: tools
-        run: pnpm exec wrangler kv:key put index --path=../dist/index.json --binding DATA_INDEX --remote
+        run: pnpm exec wrangler kv key put index --path=../dist/index.json --binding DATA_INDEX --remote
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
