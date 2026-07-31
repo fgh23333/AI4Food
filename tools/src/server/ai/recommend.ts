@@ -168,10 +168,9 @@ export class StreamAnswerParser {
   }
 }
 
-// 流式推荐编排：流式 prompt 仅用于 answer 打字机显示；picks 用原 prompt 非流式调用保证质量。
-// 实测 qwen 流式模式下 picks 极不稳定（空数组 / 畸形 JSON 交替），不可依赖流式 picks。
-// 故拆为两次调用：①streamRun 流式 answer（打字机体验）②recommend 原 prompt 拿 picks（可靠）。
-// 成本：两次 LLM 调用，对低频推荐可接受。无 streamRun 时降级为单次 recommend。
+// 流式推荐编排：流式 prompt 输出 <answer>...</answer><picks>...</picks>。
+// answer 流式推送（打字机体验）；picks 从流式 <picks> 提取 + repairPick 容错
+// （qwen 流式 picks 偶发畸形：字段拼成单 key）。无 streamRun 时降级为单次 recommend。
 export async function* recommendStream(
   question: string,
   entries: IndexEntry[],
@@ -223,15 +222,24 @@ export async function* recommendStream(
   }
   streamAnswer = parser.getAnswer() || streamAnswer
 
-  // ② picks 用原 prompt 非流式调用（质量可靠）
-  const result = await recommend(question, entries, enums, llm, ctx)
+  // ② 流式 picks：从 parser 提取 + repairPick 容错（qwen 流式 picks 偶发畸形）
+  const picksJson = parser.getPicksJson()
+  let picks: RecommendPick[] = []
+  let dropped = 0
+  let parseError: string | undefined
+  try {
+    const parsed = parseJsonResponse(picksJson) as LlmRecommendResult
+    const v = validatePicks(parsed, candidates)
+    picks = v.picks
+    dropped = v.dropped
+    ctx?.event({ type: 'ai_parse', route: 'recommend-stream', ok: true, detail: { ok: true, picks: picks.length, dropped } })
+  } catch (e) {
+    parseError = e instanceof Error ? e.message : 'parse fail'
+    ctx?.event({ type: 'ai_parse', route: 'recommend-stream', ok: false, detail: { ok: false, error: parseError } })
+  }
+  ctx?.event({ type: 'ai_result', route: 'recommend-stream', ok: true, detail: { picks: picks.length, dropped } })
   yield {
     type: 'result',
-    data: {
-      answer: streamAnswer || result.answer,
-      picks: result.picks,
-      candidates_considered: result.candidates_considered,
-      model: result.model,
-    },
+    data: { answer: streamAnswer || '推荐生成失败', picks, candidates_considered: candidates.length, model: MODEL },
   }
 }
