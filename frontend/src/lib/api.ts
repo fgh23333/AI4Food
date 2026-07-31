@@ -1,4 +1,4 @@
-import type { RecommendResponse, DraftResponse } from '@/types/ai'
+import type { RecommendResponse, DraftResponse, RecommendStreamEvent } from '@/types/ai'
 import type { RestaurantEntry } from '@/types/restaurant'
 import type { ListResponse, Meta } from '@/types/api'
 
@@ -26,6 +26,62 @@ export async function askRecommend(question: string, signal?: AbortSignal): Prom
     throw new ApiError(await safeText(res), res.status)
   }
   return (await res.json()) as RecommendResponse
+}
+
+// 流式推荐：SSE 推送 answer 增量（onAnswer 回调逐字）+ 收尾 result（返回完整结果含 picks）。
+// 解析失败/服务端 error 事件 → 抛 ApiError。
+export async function askRecommendStream(
+  question: string,
+  onAnswer: (chunk: string) => void,
+  signal?: AbortSignal,
+): Promise<RecommendResponse> {
+  const res = await fetch(`${API_BASE}/api/ai/recommend/stream`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ question }),
+    signal,
+  })
+  if (!res.ok) {
+    throw new ApiError(await safeText(res), res.status)
+  }
+  const body = res.body
+  if (!body) throw new ApiError('流式响应无 body', 502)
+
+  const reader = body.getReader()
+  const decoder = new TextDecoder()
+  let buffer = ''
+  let result: RecommendResponse | null = null
+
+  while (true) {
+    const { done, value } = await reader.read()
+    if (done) break
+    buffer += decoder.decode(value, { stream: true })
+    // SSE 按空行分帧；这里按行处理（每帧含一个 data: 行）
+    const lines = buffer.split('\n')
+    buffer = lines.pop() ?? ''
+    for (const line of lines) {
+      const trimmed = line.trim()
+      if (!trimmed.startsWith('data:')) continue
+      const data = trimmed.slice(5).trim()
+      if (!data) continue
+      try {
+        const ev = JSON.parse(data) as RecommendStreamEvent
+        if (ev.type === 'answer_chunk') {
+          onAnswer(ev.data.text)
+        } else if (ev.type === 'result') {
+          result = ev.data
+        } else if (ev.type === 'error') {
+          throw new ApiError(ev.data.message, 502)
+        }
+      } catch (e) {
+        if (e instanceof ApiError) throw e
+        // 非 JSON 行忽略
+      }
+    }
+  }
+
+  if (!result) throw new ApiError('流式响应未返回结果', 502)
+  return result
 }
 
 // AI 辅助贡献：自然语言描述 -> 餐厅 frontmatter 草稿（供人工核对，不直接写入 data/）。

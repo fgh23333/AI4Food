@@ -15,6 +15,12 @@ export interface RecommendResponse {
   model: string
 }
 
+// 流式推荐事件（SSE）。answer_chunk 推送 answer 增量，result 收尾给完整结果。
+export type RecommendStreamEvent =
+  | { type: 'answer_chunk'; data: { text: string } }
+  | { type: 'result'; data: RecommendResponse }
+  | { type: 'error'; data: { message: string } }
+
 export interface RestaurantDraft {
   name: string
   city?: string

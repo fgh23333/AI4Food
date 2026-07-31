@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { askRecommend, generateDraft, ApiError } from '@/lib/api'
+import { askRecommendStream, generateDraft, ApiError } from '@/lib/api'
 import { dedupeChainPicks } from '@/lib/recommend'
 import DraftEditor from '@/components/DraftEditor.vue'
 import type { RecommendResponse, DraftResponse } from '@/types/ai'
@@ -15,6 +15,7 @@ const recommendResult = ref<RecommendResponse | null>(null)
 const dedupedPicks = computed(() => recommendResult.value ? dedupeChainPicks(recommendResult.value.picks) : [])
 const recommendLoading = ref(false)
 const recommendError = ref<string | null>(null)
+const streamingAnswer = ref('')
 let recommendAbort: AbortController | null = null
 
 // 草稿生成状态
@@ -40,10 +41,17 @@ async function onRecommend(example?: string): Promise<void> {
   recommendLoading.value = true
   recommendError.value = null
   recommendResult.value = null
+  streamingAnswer.value = ''
   recommendAbort?.abort()
   recommendAbort = new AbortController()
   try {
-    recommendResult.value = await askRecommend(q, recommendAbort.signal)
+    recommendResult.value = await askRecommendStream(
+      q,
+      (chunk) => {
+        streamingAnswer.value += chunk
+      },
+      recommendAbort.signal,
+    )
   } catch (e) {
     recommendError.value = formatError(e)
   } finally {
@@ -109,7 +117,11 @@ function goDetail(id: string): void {
         <button v-for="ex in EXAMPLES" :key="ex" class="chip" @click="onRecommend(ex)" :disabled="recommendLoading">{{ ex }}</button>
       </div>
 
-      <div v-if="recommendLoading" class="state">🤔 AI 正在挑选…</div>
+      <div v-if="recommendLoading && streamingAnswer" class="result">
+        <p class="answer">{{ streamingAnswer }}<span class="cursor">▍</span></p>
+        <p class="streaming-hint">正在为你挑选餐厅…</p>
+      </div>
+      <div v-else-if="recommendLoading" class="state">🤔 AI 正在挑选…</div>
       <div v-else-if="recommendError" class="state error">⚠️ {{ recommendError }}</div>
       <div v-else-if="recommendResult" class="result">
         <p class="answer">{{ recommendResult.answer }}</p>
@@ -175,6 +187,9 @@ button.primary:disabled { background: var(--ink-mute); cursor: not-allowed; }
 .state.error { color: var(--brand-dark); }
 .result { margin-top: 18px; }
 .answer { font-size: 17px; font-weight: 600; color: var(--ink); margin: 0 0 18px; line-height: 1.7; }
+.cursor { color: var(--brand); animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.streaming-hint { color: var(--ink-mute); font-size: 13px; margin: 8px 0 0; }
 .picks { display: grid; gap: 14px; }
 .pick { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; cursor: pointer; transition: box-shadow .15s, border-color .15s; }
 .pick:hover { box-shadow: var(--shadow); border-color: var(--brand); }

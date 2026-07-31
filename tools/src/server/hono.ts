@@ -3,7 +3,7 @@ import { cors } from 'hono/cors'
 import type { DataLoader } from './loader'
 import { applyQuery, buildMeta, type QueryParams, type SortKey } from './query'
 import type { LlmClient } from './ai/llm'
-import { recommend } from './ai/recommend'
+import { recommend, recommendStream } from './ai/recommend'
 import { draft } from './ai/draft'
 import { enumsFromEntries } from './ai/retrieve'
 import { NOOP_TRACER, type Tracer, type TraceContext } from './observability/tracer'
@@ -162,6 +162,50 @@ export function createApp(loader: DataLoader, llm?: LlmClient, tracer: Tracer = 
       const status = msg.includes('JSON') || msg.includes('LLM') ? 502 : 500
       return c.json({ error: msg }, status)
     }
+  })
+
+  // 流式推荐：SSE 推送 answer_chunk（answer 增量）+ result（收尾完整结果，含已校验 picks）。
+  app.post('/api/ai/recommend/stream', async (c) => {
+    if (!llm) return c.json({ error: 'AI 未配置（本地 Node 模式不支持 AI 路由）' }, 503)
+    let body: { question?: unknown }
+    try {
+      body = await c.req.json()
+    } catch {
+      return c.json({ error: '请求体必须是 JSON' }, 400)
+    }
+    const question = typeof body.question === 'string' ? body.question.trim() : ''
+    if (!question) return c.json({ error: 'question 必填' }, 400)
+    if (question.length > MAX_AI_INPUT) {
+      return c.json({ error: `question 不超过 ${MAX_AI_INPUT} 字` }, 400)
+    }
+    const all = await loader.loadAll()
+    const enums = enumsFromEntries(all)
+    const traceCtx: TraceContext | undefined = c.get('traceCtx')
+    const ctx = traceCtx ?? NOOP_TRACER.begin('POST /api/ai/recommend/stream', 'POST')
+
+    const encoder = new TextEncoder()
+    const stream = new ReadableStream<Uint8Array>({
+      async start(controller) {
+        try {
+          for await (const ev of recommendStream(question, all, enums, llm, ctx)) {
+            controller.enqueue(encoder.encode(`data: ${JSON.stringify(ev)}\n\n`))
+          }
+        } catch (e) {
+          const msg = e instanceof Error ? e.message : '推荐失败'
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: 'error', data: { message: msg } })}\n\n`))
+        } finally {
+          controller.close()
+        }
+      },
+    })
+
+    return new Response(stream, {
+      headers: {
+        'content-type': 'text/event-stream',
+        'cache-control': 'no-cache',
+        connection: 'keep-alive',
+      },
+    })
   })
 
   app.post('/api/ai/draft', async (c) => {

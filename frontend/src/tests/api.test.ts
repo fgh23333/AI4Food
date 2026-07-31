@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { askRecommend, generateDraft, fetchRestaurants, fetchMeta, fetchRestaurantById, ApiError } from '@/lib/api'
+import { askRecommend, askRecommendStream, generateDraft, fetchRestaurants, fetchMeta, fetchRestaurantById, ApiError } from '@/lib/api'
 
 // 模拟 fetch，验证 API 客户端正确拼装请求与解析响应
 function mockFetch(response: Response | Error): void {
@@ -15,6 +15,18 @@ function jsonRes(body: unknown, status = 200): Response {
     status,
     headers: { 'content-type': 'application/json' },
   })
+}
+
+// 构造 SSE 流响应（模拟后端 /api/ai/recommend/stream）
+function sseRes(events: Array<{ type: string; data: unknown }>): Response {
+  const encoder = new TextEncoder()
+  const stream = new ReadableStream<Uint8Array>({
+    start(controller) {
+      for (const e of events) controller.enqueue(encoder.encode(`data: ${JSON.stringify(e)}\n\n`))
+      controller.close()
+    },
+  })
+  return new Response(stream, { status: 200, headers: { 'content-type': 'text/event-stream' } })
 }
 
 beforeEach(() => {
@@ -111,5 +123,30 @@ describe('fetchRestaurantById', () => {
     mockFetch(jsonRes({ error: 'not found' }, 404))
     const r = await fetchRestaurantById('missing')
     expect(r).toBeNull()
+  })
+})
+
+describe('askRecommendStream', () => {
+  it('answer_chunk 增量回调 + result 收尾返回完整结果', async () => {
+    mockFetch(
+      sseRes([
+        { type: 'answer_chunk', data: { text: '推荐' } },
+        { type: 'answer_chunk', data: { text: 'A店' } },
+        { type: 'result', data: { answer: '推荐A店', picks: [{ id: 'x', reason: 'r', score: 0.9 }], candidates_considered: 3, model: 'm' } },
+      ]),
+    )
+    const chunks: string[] = []
+    const r = await askRecommendStream('上海日料', (c) => chunks.push(c))
+    expect(chunks.join('')).toBe('推荐A店')
+    expect(r.answer).toBe('推荐A店')
+    expect(r.picks[0]?.id).toBe('x')
+    const [url, init] = vi.mocked(fetch).mock.calls[0]!
+    expect(String(url)).toMatch(/\/api\/ai\/recommend\/stream$/)
+    expect(init?.method).toBe('POST')
+  })
+
+  it('error 事件抛 ApiError', async () => {
+    mockFetch(sseRes([{ type: 'error', data: { message: 'AI 内部错误' } }]))
+    await expect(askRecommendStream('x', () => {})).rejects.toMatchObject({ name: 'ApiError' })
   })
 })
