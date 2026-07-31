@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import type { RestaurantEntry, DisplayItem } from '@/types/restaurant'
 import { filterRestaurants } from '@/composables/useFilter'
 import { toDisplayItems, brandKey, branchClosed } from '@/composables/useChains'
-import { fetchRestaurants } from '@/lib/api'
+import { fetchRestaurants, fetchProbe } from '@/lib/api'
 import { requestPosition } from '@/composables/useGeolocation'
 import { sortByDistance as sortByDistanceFn, type LatLng } from '@/lib/distance'
 
@@ -22,6 +22,7 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
   const userLocation = ref<LatLng | null>(null)
   const distanceSort = ref(false)
   const locating = ref(false)
+  const probeHealth = ref<number | null>(null)
 
   const filtered = computed(() =>
     filterRestaurants(all.value, {
@@ -62,6 +63,8 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
       all.value = Array.isArray(data) ? data : []
       error.value = null
       loaded.value = true
+      // 探针健康度（非阻塞，失败静默——不影响列表加载）
+      fetchProbe().then((r) => { probeHealth.value = r.health }).catch(() => {})
     } catch (e) {
       error.value = e instanceof Error ? e.message : String(e)
       loaded.value = true // 标记已尝试，触发错误边界
@@ -101,5 +104,6 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     all, loaded, error, query, cuisine, price, onlyOpen, mergeChains,
     load, retry, setFilters, filtered, visible, stats, cuisineOptions,
     userLocation, distanceSort, locating, locateMe, disableDistanceSort,
+    probeHealth,
   }
 })

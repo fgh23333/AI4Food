@@ -59,7 +59,7 @@ function resetFilters() {
   <header class="hero">
     <div class="wrap">
       <div class="brand"><span class="logo">🍽️</span><div><h1>AI4Food</h1><p class="sub">社区共建的上海餐厅数据图鉴</p></div></div>
-      <StatBar v-bind="store.stats" />
+      <StatBar v-bind="store.stats" :health="store.probeHealth" />
       <div class="entries">
         <RouterLink to="/ask" class="entry-link">🤖 问问 AI：用自然语言找餐厅</RouterLink>
         <RouterLink to="/favorites" class="entry-link">❤️ 想吃清单<span v-if="favorites.count" class="badge">{{ favorites.count }}</span></RouterLink>

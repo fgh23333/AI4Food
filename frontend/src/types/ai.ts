@@ -21,6 +21,24 @@ export type RecommendStreamEvent =
   | { type: 'result'; data: RecommendResponse }
   | { type: 'error'; data: { message: string } }
 
+// AI 探针（定时监控推荐可用性）
+export interface ProbeQuery {
+  q: string
+  picks: number
+  empty: boolean
+  ms: number
+  err?: string
+}
+export interface ProbeEntry {
+  ts: number
+  model: string
+  queries: ProbeQuery[]
+}
+export interface ProbeResult {
+  entries: ProbeEntry[]
+  health: number | null
+}
+
 export interface RestaurantDraft {
   name: string
   city?: string

@@ -6,8 +6,8 @@ export interface DataLoader {
 }
 
 // 最小化 KV JSON 读取契约，避免引入完整的 workers 类型污染 Node 工具链。
-// Worker 侧的 KVNamespace 满足此接口。
-interface KvJsonReader {
+// Worker 侧的 KVNamespace 满足此接口。hono.ts 的 /api/probe 复用此契约只读 probe-history。
+export interface KvJsonReader {
   get(key: string, type: 'json'): Promise<unknown | null>
 }
 

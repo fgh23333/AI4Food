@@ -1,12 +1,13 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
-import type { DataLoader } from './loader'
+import type { DataLoader, KvJsonReader } from './loader'
 import { applyQuery, buildMeta, type QueryParams, type SortKey } from './query'
 import type { LlmClient } from './ai/llm'
 import { recommend, recommendStream } from './ai/recommend'
 import { draft } from './ai/draft'
 import { enumsFromEntries } from './ai/retrieve'
 import { NOOP_TRACER, type Tracer, type TraceContext } from './observability/tracer'
+import { PROBE_HISTORY_KEY, healthRate, type ProbeHistory } from './probe'
 
 type Variables = { traceCtx: TraceContext }
 
@@ -78,7 +79,7 @@ function corsOrigin(origin: string): string {
   return ALLOWED_ORIGINS.has(origin) ? origin : ''
 }
 
-export function createApp(loader: DataLoader, llm?: LlmClient, tracer: Tracer = NOOP_TRACER): Hono<{ Variables: Variables }> {
+export function createApp(loader: DataLoader, llm?: LlmClient, tracer: Tracer = NOOP_TRACER, probeKv?: KvJsonReader): Hono<{ Variables: Variables }> {
   const app = new Hono<{ Variables: Variables }>()
 
   app.use(
@@ -132,6 +133,14 @@ export function createApp(loader: DataLoader, llm?: LlmClient, tracer: Tracer = 
   app.get('/api/meta', async (c) => {
     const all = await loader.loadAll()
     return c.json(buildMeta(all))
+  })
+
+  // 探针历史：最近一次健康度 + 历史 entries（供前端 AI 健康指示）。无 probeKv 返回空。
+  app.get('/api/probe', async (c) => {
+    if (!probeKv) return c.json({ entries: [], health: null })
+    const raw = await probeKv.get(PROBE_HISTORY_KEY, 'json')
+    const history: ProbeHistory = (raw as ProbeHistory | null) ?? { entries: [] }
+    return c.json({ entries: history.entries, health: healthRate(history) })
   })
 
   // ===== 四期 AI 能力 =====
