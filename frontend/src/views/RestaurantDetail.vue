@@ -6,6 +6,7 @@ import PriceLevel from '@/components/PriceLevel.vue'
 import StatusBadge from '@/components/StatusBadge.vue'
 import MarkClosedButton from '@/components/MarkClosedButton.vue'
 import FavoriteButton from '@/components/FavoriteButton.vue'
+import DataCompleteness from '@/components/DataCompleteness.vue'
 import { renderMarkdown } from '@/lib/markdown'
 import { statusLabel } from '@/lib/status'
 import { REPO } from '@/lib/repo'
@@ -57,6 +58,7 @@ const dayLabel: Record<string, string> = { mon: '周一', tue: '周二', wed: '�
       <p v-if="entry.notes" class="notes">{{ entry.notes }}</p>
       <p class="updated">更新于 {{ entry.updated_at ?? '—' }}</p>
       <a :href="`${REPO}/blob/main/${entry.path}`" target="_blank" rel="noopener" class="src">查看源文件 →</a>
+      <DataCompleteness :entry="entry" />
       <MarkClosedButton :entry="entry" />
     </article>
   </main>
