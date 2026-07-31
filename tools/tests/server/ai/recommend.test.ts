@@ -30,11 +30,11 @@ function mockLlm(text: string): LlmClient {
   }
 }
 
-// 构造带 streamRun 的 mock：按 tokens 逐个 enqueue（模拟流式 token）
-function mockStreamLlm(tokens: string[]): LlmClient {
+// 构造带 streamRun 的 mock：run 返回原 prompt JSON（picks 来源），streamRun 按 tokens 流式 answer
+function mockStreamLlm(runText: string, tokens: string[]): LlmClient {
   return {
     async run(): Promise<LlmOutput> {
-      return { text: '', model: 'mock-model' }
+      return { text: runText, model: 'mock-model' }
     },
     async streamRun(): Promise<ReadableStream<string>> {
       return new ReadableStream<string>({
@@ -69,6 +69,35 @@ describe('recommend', () => {
       picks: [{ id: 'cn-shanghai-a', reason: 'r', score: 0.8 }],
     })
     const res = await recommend('上海粤菜', ENTRIES, ENUMS, mockLlm(llmText))
+    expect(res.picks[0]?.name).toBe('粤香楼')
+  })
+
+  it('LLM 返回无效 id 但 name 匹配候选 -> name 回退到正确 id', async () => {
+    const llmText = JSON.stringify({
+      answer: '推荐粤香楼',
+      picks: [{ id: '错误的id', name: '粤香楼', reason: 'r', score: 0.9 }],
+    })
+    const res = await recommend('上海粤菜', ENTRIES, ENUMS, mockLlm(llmText))
+    expect(res.picks).toHaveLength(1)
+    expect(res.picks[0]?.id).toBe('cn-shanghai-a')
+    expect(res.picks[0]?.name).toBe('粤香楼')
+  })
+
+  it('id 与 name 都无效 -> 丢弃（防幻觉）', async () => {
+    const llmText = JSON.stringify({
+      answer: 'ok',
+      picks: [{ id: '错的', name: '不存在的店', reason: 'r', score: 0.9 }],
+    })
+    const res = await recommend('上海粤菜', ENTRIES, ENUMS, mockLlm(llmText))
+    expect(res.picks).toEqual([])
+  })
+
+  it('LLM 返回畸形 picks（字段拼成单 key，qwen 流式常见）-> repair 还原', async () => {
+    // 真实观察到的 qwen 流式畸形：整个 pick 的键值对被拼成一个字符串 key
+    const llmText = '{"answer":"推荐","picks":[{"id:cn-shanghai-a,name:粤香楼,reason:商务粤菜,score":0.9}]}'
+    const res = await recommend('上海粤菜', ENTRIES, ENUMS, mockLlm(llmText))
+    expect(res.picks).toHaveLength(1)
+    expect(res.picks[0]?.id).toBe('cn-shanghai-a')
     expect(res.picks[0]?.name).toBe('粤香楼')
   })
 
@@ -140,41 +169,32 @@ describe('StreamAnswerParser', () => {
 })
 
 describe('recommendStream', () => {
-  it('answer_chunk 流式 + result 收尾含已校验 picks', async () => {
-    const tokens = [
-      '<answer>推荐',
-      '粤香楼</answer>',
-      '<picks>',
-      JSON.stringify({ picks: [{ id: 'cn-shanghai-a', reason: '商务粤菜', score: 0.9 }] }),
-      '</picks>',
-    ]
+  it('answer 来自流式 tokens，picks 来自原 prompt 非流式调用', async () => {
+    const runText = JSON.stringify({ answer: '原prompt答案', picks: [{ id: 'cn-shanghai-a', reason: '商务粤菜', score: 0.9 }] })
+    const tokens = ['<answer>流式', '推荐</answer>', '<picks></picks>']
     const events: Array<{ type: string; data: unknown }> = []
-    for await (const ev of recommendStream('上海粤菜', ENTRIES, ENUMS, mockStreamLlm(tokens))) {
+    for await (const ev of recommendStream('上海粤菜', ENTRIES, ENUMS, mockStreamLlm(runText, tokens))) {
       events.push(ev as { type: string; data: unknown })
     }
     const answerText = events
       .filter((e) => e.type === 'answer_chunk')
       .map((e) => (e.data as { text: string }).text)
       .join('')
-    expect(answerText).toBe('推荐粤香楼')
+    expect(answerText).toBe('流式推荐')
 
     const result = events.find((e) => e.type === 'result')?.data as {
       picks: Array<{ id: string }>; answer: string
     }
     expect(result.picks).toHaveLength(1)
     expect(result.picks[0]?.id).toBe('cn-shanghai-a')
-    expect(result.answer).toBe('推荐粤香楼')
+    expect(result.answer).toBe('流式推荐') // answer 优先用流式
   })
 
-  it('LLM 返回不存在的 id -> result picks 丢弃该条', async () => {
-    const tokens = [
-      '<answer>x</answer>',
-      '<picks>',
-      JSON.stringify({ picks: [{ id: 'cn-shanghai-a', reason: 'r', score: 0.9 }, { id: '不存在', reason: 'r', score: 0.5 }] }),
-      '</picks>',
-    ]
+  it('原 prompt 返回不存在的 id -> result picks 丢弃该条', async () => {
+    const runText = JSON.stringify({ answer: 'x', picks: [{ id: 'cn-shanghai-a', reason: 'r', score: 0.9 }, { id: '不存在', reason: 'r', score: 0.5 }] })
+    const tokens = ['<answer>x</answer>']
     const events: Array<{ type: string; data: unknown }> = []
-    for await (const ev of recommendStream('上海粤菜', ENTRIES, ENUMS, mockStreamLlm(tokens))) {
+    for await (const ev of recommendStream('上海粤菜', ENTRIES, ENUMS, mockStreamLlm(runText, tokens))) {
       events.push(ev as { type: string; data: unknown })
     }
     const result = events.find((e) => e.type === 'result')?.data as { picks: Array<{ id: string }> }

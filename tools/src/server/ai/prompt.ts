@@ -71,11 +71,12 @@ export function buildRecommendStreamPrompt(
 严格按以下格式输出，不要输出标签以外的任何文字：
 <answer>2-3 句自然语言推荐总结</answer>
 <picks>
-{ "picks": [ { "id": "候选餐厅id", "reason": "推荐理由", "score": 0.0到1.0相关度 } ] }
+{ "picks": [ { "id": "候选餐厅列表里的 id 原值", "name": "餐厅名", "reason": "推荐理由", "score": 0.0到1.0相关度 } ] }
 </picks>
 
 规则：
-- picks 里的 id 必须来自候选餐厅列表，不得编造。
+- picks 里的 id 必须从候选餐厅列表的 id 字段逐字复制（形如 cn-shanghai-xxx），不得用餐厅名当 id，不得编造。
+- 每个 pick 还要带 name（餐厅名），用于校验回退。
 - 若候选集为空，<answer> 写"暂时没有匹配的餐厅"，<picks> 写 { "picks": [] }。
 - answer 用自然语言写给用户看（会被实时流式显示），picks 是结构化数据。
 - score 为 0-1 浮点数。`
