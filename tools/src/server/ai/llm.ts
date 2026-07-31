@@ -1,9 +1,9 @@
 // LLM 调用封装。抽象出 LlmClient 接口，便于测试注入 mock；
 // Worker 实现用 env.AI.run + AI Gateway（缓存与限流）。
 
-// 主力模型：通义千问 Qwen3-30b MoE。实测推荐任务输出不稳定（空/畸形 picks 交替），
-// 故 skipCache=true 每次真实调用，避免 gateway 缓存放大偶发坏响应。
-// 注：glm-4.7-flash 在 Workers AI binding 下返回空响应（binding 不支持，仅 AI Search 可用）。
+// 主力模型：通义千问 Qwen3-30b（中文菜系理解准确，当前推荐任务输出退化，等恢复）。
+// 备选实测均不理想：glm-4.7-flash binding 不支持（仅 AI Search 可用）；
+// gemma-4-26b-a4b binding 可用但中文菜系理解差（"本帮菜"推成"火锅"，严重跑偏）。
 export const MODEL = '@cf/qwen/qwen3-30b-a3b-fp8'
 export const GATEWAY_ID = 'default'
 
