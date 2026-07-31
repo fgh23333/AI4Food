@@ -1,8 +1,9 @@
 // LLM 调用封装。抽象出 LlmClient 接口，便于测试注入 mock；
 // Worker 实现用 env.AI.run + AI Gateway（缓存与限流）。
 
-// 主力模型：通义千问 Qwen3-30b MoE，中文菜系理解可靠、成本低（约 29 neurons/次）。
-// 备选：@cf/zai-org/glm-4.7-flash（中文更强但略贵）。
+// 主力模型：通义千问 Qwen3-30b MoE。实测推荐任务输出不稳定（空/畸形 picks 交替），
+// 故 skipCache=true 每次真实调用，避免 gateway 缓存放大偶发坏响应。
+// 注：glm-4.7-flash 在 Workers AI binding 下返回空响应（binding 不支持，仅 AI Search 可用）。
 export const MODEL = '@cf/qwen/qwen3-30b-a3b-fp8'
 export const GATEWAY_ID = 'default'
 
@@ -35,11 +36,20 @@ export interface AiBinding {
   ): Promise<{ response?: unknown; result?: { response?: unknown }; usage?: { prompt_tokens?: number; completion_tokens?: number } }>
 }
 
-// 把 AI binding 返回的 response（string 或对象）归一化为字符串。
-// 对象时 JSON.stringify，以便下游 parseJsonResponse 统一处理。
+// 把 AI binding 返回的 response 归一化为字符串。
+// 兼容两种风格：qwen 的 { response } 与 chat-completion 的 { choices:[{message:{content}}] }。
 function normalizeResponse(value: unknown): string {
   if (typeof value === 'string') return value
-  if (value !== null && typeof value === 'object') return JSON.stringify(value)
+  if (value !== null && typeof value === 'object') {
+    const o = value as Record<string, unknown>
+    if (typeof o.response === 'string') return o.response
+    if (Array.isArray(o.choices) && o.choices[0] !== null && typeof o.choices[0] === 'object') {
+      const choice = o.choices[0] as Record<string, unknown>
+      const msg = choice.message as Record<string, unknown> | undefined
+      if (msg && typeof msg.content === 'string') return msg.content
+    }
+    return JSON.stringify(value)
+  }
   return ''
 }
 
@@ -55,11 +65,11 @@ export function createWorkerLlm(ai: AiBinding, gatewayId = GATEWAY_ID): LlmClien
             { role: 'user', content: input.user },
           ],
         },
-        { gateway: { id: gatewayId, skipCache: false, cacheTtl: 300 } },
+        { gateway: { id: gatewayId, skipCache: true } },
       )
       // Workers AI 文本生成返回 { response } 或 { result: { response } }。
       // response 可能是字符串或对象（见 AiBinding 注释），统一归一化为字符串。
-      const raw = resp.response ?? resp.result?.response
+      const raw = resp.response ?? resp.result?.response ?? resp
       const text = normalizeResponse(raw)
       const usage = resp.usage
         ? { promptTokens: resp.usage.prompt_tokens, completionTokens: resp.usage.completion_tokens }
@@ -79,7 +89,7 @@ export function createWorkerLlm(ai: AiBinding, gatewayId = GATEWAY_ID): LlmClien
           ],
           stream: true,
         },
-        { gateway: { id: gatewayId, skipCache: false, cacheTtl: 300 } },
+        { gateway: { id: gatewayId, skipCache: true } },
       )
       const rawStream = resp as unknown as ReadableStream<Uint8Array>
       const decoder = new TextDecoder()
