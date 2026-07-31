@@ -4,7 +4,7 @@
 // 主力模型：通义千问 Qwen3-30b MoE，中文菜系理解可靠、成本低（约 29 neurons/次）。
 // 备选：@cf/zai-org/glm-4.7-flash（中文更强但略贵）。
 export const MODEL = '@cf/qwen/qwen3-30b-a3b-fp8'
-export const GATEWAY_ID = 'eatornot'
+export const GATEWAY_ID = 'default'
 
 export interface LlmInput {
   system: string
