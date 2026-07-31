@@ -1,9 +1,12 @@
-import { describe, it, expect, vi, afterEach } from 'vitest'
+import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
+import { setActivePinia, createPinia } from 'pinia'
 import SkeletonCard from '@/components/SkeletonCard.vue'
 import ErrorBoundary from '@/components/ErrorBoundary.vue'
 import EmptyState from '@/components/EmptyState.vue'
 import MarkClosedButton from '@/components/MarkClosedButton.vue'
+import FavoriteButton from '@/components/FavoriteButton.vue'
+import { useFavoritesStore } from '@/stores/favorites'
 import type { RestaurantEntry } from '@/types/restaurant'
 
 describe('SkeletonCard', () => {
@@ -62,5 +65,42 @@ describe('MarkClosedButton', () => {
     expect(value).toContain('# 测试店（已关闭）')
 
     openSpy.mockRestore()
+  })
+})
+
+describe('FavoriteButton', () => {
+  beforeEach(() => {
+    setActivePinia(createPinia())
+    localStorage.clear()
+  })
+
+  it('点击切换收藏状态与文案', async () => {
+    const w = mount(FavoriteButton, { props: { id: 'cn-test' } })
+    expect(w.text()).toContain('🤍')
+    expect(w.find('button').classes()).not.toContain('active')
+
+    await w.find('button').trigger('click')
+    expect(useFavoritesStore().has('cn-test')).toBe(true)
+    expect(w.text()).toContain('❤️')
+    expect(w.find('button').classes()).toContain('active')
+
+    await w.find('button').trigger('click')
+    expect(useFavoritesStore().has('cn-test')).toBe(false)
+    expect(w.text()).toContain('🤍')
+  })
+
+  it('点击 stopPropagation 阻止冒泡到父元素', async () => {
+    const onParentClick = vi.fn()
+    const wrapper = mount(
+      {
+        template: '<div @click="onParentClick"><FavoriteButton id="x" /></div>',
+        components: { FavoriteButton },
+        setup() {
+          return { onParentClick }
+        },
+      },
+    )
+    await wrapper.find('button').trigger('click')
+    expect(onParentClick).not.toHaveBeenCalled()
   })
 })

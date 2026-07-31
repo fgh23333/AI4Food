@@ -5,6 +5,7 @@ import RatingStars from '@/components/RatingStars.vue'
 import PriceLevel from '@/components/PriceLevel.vue'
 import StatusBadge from '@/components/StatusBadge.vue'
 import MarkClosedButton from '@/components/MarkClosedButton.vue'
+import FavoriteButton from '@/components/FavoriteButton.vue'
 import { renderMarkdown } from '@/lib/markdown'
 import { statusLabel } from '@/lib/status'
 import { REPO } from '@/lib/repo'
@@ -26,7 +27,10 @@ const dayLabel: Record<string, string> = { mon: '周一', tue: '周二', wed: '�
       <router-link to="/">回列表</router-link>
     </div>
     <article v-else class="card">
-      <h1>{{ entry.name }}</h1>
+      <div class="title-row">
+        <h1>{{ entry.name }}</h1>
+        <FavoriteButton :id="entry.id" />
+      </div>
       <div class="meta">
         <RatingStars :rating="entry.rating" />
         <span class="cuisine">{{ entry.cuisine }}</span>
@@ -63,6 +67,8 @@ const dayLabel: Record<string, string> = { mon: '周一', tue: '周二', wed: '�
 .back { color: var(--brand); text-decoration: none; font-size: 13px; }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); margin-top: 14px; }
 h1 { margin: 0 0 12px; }
+.title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.title-row h1 { margin: 0; }
 .meta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
 .cuisine { background: var(--brand-soft); color: var(--brand-dark); padding: 3px 11px; border-radius: 999px; font-size: 12px; font-weight: 650; }
 .row { margin: 6px 0; font-size: 14px; }

@@ -4,6 +4,7 @@ import type { ChainBrand } from '@/types/restaurant'
 import { branchClosed, averageRating } from '@/composables/useChains'
 import RatingStars from './RatingStars.vue'
 import BranchList from './BranchList.vue'
+import FavoriteButton from './FavoriteButton.vue'
 
 const props = defineProps<{ brand: ChainBrand; hue: number; defaultOpen: boolean }>()
 const bar = `hsl(${props.hue} 68% 50%)`
@@ -31,6 +32,8 @@ const mergedRecs = computed(() => {
   }
   return out.slice(0, 4)
 })
+// 连锁收藏：绑定代表店（首家）id，branches 由 toDisplayItems 保证非空
+const primaryId = computed(() => props.brand.branches[0]?.id ?? '')
 </script>
 
 <template>
@@ -43,7 +46,10 @@ const mergedRecs = computed(() => {
           <div class="sub">连锁品牌 · {{ brand.branches.length }} 家 · {{ openCount }} 营业<span v-if="avg"> · 均分 {{ avg.toFixed(1) }}</span></div>
         </div>
       </div>
-      <RatingStars v-if="avg" :rating="Math.round(avg * 2) / 2" />
+      <div class="head-right">
+        <RatingStars v-if="avg" :rating="Math.round(avg * 2) / 2" />
+        <FavoriteButton :id="primaryId" />
+      </div>
     </div>
     <div class="meta"><span class="cuisine">{{ brand.cuisine }}</span><span v-if="priceText" class="price">{{ priceText }}</span></div>
     <div v-if="mergedRecs.length" class="recs"><span v-for="(r, i) in mergedRecs" :key="i" class="rec">★ {{ r.name }}</span></div>
@@ -58,6 +64,7 @@ const mergedRecs = computed(() => {
 <style scoped>
 .card { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--bar); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 12px; }
 .head { display: flex; justify-content: space-between; gap: 10px; }
+.head-right { display: flex; align-items: center; gap: 6px; }
 .brand-left { display: flex; gap: 13px; align-items: center; }
 .monogram { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; font-size: 21px; font-weight: 800; }
 .name { font-size: 17px; font-weight: 750; margin: 0; }

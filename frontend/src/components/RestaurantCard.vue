@@ -3,6 +3,7 @@ import type { RestaurantEntry } from '@/types/restaurant'
 import RatingStars from './RatingStars.vue'
 import PriceLevel from './PriceLevel.vue'
 import StatusBadge from './StatusBadge.vue'
+import FavoriteButton from './FavoriteButton.vue'
 import { REPO } from '@/lib/repo'
 
 const props = defineProps<{ entry: RestaurantEntry; hue: number }>()
@@ -13,7 +14,10 @@ const bar = `hsl(${props.hue} 68% 50%)`
   <article class="card" :style="{ '--bar': bar }">
     <div class="head">
       <h3 class="name">{{ entry.name }}</h3>
-      <RatingStars :rating="entry.rating" />
+      <div class="head-right">
+        <RatingStars :rating="entry.rating" />
+        <FavoriteButton :id="entry.id" />
+      </div>
     </div>
     <div class="meta">
       <span class="cuisine">{{ entry.cuisine }}</span>
@@ -38,6 +42,7 @@ const bar = `hsl(${props.hue} 68% 50%)`
 .card { background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--bar); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 12px; transition: transform .16s, box-shadow .16s; }
 .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
 .head { display: flex; justify-content: space-between; gap: 10px; }
+.head-right { display: flex; align-items: center; gap: 6px; }
 .name { font-size: 17px; font-weight: 750; margin: 0; }
 .meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .cuisine { background: var(--brand-soft); color: var(--brand-dark); padding: 3px 11px; border-radius: 999px; font-size: 12px; font-weight: 650; }
