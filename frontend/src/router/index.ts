@@ -11,6 +11,7 @@ const router = createRouter({
       props: true,
     },
     { path: '/ask', name: 'ask', component: () => import('@/views/AskAi.vue') },
+    { path: '/favorites', name: 'favorites', component: () => import('@/views/FavoriteList.vue') },
   ],
   scrollBehavior() {
     return { top: 0 }

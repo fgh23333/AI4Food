@@ -59,6 +59,39 @@ ${list}
   return { system, user }
 }
 
+// 流式推荐提示词：要求 LLM 先输出 <answer> 自然语言（可流式显示），再输出 <picks> JSON（收尾解析）。
+// 与 buildRecommendPrompt 隔离，互不影响；仅 recommendStream 使用。
+export function buildRecommendStreamPrompt(
+  question: string,
+  candidates: IndexEntry[],
+): { system: string; user: string } {
+  const system = `你是 AI4Food 美食推荐助手。你只能从用户提供的候选餐厅列表中选择，禁止编造不在候选集里的餐厅。
+请根据用户提问，从候选餐厅里挑选最符合的 1-3 家。
+
+严格按以下格式输出，不要输出标签以外的任何文字：
+<answer>2-3 句自然语言推荐总结</answer>
+<picks>
+{ "picks": [ { "id": "候选餐厅id", "reason": "推荐理由", "score": 0.0到1.0相关度 } ] }
+</picks>
+
+规则：
+- picks 里的 id 必须来自候选餐厅列表，不得编造。
+- 若候选集为空，<answer> 写"暂时没有匹配的餐厅"，<picks> 写 { "picks": [] }。
+- answer 用自然语言写给用户看（会被实时流式显示），picks 是结构化数据。
+- score 为 0-1 浮点数。`
+
+  const list = candidates.length > 0
+    ? JSON.stringify(candidates.map(summarizeCandidate))
+    : '（无候选餐厅）'
+
+  const user = `候选餐厅列表（JSON）：
+${list}
+
+用户提问：${question}`
+
+  return { system, user }
+}
+
 // 辅助贡献提示词：要求 LLM 输出符合 schema 的 frontmatter 草稿 JSON。
 export function buildDraftPrompt(
   description: string,

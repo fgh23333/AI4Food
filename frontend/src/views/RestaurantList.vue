@@ -2,6 +2,7 @@
 import { onMounted, watch } from 'vue'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
 import { useRestaurantsStore } from '@/stores/restaurants'
+import { useFavoritesStore } from '@/stores/favorites'
 import { encodeFilters, decodeFilters } from '@/composables/useUrlSync'
 import FilterBar from '@/components/FilterBar.vue'
 import RestaurantCard from '@/components/RestaurantCard.vue'
@@ -12,6 +13,7 @@ import SkeletonCard from '@/components/SkeletonCard.vue'
 import EmptyState from '@/components/EmptyState.vue'
 
 const store = useRestaurantsStore()
+const favorites = useFavoritesStore()
 const route = useRoute()
 const router = useRouter()
 
@@ -58,10 +60,13 @@ function resetFilters() {
     <div class="wrap">
       <div class="brand"><span class="logo">🍽️</span><div><h1>AI4Food</h1><p class="sub">社区共建的上海餐厅数据图鉴</p></div></div>
       <StatBar v-bind="store.stats" />
-      <RouterLink to="/ask" class="ai-entry">🤖 问问 AI：用自然语言找餐厅</RouterLink>
+      <div class="entries">
+        <RouterLink to="/ask" class="entry-link">🤖 问问 AI：用自然语言找餐厅</RouterLink>
+        <RouterLink to="/favorites" class="entry-link">❤️ 想吃清单<span v-if="favorites.count" class="badge">{{ favorites.count }}</span></RouterLink>
+      </div>
     </div>
   </header>
-  <main class="wrap toolbar"><FilterBar v-model:query="store.query" v-model:cuisine="store.cuisine" v-model:price="store.price" v-model:onlyOpen="store.onlyOpen" v-model:mergeChains="store.mergeChains" :cuisine-options="store.cuisineOptions" :result-count="`显示 ${store.filtered.length} / ${store.all.length} 家`" /></main>
+  <main class="wrap toolbar"><FilterBar v-model:query="store.query" v-model:cuisine="store.cuisine" v-model:price="store.price" v-model:onlyOpen="store.onlyOpen" v-model:mergeChains="store.mergeChains" v-model:distanceSort="store.distanceSort" :locating="store.locating" :cuisine-options="store.cuisineOptions" :result-count="`显示 ${store.filtered.length} / ${store.all.length} 家`" @locate="store.locateMe" /></main>
   <main class="wrap">
     <ErrorBoundary v-if="store.error" :message="`数据加载失败：${store.error}`" @retry="store.retry" />
     <div v-else-if="!store.loaded" class="grid">
@@ -70,7 +75,7 @@ function resetFilters() {
     <EmptyState v-else-if="!store.visible.length" @reset="resetFilters" />
     <div v-else class="grid">
       <template v-for="(item, i) in store.visible" :key="i">
-        <RestaurantCard v-if="item.type === 'single'" :entry="item.entry" :hue="hue(item.entry.cuisine)" />
+        <RestaurantCard v-if="item.type === 'single'" :entry="item.entry" :hue="hue(item.entry.cuisine)" :origin="store.userLocation" :distance-active="store.distanceSort" />
         <ChainCard v-else :brand="item.brand" :hue="hue(item.brand.cuisine)" :default-open="!!store.query || !!store.cuisine || !!store.price" />
       </template>
     </div>
@@ -84,8 +89,10 @@ function resetFilters() {
 h1 { margin: 0; font-size: 30px; font-weight: 800; }
 .sub { margin: 2px 0 0; font-size: 13.5px; opacity: .9; }
 .hero :deep(.stats) { margin-top: 26px; }
-.ai-entry { display: inline-block; margin-top: 18px; background: rgba(255,255,255,.16); color: #fff; text-decoration: none; padding: 9px 16px; border-radius: 11px; font-size: 14px; font-weight: 500; transition: background .15s; }
-.ai-entry:hover { background: rgba(255,255,255,.26); }
+.entries { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+.entry-link { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.16); color: #fff; text-decoration: none; padding: 9px 16px; border-radius: 11px; font-size: 14px; font-weight: 500; transition: background .15s; }
+.entry-link:hover { background: rgba(255,255,255,.26); }
+.badge { background: #fff; color: var(--brand-dark); font-size: 12px; font-weight: 700; min-width: 18px; height: 18px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; padding: 0 5px; }
 .toolbar { margin-top: -34px; position: relative; z-index: 5; }
 .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 336px), 1fr)); padding-bottom: 64px; }
 .grid > * { min-width: 0; }
@@ -101,6 +108,6 @@ h1 { margin: 0; font-size: 30px; font-weight: 800; }
 @media (max-width: 768px) {
   .toolbar { margin-top: -24px; }
   .grid { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-bottom: 48px; }
-  .ai-entry { padding: 11px 16px; }
+  .entry-link { padding: 11px 16px; }
 }
 </style>

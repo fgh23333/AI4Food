@@ -20,6 +20,8 @@ export interface LlmOutput {
 // LLM 客户端抽象。测试用 mock 实现，Worker 用 createWorkerLlm。
 export interface LlmClient {
   run(input: LlmInput): Promise<LlmOutput>
+  // 可选流式实现：返回 token 文本流（已剥离 SSE/JSON 包装）。本地 Node 模式无此能力。
+  streamRun?(input: LlmInput): Promise<ReadableStream<string>>
 }
 
 // Worker AI binding 的最小类型（避免直接依赖全局 Ai 类型，便于 Node 侧引用）。
@@ -28,7 +30,7 @@ export interface LlmClient {
 export interface AiBinding {
   run(
     model: string,
-    input: { messages: { role: string; content: string }[] },
+    input: { messages: { role: string; content: string }[]; stream?: boolean },
     options?: { gateway?: { id: string; skipCache?: boolean; cacheTtl?: number } },
   ): Promise<{ response?: unknown; result?: { response?: unknown }; usage?: { prompt_tokens?: number; completion_tokens?: number } }>
 }
@@ -64,7 +66,81 @@ export function createWorkerLlm(ai: AiBinding, gatewayId = GATEWAY_ID): LlmClien
         : undefined
       return { text, model: MODEL, usage }
     },
+
+    // 流式：stream:true 时 ai.run 返回 ReadableStream<Uint8Array>（SSE/NDJSON 字节）。
+    // 这里把它转成已剥离包装的 token 文本流（每个 enqueue 是一个 token 字符串）。
+    async streamRun(input) {
+      const resp = await ai.run(
+        MODEL,
+        {
+          messages: [
+            { role: 'system', content: input.system },
+            { role: 'user', content: input.user },
+          ],
+          stream: true,
+        },
+        { gateway: { id: gatewayId, skipCache: false, cacheTtl: 300 } },
+      )
+      const rawStream = resp as unknown as ReadableStream<Uint8Array>
+      const decoder = new TextDecoder()
+      const reader = rawStream.getReader()
+      return new ReadableStream<string>({
+        async start(controller) {
+          let buffer = ''
+          try {
+            while (true) {
+              const { done, value } = await reader.read()
+              if (done) break
+              buffer += decoder.decode(value, { stream: true })
+              // 按 SSE 行边界切；兼容 data: 前缀（SSE）与无前缀（NDJSON）两种风格
+              const lines = buffer.split('\n')
+              buffer = lines.pop() ?? ''
+              for (const line of lines) {
+                const token = tokenFromLine(line)
+                if (token !== null) controller.enqueue(token)
+              }
+            }
+            // flush 残留
+            const token = tokenFromLine(buffer)
+            if (token !== null) controller.enqueue(token)
+          } finally {
+            reader.releaseLock()
+            controller.close()
+          }
+        },
+      })
+    },
   }
+}
+
+// 从单行（SSE data: 行 或 NDJSON 行）提取 token 文本。非数据行/解析失败返回 null。
+function tokenFromLine(line: string): string | null {
+  let data = line.trim()
+  if (!data || data.startsWith('event:')) return null
+  if (data.startsWith('data:')) data = data.slice(5).trim()
+  if (!data || data === '[DONE]') return null
+  try {
+    return extractToken(JSON.parse(data))
+  } catch {
+    return null
+  }
+}
+
+// 从单个 stream chunk（已 JSON.parse 的对象）提取 token 文本。
+// 兼容 binding { response } 与 OpenAI/chat-completion { choices[].delta.content } 两种风格。
+export function extractToken(obj: unknown): string | null {
+  if (typeof obj !== 'object' || obj === null) return null
+  const o = obj as Record<string, unknown>
+  if (typeof o.response === 'string') return o.response
+  const choices = o.choices
+  if (Array.isArray(choices) && choices[0] !== null && typeof choices[0] === 'object') {
+    const delta = (choices[0] as Record<string, unknown>).delta
+    if (delta !== null && typeof delta === 'object') {
+      const content = (delta as Record<string, unknown>).content
+      if (typeof content === 'string') return content
+    }
+  }
+  return null
 }
 
 // LLM 响应不是合法 JSON 时抛出。

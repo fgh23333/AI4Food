@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { parseJsonResponse, LlmResponseError, createWorkerLlm, type AiBinding } from '../../../src/server/ai/llm'
+import { parseJsonResponse, LlmResponseError, createWorkerLlm, extractToken, type AiBinding } from '../../../src/server/ai/llm'
 
 describe('parseJsonResponse', () => {
   it('解析纯 JSON 对象', () => {
@@ -88,5 +88,26 @@ describe('createWorkerLlm trace', () => {
     const ai: AiBinding = { async run() { return { response: '{}' } } }
     const out = await createWorkerLlm(ai).run({ system: 's', user: 'u' })
     expect(out.usage).toBeUndefined()
+  })
+})
+
+describe('extractToken', () => {
+  it('binding 风格 { response } 提取 token', () => {
+    expect(extractToken({ response: '你好' })).toBe('你好')
+  })
+
+  it('OpenAI/chat-completion 风格 choices[].delta.content 提取 token', () => {
+    expect(extractToken({ choices: [{ delta: { content: '世界' } }] })).toBe('世界')
+  })
+
+  it('空 response 字符串返回空串（仍视为有效 token）', () => {
+    expect(extractToken({ response: '' })).toBe('')
+  })
+
+  it('非对象 / 无已知字段返回 null', () => {
+    expect(extractToken(null)).toBeNull()
+    expect(extractToken('str')).toBeNull()
+    expect(extractToken({ foo: 'bar' })).toBeNull()
+    expect(extractToken({ choices: [] })).toBeNull()
   })
 })

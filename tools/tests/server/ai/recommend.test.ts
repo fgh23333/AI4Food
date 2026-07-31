@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { recommend } from '../../../src/server/ai/recommend'
+import { recommend, recommendStream, StreamAnswerParser } from '../../../src/server/ai/recommend'
 import type { LlmClient, LlmInput, LlmOutput } from '../../../src/server/ai/llm'
 import type { IndexEntry, RestaurantEnums } from '../../../src/types'
 
@@ -26,6 +26,23 @@ function mockLlm(text: string): LlmClient {
   return {
     async run(_input: LlmInput): Promise<LlmOutput> {
       return { text, model: 'mock-model' }
+    },
+  }
+}
+
+// 构造带 streamRun 的 mock：按 tokens 逐个 enqueue（模拟流式 token）
+function mockStreamLlm(tokens: string[]): LlmClient {
+  return {
+    async run(): Promise<LlmOutput> {
+      return { text: '', model: 'mock-model' }
+    },
+    async streamRun(): Promise<ReadableStream<string>> {
+      return new ReadableStream<string>({
+        start(controller) {
+          for (const t of tokens) controller.enqueue(t)
+          controller.close()
+        },
+      })
     },
   }
 }
@@ -91,5 +108,87 @@ describe('recommend', () => {
     const res = await recommend('上海粤菜', ENTRIES, ENUMS, mockLlm(llmText))
     expect(res.picks).toEqual([])
     expect(res.answer).toBe('无推荐')
+  })
+})
+
+describe('StreamAnswerParser', () => {
+  it('answer 跨 token 切分仍正确累积增量', () => {
+    const p = new StreamAnswerParser()
+    expect(p.feed('<ans')).toBe('')
+    expect(p.feed('wer>')).toBe('')
+    expect(p.feed('推荐')).toBe('推荐')
+    expect(p.feed('粤香楼')).toBe('粤香楼')
+    expect(p.feed('</answer>')).toBe('')
+    expect(p.getAnswer()).toBe('推荐粤香楼')
+  })
+
+  it('提取 picks JSON（跨 token、含换行）', () => {
+    const p = new StreamAnswerParser()
+    p.feed('<answer>x</answer>')
+    p.feed('<picks>')
+    p.feed('{"picks":[{"id":"a"}]')
+    p.feed('</picks>')
+    expect(p.getPicksJson()).toBe('{"picks":[{"id":"a"}]')
+  })
+
+  it('answer 未闭合时取到 picks 前', () => {
+    const p = new StreamAnswerParser()
+    p.feed('<answer>正在说')
+    p.feed('<picks>{"picks":[]}</picks>')
+    expect(p.getAnswer()).toBe('正在说')
+  })
+})
+
+describe('recommendStream', () => {
+  it('answer_chunk 流式 + result 收尾含已校验 picks', async () => {
+    const tokens = [
+      '<answer>推荐',
+      '粤香楼</answer>',
+      '<picks>',
+      JSON.stringify({ picks: [{ id: 'cn-shanghai-a', reason: '商务粤菜', score: 0.9 }] }),
+      '</picks>',
+    ]
+    const events: Array<{ type: string; data: unknown }> = []
+    for await (const ev of recommendStream('上海粤菜', ENTRIES, ENUMS, mockStreamLlm(tokens))) {
+      events.push(ev as { type: string; data: unknown })
+    }
+    const answerText = events
+      .filter((e) => e.type === 'answer_chunk')
+      .map((e) => (e.data as { text: string }).text)
+      .join('')
+    expect(answerText).toBe('推荐粤香楼')
+
+    const result = events.find((e) => e.type === 'result')?.data as {
+      picks: Array<{ id: string }>; answer: string
+    }
+    expect(result.picks).toHaveLength(1)
+    expect(result.picks[0]?.id).toBe('cn-shanghai-a')
+    expect(result.answer).toBe('推荐粤香楼')
+  })
+
+  it('LLM 返回不存在的 id -> result picks 丢弃该条', async () => {
+    const tokens = [
+      '<answer>x</answer>',
+      '<picks>',
+      JSON.stringify({ picks: [{ id: 'cn-shanghai-a', reason: 'r', score: 0.9 }, { id: '不存在', reason: 'r', score: 0.5 }] }),
+      '</picks>',
+    ]
+    const events: Array<{ type: string; data: unknown }> = []
+    for await (const ev of recommendStream('上海粤菜', ENTRIES, ENUMS, mockStreamLlm(tokens))) {
+      events.push(ev as { type: string; data: unknown })
+    }
+    const result = events.find((e) => e.type === 'result')?.data as { picks: Array<{ id: string }> }
+    expect(result.picks).toHaveLength(1)
+    expect(result.picks[0]?.id).toBe('cn-shanghai-a')
+  })
+
+  it('无 streamRun 能力时降级为一次性（仍发 answer_chunk + result）', async () => {
+    const llm = mockLlm(JSON.stringify({ answer: '推荐粤香楼', picks: [{ id: 'cn-shanghai-a', reason: 'r', score: 0.9 }] }))
+    const events: Array<{ type: string; data: unknown }> = []
+    for await (const ev of recommendStream('上海粤菜', ENTRIES, ENUMS, llm)) {
+      events.push(ev as { type: string; data: unknown })
+    }
+    expect(events.some((e) => e.type === 'answer_chunk')).toBe(true)
+    expect(events.some((e) => e.type === 'result')).toBe(true)
   })
 })

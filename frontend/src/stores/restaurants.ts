@@ -4,6 +4,8 @@ import type { RestaurantEntry, DisplayItem } from '@/types/restaurant'
 import { filterRestaurants } from '@/composables/useFilter'
 import { toDisplayItems, brandKey, branchClosed } from '@/composables/useChains'
 import { fetchRestaurants } from '@/lib/api'
+import { requestPosition } from '@/composables/useGeolocation'
+import { sortByDistance as sortByDistanceFn, type LatLng } from '@/lib/distance'
 
 export const useRestaurantsStore = defineStore('restaurants', () => {
   const all = ref<RestaurantEntry[]>([])
@@ -16,6 +18,11 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
   const onlyOpen = ref(true)
   const mergeChains = ref(true)
 
+  // 距离排序：基于浏览器定位
+  const userLocation = ref<LatLng | null>(null)
+  const distanceSort = ref(false)
+  const locating = ref(false)
+
   const filtered = computed(() =>
     filterRestaurants(all.value, {
       query: query.value,
@@ -24,7 +31,14 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
       onlyOpen: onlyOpen.value,
     })
   )
-  const visible = computed<DisplayItem[]>(() => toDisplayItems(filtered.value, mergeChains.value))
+  const visible = computed<DisplayItem[]>(() => {
+    // 距离排序作用在 filter 之后、连锁合并之前：最近分店先出现 → 连锁组排前
+    const entries =
+      distanceSort.value && userLocation.value
+        ? sortByDistanceFn(filtered.value, userLocation.value).map((x) => x.item)
+        : filtered.value
+    return toDisplayItems(entries, mergeChains.value)
+  })
 
   const chainKeys = computed(() => {
     const c = new Map<string, number>()
@@ -60,6 +74,21 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     await load()
   }
 
+  // 请求浏览器定位；成功后自动开启距离排序。拒绝/失败时静默（不改变状态）。
+  async function locateMe(): Promise<void> {
+    locating.value = true
+    const ll = await requestPosition()
+    if (ll) {
+      userLocation.value = ll
+      distanceSort.value = true
+    }
+    locating.value = false
+  }
+
+  function disableDistanceSort(): void {
+    distanceSort.value = false
+  }
+
   function setFilters(partial: Partial<{ query: string; cuisine: string; price: number; onlyOpen: boolean; mergeChains: boolean }>): void {
     if (partial.query !== undefined) query.value = partial.query
     if (partial.cuisine !== undefined) cuisine.value = partial.cuisine
@@ -68,5 +97,9 @@ export const useRestaurantsStore = defineStore('restaurants', () => {
     if (partial.mergeChains !== undefined) mergeChains.value = partial.mergeChains
   }
 
-  return { all, loaded, error, query, cuisine, price, onlyOpen, mergeChains, load, retry, setFilters, filtered, visible, stats, cuisineOptions }
+  return {
+    all, loaded, error, query, cuisine, price, onlyOpen, mergeChains,
+    load, retry, setFilters, filtered, visible, stats, cuisineOptions,
+    userLocation, distanceSort, locating, locateMe, disableDistanceSort,
+  }
 })
