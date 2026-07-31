@@ -1,13 +1,26 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { RestaurantEntry } from '@/types/restaurant'
 import RatingStars from './RatingStars.vue'
 import PriceLevel from './PriceLevel.vue'
 import StatusBadge from './StatusBadge.vue'
 import FavoriteButton from './FavoriteButton.vue'
+import { haversineKm, formatDistance } from '@/lib/distance'
+import type { LatLng } from '@/lib/distance'
 import { REPO } from '@/lib/repo'
 
-const props = defineProps<{ entry: RestaurantEntry; hue: number }>()
+const props = defineProps<{ entry: RestaurantEntry; hue: number; origin?: LatLng | null; distanceActive?: boolean }>()
 const bar = `hsl(${props.hue} 68% 50%)`
+
+// 距离文案：开启距离排序且有定位时，有坐标算距离，无坐标标"缺坐标"
+const distanceText = computed<string | null>(() => {
+  if (!props.distanceActive || !props.origin) return null
+  if (typeof props.entry.latitude === 'number' && typeof props.entry.longitude === 'number') {
+    const km = haversineKm(props.origin.lat, props.origin.lng, props.entry.latitude, props.entry.longitude)
+    return `距你 ${formatDistance(km)}`
+  }
+  return '缺坐标'
+})
 </script>
 
 <template>
@@ -24,7 +37,8 @@ const bar = `hsl(${props.hue} 68% 50%)`
       <PriceLevel :level="entry.price_level" />
       <StatusBadge :status="entry.status" />
     </div>
-    <p v-if="entry.address" class="addr">📍 {{ entry.address }}</p>
+    <p v-if="entry.address" class="addr">📍 {{ entry.address }}<span v-if="distanceText" class="dist"> · {{ distanceText }}</span></p>
+    <p v-else-if="distanceText" class="addr">📍 {{ distanceText }}</p>
     <div v-if="entry.recommendations?.length" class="recs">
       <span v-for="(r, i) in entry.recommendations.slice(0, 4)" :key="i" class="rec">★ {{ r.name }}</span>
     </div>
@@ -47,6 +61,7 @@ const bar = `hsl(${props.hue} 68% 50%)`
 .meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .cuisine { background: var(--brand-soft); color: var(--brand-dark); padding: 3px 11px; border-radius: 999px; font-size: 12px; font-weight: 650; }
 .addr { font-size: 12.5px; color: var(--ink-soft); margin: 0; }
+.dist { color: var(--accent); font-weight: 600; }
 .recs { display: flex; flex-wrap: wrap; gap: 6px; }
 .rec { font-size: 11.5px; color: var(--ink-soft); background: var(--bg); border: 1px solid var(--line); padding: 4px 10px; border-radius: 8px; }
 .tags { display: flex; flex-wrap: wrap; gap: 5px; }

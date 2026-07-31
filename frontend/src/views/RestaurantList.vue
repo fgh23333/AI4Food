@@ -66,7 +66,7 @@ function resetFilters() {
       </div>
     </div>
   </header>
-  <main class="wrap toolbar"><FilterBar v-model:query="store.query" v-model:cuisine="store.cuisine" v-model:price="store.price" v-model:onlyOpen="store.onlyOpen" v-model:mergeChains="store.mergeChains" :cuisine-options="store.cuisineOptions" :result-count="`显示 ${store.filtered.length} / ${store.all.length} 家`" /></main>
+  <main class="wrap toolbar"><FilterBar v-model:query="store.query" v-model:cuisine="store.cuisine" v-model:price="store.price" v-model:onlyOpen="store.onlyOpen" v-model:mergeChains="store.mergeChains" v-model:distanceSort="store.distanceSort" :locating="store.locating" :cuisine-options="store.cuisineOptions" :result-count="`显示 ${store.filtered.length} / ${store.all.length} 家`" @locate="store.locateMe" /></main>
   <main class="wrap">
     <ErrorBoundary v-if="store.error" :message="`数据加载失败：${store.error}`" @retry="store.retry" />
     <div v-else-if="!store.loaded" class="grid">
@@ -75,7 +75,7 @@ function resetFilters() {
     <EmptyState v-else-if="!store.visible.length" @reset="resetFilters" />
     <div v-else class="grid">
       <template v-for="(item, i) in store.visible" :key="i">
-        <RestaurantCard v-if="item.type === 'single'" :entry="item.entry" :hue="hue(item.entry.cuisine)" />
+        <RestaurantCard v-if="item.type === 'single'" :entry="item.entry" :hue="hue(item.entry.cuisine)" :origin="store.userLocation" :distance-active="store.distanceSort" />
         <ChainCard v-else :brand="item.brand" :hue="hue(item.brand.cuisine)" :default-open="!!store.query || !!store.cuisine || !!store.price" />
       </template>
     </div>
