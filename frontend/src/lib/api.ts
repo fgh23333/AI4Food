@@ -1,4 +1,4 @@
-import type { RecommendResponse, DraftResponse, RecommendStreamEvent } from '@/types/ai'
+import type { RecommendResponse, DraftResponse, RecommendStreamEvent, ProbeResult } from '@/types/ai'
 import type { RestaurantEntry } from '@/types/restaurant'
 import type { ListResponse, Meta } from '@/types/api'
 
@@ -128,4 +128,11 @@ export async function fetchMeta(signal?: AbortSignal): Promise<Meta> {
   const res = await fetch(`${API_BASE}/api/meta`, { signal })
   if (!res.ok) throw new ApiError(`HTTP ${res.status}`, res.status)
   return (await res.json()) as Meta
+}
+
+// 拉取 AI 探针历史（最近一次健康度 + entries）。失败静默（不影响列表加载）。
+export async function fetchProbe(signal?: AbortSignal): Promise<ProbeResult> {
+  const res = await fetch(`${API_BASE}/api/probe`, { signal })
+  if (!res.ok) throw new ApiError(`HTTP ${res.status}`, res.status)
+  return (await res.json()) as ProbeResult
 }

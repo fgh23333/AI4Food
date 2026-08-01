@@ -33,5 +33,9 @@
   // zone 635262140.xyz 与本账号同账号，首次 `wrangler deploy` 时自动创建 DNS 记录与证书。
   "routes": [
     { "pattern": "ai4food.635262140.xyz", "custom_domain": true }
-  ]
+  ],
+  // 定时探针：每小时 :13 跑一轮 AI 推荐探针，监控可用性/稳定性（见 worker.ts scheduled）。
+  "triggers": {
+    "crons": ["13 * * * *"]
+  }
 }
